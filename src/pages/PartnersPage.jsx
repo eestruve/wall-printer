@@ -4,13 +4,6 @@ import BackButton from '../components/BackButton';
 import './B2BPages.css';
 
 function PartnersPage() {
-  useEffect(() => {
-    const timerId = requestAnimationFrame(() => {
-      document.querySelectorAll('.fade-in').forEach((el) => el.classList.add('visible'));
-    });
-    return () => cancelAnimationFrame(timerId);
-  }, []);
-
   return (
     <div className="b2b-page">
       <BackButton />
@@ -18,7 +11,7 @@ function PartnersPage() {
         <div className="b2b-hero fade-in">
           <h1 className="b2b-title">Зарабатывайте на инновациях в декоре вместе с Солюшн Клаб</h1>
           <p className="b2b-subtitle">Рекомендуйте нас своим клиентам и получайте до 15% агентского вознаграждения с каждого заказа в Москве.</p>
-          <a href="#cta-form" className="b2b-hero-cta">Стать партнером</a>
+          <a href="#cta-form" className="b2b-hero-cta">Обсудить сотрудничество</a>
         </div>
         
         <div className="b2b-content fade-in">

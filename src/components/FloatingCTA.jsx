@@ -23,7 +23,7 @@ export default function FloatingCTA() {
 
   return (
     <a href="#cta-form" className="floating-cta">
-      Заказать расчет проекта
+      Заказать расчет
     </a>
   );
 }

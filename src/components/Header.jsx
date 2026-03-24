@@ -55,7 +55,7 @@ export default function Header() {
             {siteInfo.phone}
           </a>
           <a href="#cta-form" className="btn btn-primary header__cta" onClick={() => setMenuOpen(false)}>
-            Заказать расчет проекта
+            Заказать расчет
           </a>
         </div>
 

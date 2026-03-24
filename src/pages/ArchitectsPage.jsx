@@ -4,13 +4,6 @@ import BackButton from '../components/BackButton';
 import './B2BPages.css';
 
 function ArchitectsPage() {
-  useEffect(() => {
-    const timerId = requestAnimationFrame(() => {
-      document.querySelectorAll('.fade-in').forEach((el) => el.classList.add('visible'));
-    });
-    return () => cancelAnimationFrame(timerId);
-  }, []);
-
   return (
     <div className="b2b-page">
       <BackButton />
@@ -18,7 +11,7 @@ function ArchitectsPage() {
         <div className="b2b-hero fade-in">
           <h1 className="b2b-title">Цифровая печать на любых поверхностях для архитектурных бюро</h1>
           <p className="b2b-subtitle">Быстрая навигация, брендирование и масштабный декор стен на крупных объектах Москвы и МО под ключ.</p>
-          <a href="#cta-form" className="b2b-hero-cta">Заказать услуги печати в Москве</a>
+          <a href="#cta-form" className="b2b-hero-cta">Обсудить сотрудничество</a>
         </div>
         
         <div className="b2b-content fade-in">

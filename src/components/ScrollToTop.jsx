@@ -1,15 +1,14 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
+if (typeof window !== 'undefined' && 'scrollRestoration' in window.history) {
+  window.history.scrollRestoration = 'manual';
+}
+
 export default function ScrollToTop() {
   const { pathname, hash } = useLocation();
 
   useEffect(() => {
-    // Disable browser's native scroll restoration
-    if ('scrollRestoration' in window.history) {
-      window.history.scrollRestoration = 'manual';
-    }
-
     if (hash) {
       setTimeout(() => {
         const id = hash.replace('#', '');

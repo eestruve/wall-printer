@@ -4,13 +4,6 @@ import BackButton from '../components/BackButton';
 import './B2BPages.css';
 
 function DesignersPage() {
-  useEffect(() => {
-    const timerId = requestAnimationFrame(() => {
-      document.querySelectorAll('.fade-in').forEach((el) => el.classList.add('visible'));
-    });
-    return () => cancelAnimationFrame(timerId);
-  }, []);
-
   return (
     <div className="b2b-page">
       <BackButton />
@@ -18,7 +11,7 @@ function DesignersPage() {
         <div className="b2b-hero fade-in">
           <h1 className="b2b-title">Реализуйте самые смелые идеи интерьерной печати в Москве</h1>
           <p className="b2b-subtitle">Солюшн Клаб — ваш надежный партнер в мире широкоформатной печати на стенах. Мы превращаем рендеры в реальность с точностью до миллиметра.</p>
-          <a href="#cta-form" className="b2b-hero-cta">Заказать расчет проекта в Москве</a>
+          <a href="#cta-form" className="b2b-hero-cta">Обсудить сотрудничество</a>
         </div>
         
         <div className="b2b-content fade-in">
