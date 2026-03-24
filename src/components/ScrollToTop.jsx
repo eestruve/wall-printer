@@ -5,6 +5,11 @@ export default function ScrollToTop() {
   const { pathname, hash } = useLocation();
 
   useEffect(() => {
+    // Disable browser's native scroll restoration
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+
     if (hash) {
       setTimeout(() => {
         const id = hash.replace('#', '');
@@ -15,8 +20,6 @@ export default function ScrollToTop() {
           const paddingTop = parseInt(style.paddingTop, 10) || 0;
           
           const elementPosition = element.getBoundingClientRect().top;
-          // Target the actual content by adding paddingTop to the element's top position
-          // and then subtracting the header height.
           const offsetPosition = elementPosition + window.scrollY + paddingTop - headerOffset - 20; 
           
           window.scrollTo({
