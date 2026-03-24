@@ -27,6 +27,7 @@
   position: absolute;
   top: var(--spacing-sm);
   right: var(--spacing-sm);
+  z-index: 10;
   background: var(--color-neon-cyan);
   color: var(--color-bg-primary);
   font-size: var(--font-size-caption);

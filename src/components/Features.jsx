@@ -9,7 +9,7 @@ export default function Features() {
         <div className="features__grid">
           {features.items.map((item, idx) => (
             <div key={idx} className="features__item fade-in">
-              <div className="features__icon">{item.icon}</div>
+              <div className="features__icon" dangerouslySetInnerHTML={{ __html: item.icon }} />
               <h3 className="features__item-title">{item.title}</h3>
               <p className="features__item-desc">{item.description}</p>
             </div>

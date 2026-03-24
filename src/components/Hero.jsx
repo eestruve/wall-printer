@@ -5,7 +5,7 @@ export default function Hero() {
   return (
     <section className="hero">
       <div className="hero__bg">
-        <img src={hero.image} alt="Wall Printer в работе" className="hero__bg-img" />
+        <img src={hero.image} alt="Волл Принтер в работе" className="hero__bg-img" />
         <div className="hero__overlay" />
       </div>
 
@@ -18,7 +18,7 @@ export default function Hero() {
           <a href="#cta-form" className="btn btn-primary hero__cta-primary">
             {hero.ctaPrimary}
           </a>
-          <a href="#features" className="btn btn-outline hero__cta-secondary">
+          <a href="#social-proof" className="btn btn-outline hero__cta-secondary">
             ▶ {hero.ctaSecondary}
           </a>
         </div>

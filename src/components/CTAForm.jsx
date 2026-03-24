@@ -1,22 +1,96 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { IMaskInput } from 'react-imask';
 import { ctaForm } from '../data/siteData';
 import './CTAForm.css';
 
 export default function CTAForm() {
   const [formData, setFormData] = useState({ name: '', phone: '' });
-  const [fileName, setFileName] = useState('');
+  const [files, setFiles] = useState({ wall: null, sketch: null });
   const [submitted, setSubmitted] = useState(false);
+  const [isUploading, setIsUploading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // TODO: Telegram bot integration
-    setSubmitted(true);
-    // Reset form after brief delay
-    setTimeout(() => {
-      setSubmitted(false);
-      setFormData({ name: '', phone: '' });
-      setFileName('');
-    }, 3000);
+    setIsUploading(true);
+    
+    const BOT_TOKEN = import.meta.env.VITE_TG_BOT_TOKEN;
+    const CHAT_ID = import.meta.env.VITE_TG_CHAT_ID;
+    
+    if (!BOT_TOKEN || !CHAT_ID) {
+      console.warn('Telegram API credentials missing. Form submission simulated.');
+      setSubmitted(true);
+      setTimeout(() => {
+        setSubmitted(false);
+        setFormData({ name: '', phone: '' });
+        setFiles({ wall: null, sketch: null });
+      }, 3000);
+      return;
+    }
+
+    try {
+      const text = `Новая заявка (Солюшн Клаб)!\n\nИмя: ${formData.name}\nТелефон: ${formData.phone}`;
+      
+      const hasWall = !!files.wall;
+      const hasSketch = !!files.sketch;
+
+      if (hasWall || hasSketch) {
+        // Отправляем как документы (можно расширить до sendMediaGroup при необходимости)
+        const sendFile = async (file, typeLabel) => {
+          const payload = new FormData();
+          payload.append('chat_id', CHAT_ID);
+          payload.append('caption', `${text}\n\nТип: ${typeLabel}`);
+          payload.append('document', file);
+          return fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendDocument`, {
+            method: 'POST',
+            body: payload,
+          });
+        };
+
+        if (hasWall) await sendFile(files.wall, "Фотография стены");
+        if (hasSketch) await sendFile(files.sketch, "Эскиз/Рисунок");
+      } else {
+        // Просто текстовое сообщение
+        const tgUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${encodeURIComponent(text)}`;
+        const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(tgUrl)}`;
+        await fetch(proxyUrl);
+      }
+
+      setSubmitted(true);
+      setTimeout(() => {
+        setSubmitted(false);
+        setFormData({ name: '', phone: '' });
+        setFiles({ wall: null, sketch: null });
+      }, 3000);
+    } catch (err) {
+      console.error('Ошибка отправки формы в Telegram:', err);
+      alert('Ошибка при отправке заявки. Пожалуйста, попробуйте позже.');
+    } finally {
+      setIsUploading(false);
+    }
+  };
+
+  const handleFileChange = (e, field) => {
+    const file = e.target.files[0];
+    if (!file) {
+      setFiles(prev => ({ ...prev, [field]: null }));
+      return;
+    }
+
+    const allowedTypes = ['image/jpeg', 'image/png', 'image/webp', 'image/heic'];
+    if (!allowedTypes.includes(file.type)) {
+      alert('Пожалуйста, выберите изображение (JPG, PNG или WEBP)');
+      e.target.value = '';
+      return;
+    }
+
+    if (file.size > 10 * 1024 * 1024) {
+      alert('Файл слишком большой. Максимальный размер — 10 МБ');
+      e.target.value = '';
+      return;
+    }
+
+    setFiles(prev => ({ ...prev, [field]: file }));
   };
 
   return (
@@ -54,41 +128,81 @@ export default function CTAForm() {
 
             <div className="cta-form__field">
               <label htmlFor="cta-phone" className="cta-form__label">{ctaForm.fields.phone}</label>
-              <input
+              <IMaskInput
                 id="cta-phone"
                 type="tel"
                 className="cta-form__input"
                 placeholder={ctaForm.fields.phonePlaceholder}
-                pattern="[\+]?[0-9\s\-\(\)]{10,18}"
-                title="Введите номер телефона в формате +7 (XXX) XXX-XX-XX"
+                mask="+{7} (000) 000-00-00"
                 value={formData.phone}
-                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                unmask={false}
+                onAccept={(value) => setFormData({ ...formData, phone: value })}
                 required
               />
             </div>
 
-            <div className="cta-form__field">
-              <label htmlFor="cta-file" className="cta-form__label">{ctaForm.fields.file}</label>
-              <div className="cta-form__upload">
-                <input
-                  id="cta-file"
-                  type="file"
-                  accept="image/*"
-                  className="cta-form__file-input"
-                  onChange={(e) => setFileName(e.target.files[0]?.name || '')}
-                />
-                <div className="cta-form__upload-area">
-                  <span className="cta-form__upload-icon">📎</span>
-                  <span className="cta-form__upload-text">
-                    {fileName || ctaForm.fields.fileHint}
-                  </span>
+            <div className="cta-form__files-grid">
+              <div className="cta-form__field">
+                <label htmlFor="cta-file-wall" className="cta-form__label">{ctaForm.fields.fileWall}</label>
+                <div className="cta-form__upload">
+                  <input
+                    id="cta-file-wall"
+                    type="file"
+                    accept=".jpg,.jpeg,.png,.webp,.heic"
+                    className="cta-form__file-input"
+                    onChange={(e) => handleFileChange(e, 'wall')}
+                  />
+                  <div className="cta-form__upload-area">
+                    <span className="cta-form__upload-icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14.5 4h-5L7 7H4.5A2.5 2.5 0 0 0 2 9.5v9A2.5 2.5 0 0 0 4.5 21h15a2.5 2.5 0 0 0 2.5-2.5v-9A2.5 2.5 0 0 0 19.5 7H17l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
+                    </span>
+                    <span className="cta-form__upload-text">
+                      {files.wall?.name || ctaForm.fields.fileWallHint}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="cta-form__field">
+                <label htmlFor="cta-file-sketch" className="cta-form__label">{ctaForm.fields.fileSketch}</label>
+                <div className="cta-form__upload">
+                  <input
+                    id="cta-file-sketch"
+                    type="file"
+                    accept=".jpg,.jpeg,.png,.webp,.heic"
+                    className="cta-form__file-input"
+                    onChange={(e) => handleFileChange(e, 'sketch')}
+                  />
+                  <div className="cta-form__upload-area">
+                    <span className="cta-form__upload-icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.607-.482 1.926-1.074.317-.59.472-1.323.472-2.077 0-1.611 1.389-2.849 3-2.849h1.602c2.76 0 4.998-2.24 4.998-5 0-5.5-4.5-10-10-10Z"/></svg>
+                    </span>
+                    <span className="cta-form__upload-text">
+                      {files.sketch?.name || ctaForm.fields.fileSketchHint}
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <button type="submit" className="btn btn-primary cta-form__submit">
-              {ctaForm.submitText}
+            <p className="cta-form__optional-note">{ctaForm.fields.optionalNote}</p>
+
+            <button 
+              type="submit" 
+              className={`btn btn-primary cta-form__submit ${isUploading ? 'loading' : ''}`}
+              disabled={isUploading}
+            >
+              {isUploading ? (
+                <span className="spinner-container">
+                  <span className="spinner"></span>
+                  Отправка...
+                </span>
+              ) : ctaForm.submitText}
             </button>
+            
+            <p className="cta-form__privacy">
+              Нажимая кнопку, вы соглашаетесь с <Link to="/privacy">Политикой конфиденциальности</Link>.
+            </p>
 
             <p className="cta-form__price">{ctaForm.priceAnchor}</p>
           </form>

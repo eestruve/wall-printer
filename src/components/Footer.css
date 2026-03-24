@@ -23,8 +23,9 @@
   margin-bottom: var(--spacing-sm);
 }
 
-.footer__logo-icon {
-  color: var(--color-neon-cyan);
+.footer__logo-img {
+  height: 48px;
+  width: auto;
 }
 
 .footer__slogan {

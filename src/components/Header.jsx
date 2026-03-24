@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { siteInfo, navigation } from '../data/siteData';
-import LogoIcon from './LogoIcon';
+import logoUrl from '../assets/images/logo_solution.svg';
 import './Header.css';
 
 export default function Header() {
@@ -32,30 +33,29 @@ export default function Header() {
       ref={headerRef}
     >
       <div className="container header__inner">
-        <a href="#" className="header__logo">
-          <LogoIcon size={28} color="var(--color-neon-cyan)" />
-          <span className="header__logo-text">SOLUTION</span>
-        </a>
+        <Link to="/" className="header__logo" onClick={() => window.scrollTo(0, 0)}>
+          <img src={logoUrl} alt="Солюшн Клаб" className="header__logo-img" />
+        </Link>
 
         <nav className={`header__nav ${menuOpen ? 'header__nav--open' : ''}`}>
           {navigation.map((item) => (
-            <a
+            <Link
               key={item.href}
-              href={item.href}
+              to={item.href}
               className="header__link"
               onClick={() => setMenuOpen(false)}
             >
               {item.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
         <div className="header__actions">
-          <a href="tel:${siteInfo.phone}" className="header__phone">
+          <a href={`tel:${siteInfo.phone}`} className="header__phone">
             {siteInfo.phone}
           </a>
-          <a href="#cta-form" className="btn btn-primary header__cta">
-            Заказать расчёт
+          <a href="#cta-form" className="btn btn-primary header__cta" onClick={() => setMenuOpen(false)}>
+            Заказать расчет проекта
           </a>
         </div>
 

@@ -1,0 +1,112 @@
+.b2b-page {
+  padding-top: var(--header-height);
+  background-color: var(--color-background);
+  min-height: 100vh;
+}
+
+.b2b-hero {
+  padding: 3rem 1rem 3rem;
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.b2b-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+  word-wrap: break-word;
+  background: linear-gradient(90deg, #FFFFFF 0%, #A0A0A0 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.b2b-subtitle {
+  font-size: 1.25rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+.b2b-content {
+  max-width: 900px;
+  margin: 0 auto 4rem;
+  padding: 3.5rem;
+  background: var(--glass-bg);
+  border: var(--glass-border);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-radius: 24px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.b2b-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-neon-cyan), transparent);
+  box-shadow: 0 0 15px var(--color-neon-cyan);
+  opacity: 0.8;
+}
+
+.b2b-content h3 {
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  color: var(--color-text-primary);
+  margin-bottom: 1rem;
+}
+
+.b2b-content p {
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+}
+
+.b2b-content ul, .b2b-content ol {
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  font-size: 1.1rem;
+  padding-left: 1.5rem;
+}
+
+.b2b-content li {
+  margin-bottom: 0.75rem;
+}
+
+.b2b-content li strong {
+  color: var(--color-primary);
+}
+
+.b2b-hero-cta {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 1.25rem 2.5rem;
+  background-color: var(--color-neon-cyan);
+  color: var(--color-background);
+  text-decoration: none;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  transition: all var(--transition-normal);
+  box-shadow: 0 4px 15px rgba(0, 255, 255, 0.2);
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+}
+
+.b2b-hero-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-neon);
+  background-color: #00ffff;
+}

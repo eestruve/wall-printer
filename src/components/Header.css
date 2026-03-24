@@ -34,9 +34,9 @@
   text-decoration: none;
 }
 
-.header__logo-icon {
-  color: var(--color-neon-cyan);
-  font-size: 1.25rem;
+.header__logo-img {
+  height: 40px;
+  width: auto;
 }
 
 /* Desktop: nav visible inline */

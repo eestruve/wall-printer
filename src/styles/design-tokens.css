@@ -1,5 +1,5 @@
 /* ============================================
-   Design System: Wall Printer by Solution Club
+   Design System: Волл Принтер от Солюшн Клаб
    Theme: Dark Futuristic + Neon Accents
    ============================================ */
 
@@ -13,9 +13,13 @@
   --color-bg-card-solid: #1A1A2E;
   --color-surface: #161625;
 
+  /* === Colors === */
+  --header-height: 80px;
+
   --color-neon-cyan: #00F0FF;
   --color-neon-cyan-dim: rgba(0, 240, 255, 0.15);
   --color-neon-cyan-glow: rgba(0, 240, 255, 0.4);
+  --color-primary: var(--color-neon-cyan);
 
   --color-amber: #FFB800;
   --color-amber-dim: rgba(255, 184, 0, 0.15);

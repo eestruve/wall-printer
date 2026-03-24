@@ -1,55 +1,38 @@
-import { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
-import Hero from './components/Hero';
-import Comparison from './components/Comparison';
-import UseCases from './components/UseCases';
-import Features from './components/Features';
-import Guarantee from './components/Guarantee';
-import SocialProof from './components/SocialProof';
-import FAQ from './components/FAQ';
-import CTAForm from './components/CTAForm';
 import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
+import FloatingCTA from './components/FloatingCTA';
+import HomePage from './pages/HomePage';
+import DesignersPage from './pages/DesignersPage';
+import ArchitectsPage from './pages/ArchitectsPage';
+import PartnersPage from './pages/PartnersPage';
+import PrivacyPage from './pages/PrivacyPage';
+import TechUVPrintingPage from './pages/TechUVPrintingPage';
+import TechWallPrepPage from './pages/TechWallPrepPage';
+import TechPrinterSpecsPage from './pages/TechPrinterSpecsPage';
 import './styles/design-tokens.css';
 
 function App() {
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
-    );
-
-    // Defer to ensure child components have rendered their DOM
-    const timerId = requestAnimationFrame(() => {
-      document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
-    });
-
-    return () => {
-      cancelAnimationFrame(timerId);
-      observer.disconnect();
-    };
-  }, []);
-
   return (
-    <>
+    <Router basename={import.meta.env.BASE_URL}>
+      <ScrollToTop />
       <Header />
       <main>
-        <Hero />
-        <Comparison />
-        <UseCases />
-        <Features />
-        <Guarantee />
-        <SocialProof />
-        <FAQ />
-        <CTAForm />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/designers" element={<DesignersPage />} />
+          <Route path="/architects" element={<ArchitectsPage />} />
+          <Route path="/partners" element={<PartnersPage />} />
+          <Route path="/privacy" element={<PrivacyPage />} />
+          <Route path="/technology/uv-printing" element={<TechUVPrintingPage />} />
+          <Route path="/technology/wall-preparation" element={<TechWallPrepPage />} />
+          <Route path="/technology/printer-specs" element={<TechPrinterSpecsPage />} />
+        </Routes>
       </main>
+      <FloatingCTA />
       <Footer />
-    </>
+    </Router>
   );
 }
 

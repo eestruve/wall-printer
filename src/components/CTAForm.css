@@ -114,7 +114,16 @@
 }
 
 .cta-form__upload-icon {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+}
+
+.cta-form__upload-icon svg {
+  display: block;
 }
 
 .cta-form__upload-text {
@@ -125,6 +134,35 @@
 .cta-form__submit {
   width: 100%;
   margin-top: var(--spacing-xs);
+  transition: all var(--transition-normal);
+  position: relative;
+}
+
+.cta-form__submit.loading {
+  opacity: 0.8;
+  cursor: not-allowed;
+}
+
+.spinner-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .cta-form__price {
@@ -133,11 +171,45 @@
   color: var(--color-text-muted);
 }
 
+.cta-form__privacy {
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  margin-top: 0.25rem;
+}
+
+.cta-form__files-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-sm);
+}
+
+.cta-form__optional-note {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  font-style: italic;
+  text-align: center;
+  margin-top: -0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.cta-form__privacy a {
+  color: var(--color-text-muted);
+  text-decoration: underline;
+}
+
+.cta-form__privacy a:hover {
+  color: var(--color-neon-cyan);
+}
+
 @media (max-width: 768px) {
   .cta-form__layout {
     grid-template-columns: 1fr;
   }
   .cta-form__title {
     font-size: 2rem;
+  }
+  .cta-form__files-grid {
+    grid-template-columns: 1fr;
   }
 }

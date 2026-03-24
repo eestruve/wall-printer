@@ -16,7 +16,7 @@ export default function Comparison() {
             >
               {item.badge && <span className="comparison__badge">{item.badge}</span>}
               <div className="comparison__img-wrap">
-                <img src={item.image} alt={item.title} className="comparison__img" />
+                <img src={item.image} alt={item.title} className="comparison__img" loading="lazy" />
               </div>
               <h3 className="comparison__card-title">{item.title}</h3>
               <ul className="comparison__list">

@@ -12,7 +12,7 @@ export default function UseCases() {
           {useCases.items.map((item, idx) => (
             <div key={idx} className="use-cases__card fade-in">
               <div className="use-cases__img-wrap">
-                <img src={item.image} alt={item.title} className="use-cases__img" />
+                <img src={item.image} alt={item.title} className="use-cases__img" loading="lazy" />
                 <div className="use-cases__card-overlay" />
                 <div className="use-cases__card-content">
                   <span className="use-cases__card-subtitle">{item.subtitle}</span>
