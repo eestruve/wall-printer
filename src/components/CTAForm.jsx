@@ -35,7 +35,7 @@ export default function CTAForm() {
       const hasSketch = !!files.sketch;
 
       if (hasWall || hasSketch) {
-        // Отправляем как документы (можно расширить до sendMediaGroup при необходимости)
+        // Отправляем как документы
         const sendFile = async (file, typeLabel) => {
           const payload = new FormData();
           payload.append('chat_id', CHAT_ID);
@@ -45,18 +45,24 @@ export default function CTAForm() {
             method: 'POST',
             body: payload,
           });
-          if (!response.ok) throw new Error(`Ошибка Telegram API: HTTP ${response.status}`);
+          if (!response.ok) throw new Error(`Ошибка Telegram API (Document): HTTP ${response.status}`);
           return response.json();
         };
 
         if (hasWall) await sendFile(files.wall, "Фотография стены");
         if (hasSketch) await sendFile(files.sketch, "Эскиз/Рисунок");
       } else {
-        // Просто текстовое сообщение
-        const tgUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${encodeURIComponent(text)}`;
-        const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(tgUrl)}`;
-        const response = await fetch(proxyUrl);
-        if (!response.ok) throw new Error(`Ошибка Proxy API: HTTP ${response.status}`);
+        // Прямой POST запрос (как в Yasno), без прокси
+        const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            chat_id: CHAT_ID,
+            text: text,
+            parse_mode: 'HTML'
+          })
+        });
+        if (!response.ok) throw new Error(`Ошибка Telegram API (Message): HTTP ${response.status}`);
       }
 
       setSubmitted(true);
