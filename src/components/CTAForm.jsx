@@ -41,10 +41,12 @@ export default function CTAForm() {
           payload.append('chat_id', CHAT_ID);
           payload.append('caption', `${text}\n\nТип: ${typeLabel}`);
           payload.append('document', file);
-          return fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendDocument`, {
+          const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendDocument`, {
             method: 'POST',
             body: payload,
           });
+          if (!response.ok) throw new Error(`Ошибка Telegram API: HTTP ${response.status}`);
+          return response.json();
         };
 
         if (hasWall) await sendFile(files.wall, "Фотография стены");
@@ -53,7 +55,8 @@ export default function CTAForm() {
         // Просто текстовое сообщение
         const tgUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${encodeURIComponent(text)}`;
         const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(tgUrl)}`;
-        await fetch(proxyUrl);
+        const response = await fetch(proxyUrl);
+        if (!response.ok) throw new Error(`Ошибка Proxy API: HTTP ${response.status}`);
       }
 
       setSubmitted(true);
@@ -64,7 +67,9 @@ export default function CTAForm() {
       }, 3000);
     } catch (err) {
       console.error('Ошибка отправки формы в Telegram:', err);
-      alert('Ошибка при отправке заявки. Пожалуйста, попробуйте позже.');
+      setTimeout(() => {
+        alert('Ошибка при отправке заявки. Пожалуйста, попробуйте позже.');
+      }, 100);
     } finally {
       setIsUploading(false);
     }
