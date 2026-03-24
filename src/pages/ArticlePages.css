@@ -128,7 +128,10 @@
 }
 
 @media (max-width: 768px) {
-  .article-section {
+  .article-content {
     padding: 1.5rem;
+  }
+  .article-section {
+    padding: 0;
   }
 }

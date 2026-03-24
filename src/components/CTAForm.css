@@ -8,8 +8,20 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: var(--spacing-2xl);
+  padding: var(--spacing-2xl) var(--spacing-xl);
   gap: var(--spacing-sm);
+  min-height: 400px;
+}
+
+.cta-form__success h3 {
+  color: var(--color-neon-cyan);
+  font-size: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.cta-form__success p {
+  color: var(--color-text-secondary);
+  font-size: 1.1rem;
 }
 
 .cta-form__success-icon {

@@ -66,11 +66,7 @@ export default function CTAForm() {
       }
 
       setSubmitted(true);
-      setTimeout(() => {
-        setSubmitted(false);
-        setFormData({ name: '', phone: '' });
-        setFiles({ wall: null, sketch: null });
-      }, 3000);
+      setFiles({ wall: null, sketch: null });
     } catch (err) {
       console.error('Ошибка отправки формы в Telegram:', err);
       setTimeout(() => {

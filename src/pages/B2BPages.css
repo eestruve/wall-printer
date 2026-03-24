@@ -129,7 +129,11 @@
 
 @media (max-width: 768px) {
   .b2b-hero { padding: 2rem 1rem; }
-  .b2b-content { padding: 1.5rem; gap: 2rem; }
+  .b2b-content { 
+    padding: 1.5rem; 
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
   .b2b-title { font-size: 2rem; }
   .fade-in { animation-duration: 0.4s; } /* Faster on mobile */
 }
