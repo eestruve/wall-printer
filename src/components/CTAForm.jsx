@@ -29,7 +29,7 @@ export default function CTAForm() {
     }
 
     try {
-      const text = `Новая заявка (Солюшн Клаб)!\n\nИмя: ${formData.name}\nТелефон: ${formData.phone}`;
+      const text = `🔔 *Новая заявка (Солюшн Клаб)*\n\n👤 *Имя:* ${formData.name}\n📞 *Телефон:* ${formData.phone}`;
       
       const hasWall = !!files.wall;
       const hasSketch = !!files.sketch;
@@ -59,7 +59,7 @@ export default function CTAForm() {
           body: JSON.stringify({
             chat_id: CHAT_ID,
             text: text,
-            parse_mode: 'HTML'
+            parse_mode: 'Markdown'
           })
         });
         if (!response.ok) throw new Error(`Ошибка Telegram API (Message): HTTP ${response.status}`);
