@@ -77,9 +77,9 @@ export default function CTAForm() {
       return;
     }
 
-    const allowedTypes = ['image/jpeg', 'image/png', 'image/webp', 'image/heic'];
-    if (!allowedTypes.includes(file.type)) {
-      alert('Пожалуйста, выберите изображение (JPG, PNG или WEBP)');
+    const allowedTypes = ['image/jpeg', 'image/png', 'image/webp', 'image/heic', 'image/heif'];
+    if (!allowedTypes.includes(file.type) && !file.name.toLowerCase().endsWith('.heic')) {
+      alert('Пожалуйста, выберите изображение (JPG, PNG, WEBP или HEIC)');
       e.target.value = '';
       return;
     }
