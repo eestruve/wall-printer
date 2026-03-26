@@ -51,7 +51,7 @@ export default function Header() {
         </nav>
 
         <div className="header__actions">
-          <a href={`tel:${siteInfo.phone}`} className="header__phone">
+          <a href={`tel:${siteInfo.phone.replace(/\D/g, '')}`} className="header__phone">
             {siteInfo.phone}
           </a>
           <a href="#cta-form" className="btn btn-primary header__cta" onClick={() => setMenuOpen(false)}>

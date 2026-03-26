@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://solution.club/sitemap.xml
+Sitemap: https://solution-club.ru/sitemap.xml

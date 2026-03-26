@@ -18,11 +18,12 @@ import afgPreview from '../assets/images/afg_preview.jpg';
 
 export const siteInfo = {
   brand: 'Солюшн Клаб',
-  phone: '+7 (495) 000-00-00',
-  whatsapp: 'https://wa.me/74950000000',
+  phone: '+7 (926) 226-65-15',
+  phoneSecondary: '+7 (926) 614-43-31',
+  whatsapp: 'https://wa.me/79262266515',
   telegram: 'https://t.me/solutionclub',
-  email: 'info@solution.club',
-  address: 'Москва, ул. Цветного, 40',
+  email: 'info@solution-club.ru',
+  address: 'Московская область, городской округ Химки, с.п. Кутузовское, д. Голиково, мкр. "Золотые купола", ул. Центральная, д. 74',
 };
 
 export const navigation = [
