@@ -39,8 +39,8 @@ export default function Footer() {
 
         <div className="footer__col">
           <h4 className="footer__col-title">Контакты</h4>
-          <a href={`tel:${siteInfo.phone.replace(/\D/g, '')}`} className="footer__link">{siteInfo.phone}</a>
-          <a href={`tel:${siteInfo.phoneSecondary.replace(/\D/g, '')}`} className="footer__link">{siteInfo.phoneSecondary}</a>
+          <a href={`tel:${siteInfo.phone.replace(/[^\d+]/g, '')}`} className="footer__link">{siteInfo.phone}</a>
+          <a href={`tel:${siteInfo.phoneSecondary.replace(/[^\d+]/g, '')}`} className="footer__link">{siteInfo.phoneSecondary}</a>
           <a href={`mailto:${siteInfo.email}`} className="footer__link">{siteInfo.email}</a>
           <span className="footer__link footer__address">{siteInfo.address}</span>
         </div>

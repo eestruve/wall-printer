@@ -82,6 +82,9 @@
 }
 
 @media (max-width: 768px) {
+  .footer {
+    padding-bottom: 5rem; /* Space for Floating CTA */
+  }
   .footer__inner {
     grid-template-columns: 1fr 1fr;
     gap: var(--spacing-lg);
