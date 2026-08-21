@@ -1,0 +1,88 @@
+.social-proof-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-lg);
+}
+
+.social-proof-card {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: #FFFFFF;
+}
+
+.social-proof-video-wrap {
+  position: relative;
+  aspect-ratio: 16/9;
+  background: var(--color-primary-dark);
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.social-proof-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.social-proof-placeholder {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.social-proof-poster {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.social-proof-card:hover .social-proof-poster {
+  transform: scale(1.04);
+}
+
+.social-proof-play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 64px;
+  height: 64px;
+  background: var(--color-accent);
+  color: var(--color-primary-dark);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  transition: all var(--transition-normal);
+}
+
+.social-proof-play-btn span {
+  margin-left: 4px;
+}
+
+.social-proof-card:hover .social-proof-play-btn {
+  transform: translate(-50%, -50%) scale(1.12);
+  background: var(--color-accent-hover);
+  box-shadow: 0 10px 30px var(--color-accent-glow);
+}
+
+.social-proof-info {
+  padding: var(--spacing-md) var(--spacing-lg);
+}
+
+.social-proof-card-title {
+  font-size: 1.1rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+  .social-proof-grid {
+    grid-template-columns: 1fr;
+  }
+}

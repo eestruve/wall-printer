@@ -1,5 +1,5 @@
 @echo off
-cd /d "%~dp0website"
+cd /d "%~dp0"
 echo Starting Wall Printer local server...
 echo.
 echo The website should open automatically in your browser.

@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="ru"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Solution Club | Роботизированная печать на стенах</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#00f2ff",
+                        "accent-amber": "#ffb800",
+                        "background-light": "#f5f8f8",
+                        "background-dark": "#0f2223",
+                        "surface": "#162c2d",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(22, 44, 45, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 242, 255, 0.1);
+        }
+        .neon-glow {
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.3);
+        }
+        .hero-gradient {
+            background: radial-gradient(circle at top right, rgba(0, 242, 255, 0.15), transparent);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 selection:bg-primary selection:text-background-dark">
+<!-- Header -->
+<header class="fixed top-0 w-full z-50 glass-card border-b border-primary/10">
+<div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="size-8 bg-primary rounded flex items-center justify-center text-background-dark">
+<span class="material-symbols-outlined font-bold">robot_2</span>
+</div>
+<h1 class="text-xl font-bold tracking-tighter">SOLUTION <span class="text-primary font-black">CLUB</span></h1>
+</div>
+<nav class="hidden md:flex items-center gap-10">
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#services">Услуги</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#cases">Кейсы</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#tech">Технологии</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#faq">FAQ</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="hidden sm:flex items-center gap-2 text-sm font-semibold text-primary border border-primary/30 px-5 py-2 rounded-full hover:bg-primary/10 transition-all">
+<span class="material-symbols-outlined text-lg">call</span>
+<span>Заказать звонок</span>
+</button>
+<button class="bg-primary text-background-dark px-6 py-2 rounded-full font-bold text-sm hover:scale-105 transition-transform neon-glow">
+                    Связаться
+                </button>
+</div>
+</div>
+</header>
+<main class="pt-20">
+<!-- Hero Section -->
+<section class="relative min-h-[921px] flex items-center hero-gradient overflow-hidden">
+<div class="absolute inset-0 z-0 opacity-20 pointer-events-none">
+<div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 blur-[120px] rounded-full"></div>
+<div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary/10 blur-[100px] rounded-full"></div>
+</div>
+<div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+<div class="lg:col-span-7">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold uppercase tracking-widest mb-6">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+</span>
+                        Будущее интерьерного дизайна
+                    </div>
+<h1 class="text-5xl lg:text-7xl font-black leading-tight mb-8">
+                        Эксклюзивная интерьерная печать <span class="text-primary">на стенах.</span>
+</h1>
+<p class="text-lg lg:text-xl text-slate-400 max-w-2xl mb-10 leading-relaxed">
+                        Премиальное оформление для статусного бизнеса и современных интерьеров. <span class="text-slate-100">100% совпадение</span> с вашим 3D-рендером за 1 день без грязи и запаха.
+                    </p>
+<div class="flex flex-col sm:flex-row gap-4">
+<button class="bg-primary text-background-dark px-8 py-5 rounded-xl font-black text-lg hover:scale-105 transition-transform neon-glow flex items-center justify-center gap-3">
+<span>Узнать стоимость проекта</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<button class="glass-card px-8 py-5 rounded-xl font-bold text-lg flex items-center justify-center gap-3 border border-white/10">
+<span class="material-symbols-outlined text-primary">play_circle</span>
+                            Смотреть процесс
+                        </button>
+</div>
+</div>
+<div class="lg:col-span-5 relative">
+<div class="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl group">
+<div class="aspect-[4/5] bg-cover bg-center" data-alt="High-end modern office interior wall printing demo" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDv_7IHSCKN14M9BeRGiyTJYzvNdBgdzbJp7cLn_jxfsFPOZX1HTCCKzU-h35ZSXyE1dNnC2jhaW5wzqidYuKteeRnBsTA2BErHrcxtfJ9OY3Wt1mV8H_MKaGTnrqJljeA8gP2x79iPYQ84HJmLqHJLBfVsZh0aYklETC3gc4-h3PoYIuWofqriQ0o0125ZqgoHz8Mov1B_-Mn7SBFwb1TrANW-2GK6tSxSRxOZjAj0iQiuGTluYhxxyYGA-KwqeAj_gFcXH2wu8A')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark to-transparent opacity-60"></div>
+<div class="absolute bottom-6 left-6 right-6 p-4 glass-card rounded-xl border-primary/20">
+<div class="flex items-center gap-4">
+<div class="size-12 rounded-lg bg-primary/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">precision_manufacturing</span>
+</div>
+<div>
+<p class="text-sm font-bold">Точность 0.1 мм</p>
+<p class="text-xs text-slate-400">Роботизированный контроль качества</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Problem Comparison -->
+<section class="py-24 bg-background-light dark:bg-background-dark/50">
+<div class="max-w-7xl mx-auto px-6">
+<div class="text-center mb-16">
+<h2 class="text-3xl lg:text-5xl font-black mb-4">Сравнение решений</h2>
+<p class="text-slate-400">Почему современные дизайнеры выбирают Wall Printer</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Hand Painting -->
+<div class="glass-card p-8 rounded-2xl border-white/5 opacity-80">
+<div class="aspect-video rounded-xl mb-6 bg-cover bg-center" data-alt="Artist hand painting on a wall" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBbpNCftha96MTYNFkClQWB6aK-Idftlv5fQvscb6LYG4ZbLjCPLStFWgjlwgGP2LgCfsdD3lXPkdSXU_ZW8TRS7-JPKmf-IsG4dvpVM48qz5qB8Gv3KGq047FE1iO3OhieZ7ZdFDTZQCrj036K-ZbMk7nTSbXz-d8tNgwEn6lv1ubYgwbRF1xdVTw1daRju4aJCxZktGeGigajOzbXOGATwQoG4DgcqHgoHeuBTH4FmJUEWuVFL2_ALrnpnGJ1qti3ctzdxfgNig')"></div>
+<h3 class="text-xl font-bold mb-4">Ручная роспись</h3>
+<ul class="space-y-3 text-sm text-slate-400">
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-red-500 text-lg">close</span>
+<span>До 2 недель работы на 1 стену</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-red-500 text-lg">close</span>
+<span>Человеческий фактор (ошибки)</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-red-500 text-lg">close</span>
+<span>Грязь, запах краски и шум</span>
+</li>
+</ul>
+</div>
+<!-- Premium Panels -->
+<div class="glass-card p-8 rounded-2xl border-white/5 opacity-80">
+<div class="aspect-video rounded-xl mb-6 bg-cover bg-center" data-alt="Architectural wall panels installed" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBz4B1ZeWc0RwXUuO9aI2oZ40if9WDFSDFkYDndyZNqJT_LuMH8qtrFKN7__zQdnYepdcat665sZY2UPRuZYIDbaUWgfeQg6zzMqeNNicYGiNjLni1thwBEW5wVxjqqvfYiB1rD0vA7iRfE_noeaSoy4cx_fi7pHjmnunVXSZByVxu_4OW8ymqbmQl3SG3GQ7Z4aKN4xtBapq-vboDOfRLZE7SUFXDC6n5qg1oY5LetZ0sUTxJv9_zS0TIHgNWAYBHlRqpvEmzXOw')"></div>
+<h3 class="text-xl font-bold mb-4">Премиальные панели</h3>
+<ul class="space-y-3 text-sm text-slate-400">
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-red-500 text-lg">close</span>
+<span>Видимые стыки и швы</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-red-500 text-lg">close</span>
+<span>Сложный и долгий монтаж</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-red-500 text-lg">close</span>
+<span>Риск повреждения при доставке</span>
+</li>
+</ul>
+</div>
+<!-- Wall Printer (Highlight) -->
+<div class="glass-card p-8 rounded-2xl border-primary/50 ring-1 ring-primary/50 relative overflow-hidden bg-primary/5 scale-105">
+<div class="absolute top-0 right-0 bg-primary text-background-dark px-4 py-1 text-xs font-black uppercase tracking-tighter">Лучший выбор</div>
+<div class="aspect-video rounded-xl mb-6 bg-cover bg-center" data-alt="Wall printing robot in action" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDybI6mqIvba0IyDCXckPYf6SLm1F5kt35MHklH0iZCxMZS8ffYEd4LeLeKFRteSMIo7y3tHCQmVn19sjclqSpVG9l8qqPZcox2mNoeqJLWrPW9oWlZ2Uh8r1pQDqY62IqO3IRpdjN0ouoBa7LMNndMJxbTeiiM-izN_NS_3Qx0utywrtOVqzQ-HMTFevaOMcKbUG1nN3wk_Y6boyHTlflZOZUz3I-vw-4N_Pt7VDLL9aKgOHf7xAY181l33BW0NfqhY57xD1nHkw')"></div>
+<h3 class="text-xl font-bold mb-4 text-primary">Wall Printer Solution Club</h3>
+<ul class="space-y-3 text-sm">
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-primary text-lg font-bold">check_circle</span>
+<span class="text-white font-medium">Готовность за 1 день</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-primary text-lg font-bold">check_circle</span>
+<span class="text-white font-medium">Идеальная точность 1440 DPI</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-primary text-lg font-bold">check_circle</span>
+<span class="text-white font-medium">Без швов, без запаха, без пыли</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- Use Cases (Bento Grid) -->
+<section class="py-24 px-6 max-w-7xl mx-auto" id="cases">
+<h2 class="text-4xl font-black mb-12">Сферы применения</h2>
+<div class="grid grid-cols-1 md:grid-cols-4 grid-rows-2 gap-4 h-auto md:h-[600px]">
+<!-- Case 1 -->
+<div class="md:col-span-2 md:row-span-2 relative rounded-2xl overflow-hidden group">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="Luxury restaurant interior with wall art" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBqIhbxcfxy9TRGZ-iHd5GMG5zRWzQGfs6lHDIwOuuq2hfGeS4pBBNUfSwKLetnnaO_KS0eBcm-dx6f7hNhpNymmkHFQGX1KCjz4BsvWsXEgLrzevfUeCE_A5PHXLvjtsYvw0X_TZavfcSwno4oMIkL3elJ3RZbqQyzZMp5amRHoBrOD2c2bJX_1eGCqcGbwdNuw8bO4FYb9RZv_HMnHtkWYsT2Ks19vhftVG6mKFQxusj2Kn8YUdZUk-jSpyLI4wQ-7Wt_xRarAA')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark/90 to-transparent flex flex-col justify-end p-8">
+<span class="text-primary font-bold mb-2">HoReCa</span>
+<h3 class="text-2xl font-bold">Рестораны и отели</h3>
+<p class="text-slate-300 mt-2">Создание уникальной атмосферы, которая продает за вас.</p>
+</div>
+</div>
+<!-- Case 2 -->
+<div class="md:col-span-2 relative rounded-2xl overflow-hidden group">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="Modern tech office with futuristic wall graphics" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuATFGZRj_-iL9NGj89yYbbELtkfihMf4RUxRMvMdEt6ZprKo9guqbiCAWrov5-KlhuJelNVH33y1x_ORyFcJq41GvipMa1NkoJUnaDZxhha-zPmDryh_ltsqc8404dblv7QO5UahDTZIGD6GucsR3-yXgRbC9NG4RWrtsH02IjiVA7D6UhGp37216dDSgoDfNccKgmb5v26NNUCJVdqZ_i7gfRzLtc4mrh-H72U03pPKA9PZdEilEJm53lpffa4to4L9Xmz90ehbw')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark/90 to-transparent flex flex-col justify-end p-6">
+<span class="text-primary font-bold mb-1">IT-офисы</span>
+<h3 class="text-xl font-bold">Брендинг пространств</h3>
+</div>
+</div>
+<!-- Case 3 -->
+<div class="relative rounded-2xl overflow-hidden group">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="Private luxury living room wall art" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDv_7IHSCKN14M9BeRGiyTJYzvNdBgdzbJp7cLn_jxfsFPOZX1HTCCKzU-h35ZSXyE1dNnC2jhaW5wzqidYuKteeRnBsTA2BErHrcxtfJ9OY3Wt1mV8H_MKaGTnrqJljeA8gP2x79iPYQ84HJmLqHJLBfVsZh0aYklETC3gc4-h3PoYIuWofqriQ0o0125ZqgoHz8Mov1B_-Mn7SBFwb1TrANW-2GK6tSxSRxOZjAj0iQiuGTluYhxxyYGA-KwqeAj_gFcXH2wu8A')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark/90 to-transparent flex flex-col justify-end p-6">
+<span class="text-primary font-bold mb-1">Интерьер</span>
+<h3 class="text-lg font-bold">Частные дома</h3>
+</div>
+</div>
+<!-- Case 4 -->
+<div class="relative rounded-2xl overflow-hidden group">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="Architect working on blueprint designs" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBPCbBZsG6O2R95qMvg_7LsAVvgCT9OestUN6ASh7m9_hbhRQEJ9ZHH-ylMPi37FbbQE9a87kTSCwy0YPCvp50LcypG4QLxTL4oKNBfxuduLUx-CNli2OFt8xXks-75k4KA0Rq2BJLImQaBQd8QhG-g3CcRJlQMzH1FmZboubIBmyDyfLmcNHNfdZ-aPnxuWIMkNbWNj6Rj3XHdyQFwRgP66La2-WVfv3eifYVW7J8b2mVT3UeeVr0bdyvAb4oG-9NVBYwmE81C_g')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark/90 to-transparent flex flex-col justify-end p-6">
+<span class="text-primary font-bold mb-1">Партнерам</span>
+<h3 class="text-lg font-bold">Архитекторам</h3>
+</div>
+</div>
+</div>
+</section>
+<!-- Technical Features -->
+<section class="py-24 bg-surface" id="tech">
+<div class="max-w-7xl mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<div class="flex flex-col items-center text-center">
+<div class="size-20 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-6 ring-1 ring-primary/30">
+<span class="material-symbols-outlined text-4xl">high_quality</span>
+</div>
+<h3 class="text-2xl font-bold mb-4">720x1440 DPI</h3>
+<p class="text-slate-400">Ультра-высокое разрешение печати. Фотореалистичные изображения с идеальной цветопередачей.</p>
+</div>
+<div class="flex flex-col items-center text-center">
+<div class="size-20 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-6 ring-1 ring-primary/30">
+<span class="material-symbols-outlined text-4xl">view_in_ar</span>
+</div>
+<h3 class="text-2xl font-bold mb-4">3D Лазерное сканирование</h3>
+<p class="text-slate-400">Робот автоматически определяет кривизну стен и подстраивает фокусное расстояние в реальном времени.</p>
+</div>
+<div class="flex flex-col items-center text-center">
+<div class="size-20 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-6 ring-1 ring-primary/30">
+<span class="material-symbols-outlined text-4xl">auto_fix_high</span>
+</div>
+<h3 class="text-2xl font-bold mb-4">Passe-partout Effect</h3>
+<p class="text-slate-400">Возможность печати с мягким градиентом к краям, исключая необходимость в рамках.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Service Guarantee -->
+<section class="py-20 border-y border-white/5">
+<div class="max-w-5xl mx-auto px-6">
+<div class="glass-card p-10 rounded-3xl border-accent-amber/30 bg-accent-amber/5 relative overflow-hidden">
+<div class="absolute top-0 right-0 p-8 opacity-10">
+<span class="material-symbols-outlined text-9xl text-accent-amber">verified_user</span>
+</div>
+<div class="relative z-10 flex flex-col md:flex-row items-center gap-10">
+<div class="flex-1">
+<h2 class="text-3xl font-black mb-4">Проект <span class="text-accent-amber">Под Ключ</span></h2>
+<p class="text-slate-300 text-lg leading-relaxed">Мы берем на себя всё: от адаптации макета под ваши размеры до финального монтажа. Вы получаете гарантированный результат без необходимости контроля каждого шага.</p>
+</div>
+<div class="grid grid-cols-2 gap-4 w-full md:w-auto">
+<div class="p-4 bg-background-dark/50 rounded-xl border border-white/10 text-center">
+<div class="text-2xl font-black text-accent-amber">2 Года</div>
+<div class="text-xs text-slate-400 uppercase tracking-widest">Гарантия</div>
+</div>
+<div class="p-4 bg-background-dark/50 rounded-xl border border-white/10 text-center">
+<div class="text-2xl font-black text-accent-amber">10+ Лет</div>
+<div class="text-xs text-slate-400 uppercase tracking-widest">Срок службы</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Social Proof -->
+<section class="py-24 max-w-7xl mx-auto px-6">
+<h2 class="text-3xl font-black mb-12 text-center">Доверие экспертов</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+<div class="aspect-video glass-card rounded-2xl flex items-center justify-center relative group cursor-pointer overflow-hidden border-white/10">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="Video thumbnail of printing robot operating" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDybI6mqIvba0IyDCXckPYf6SLm1F5kt35MHklH0iZCxMZS8ffYEd4LeLeKFRteSMIo7y3tHCQmVn19sjclqSpVG9l8qqPZcox2mNoeqJLWrPW9oWlZ2Uh8r1pQDqY62IqO3IRpdjN0ouoBa7LMNndMJxbTeiiM-izN_NS_3Qx0utywrtOVqzQ-HMTFevaOMcKbUG1nN3wk_Y6boyHTlflZOZUz3I-vw-4N_Pt7VDLL9aKgOHf7xAY181l33BW0NfqhY57xD1nHkw')"></div>
+<div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all"></div>
+<span class="material-symbols-outlined text-6xl text-primary drop-shadow-lg scale-110 group-hover:scale-125 transition-transform">play_circle</span>
+<div class="absolute bottom-4 left-4 text-sm font-bold bg-background-dark/80 px-3 py-1 rounded">Видео: Процесс печати в бизнес-центре "Зенит"</div>
+</div>
+<div class="aspect-video glass-card rounded-2xl flex items-center justify-center relative group cursor-pointer overflow-hidden border-white/10">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="Corporate office interior with wall branding" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBqIhbxcfxy9TRGZ-iHd5GMG5zRWzQGfs6lHDIwOuuq2hfGeS4pBBNUfSwKLetnnaO_KS0eBcm-dx6f7hNhpNymmkHFQGX1KCjz4BsvWsXEgLrzevfUeCE_A5PHXLvjtsYvw0X_TZavfcSwno4oMIkL3elJ3RZbqQyzZMp5amRHoBrOD2c2bJX_1eGCqcGbwdNuw8bO4FYb9RZv_HMnHtkWYsT2Ks19vhftVG6mKFQxusj2Kn8YUdZUk-jSpyLI4wQ-7Wt_xRarAA')"></div>
+<div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all"></div>
+<span class="material-symbols-outlined text-6xl text-primary drop-shadow-lg scale-110 group-hover:scale-125 transition-transform">play_circle</span>
+<div class="absolute bottom-4 left-4 text-sm font-bold bg-background-dark/80 px-3 py-1 rounded">Видео: Отзыв главного дизайнера "ArtSpace Studio"</div>
+</div>
+</div>
+<div class="flex flex-wrap justify-center gap-12 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
+<div class="h-12 w-32 bg-contain bg-no-repeat bg-center" data-alt="Partner company logo" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCLyN8q7ET-95gDITLiMTXypD-R9YFrfwk-Zh9N2c7hL2nf-k-bQS1XNg0FuGFHxAykJ3C6JZ7aleWnh9GmBsK2w4xtO2XAbRuL2qV2Qn5QPKn002XSTRSdsT-QmapY7eLdy8DRJ6trezTFoEI1xuEGU50mZ50nLi-z3gdxP4kc6z6FXMEraoWTJcfypzFVZc0J_S6dfc8RmCdgnSoALcpm7a11aT0xT8iIrl9lt5yG0sJyl950ksdgZJtQAbMh_4Ff0rSTTWuqHA')"></div>
+<div class="h-12 w-32 bg-contain bg-no-repeat bg-center" data-alt="Partner company logo" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBy_kRnHH9-YC8MyPRrFcEa9v3P_z44mzST4a6tWBvjnSg6GKRIrJFwg30oq03ggx9_HcnDOvw2r_BRNSZij3SgcJrDnH6yH8wjlQVIo3VEMTx8XRK0gsLq2Lttz2777PBvEKRsuBwi50SNvtvcqknropq6UDNHhmJL9Scfahihf9tpJr9VJ0jvY9SN63KVR5VuLpw1FQApqVl_WCYuD4jhrds7Lfo_C3KzweYv6Vohjt4jBwBWzsr-YH_nCkkh6zC8s8ZElkMcQg')"></div>
+<div class="h-12 w-32 bg-contain bg-no-repeat bg-center" data-alt="Partner company logo" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA0oBssNgxlng69TXmIPZQ5OcgxrdknJrwEhtHX-yn9J0bpoL9jRc6ASxjbl2V27eUC9v4XxX5c9aOgRG-iXEVSy8ZNzXDG7eCxpMZzujmMLGc4uRkZCvZCskczITgTL8LiJP5XkclbOOeszoYcG3zfgDUyAJ43TWADsHyQZSNDHJiS-SFUYXwqzgXytkPQ3HBntvPd3vUwCT97LPXJ3BDT5-aYOy-7ScXGYvOlLPxtIhkIcD1xyOOiZe4wuR8M0gWpun6SHUJWjQ')"></div>
+<div class="h-12 w-32 bg-contain bg-no-repeat bg-center" data-alt="Partner company logo" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCuUxr3Oh4Fe9DdinysezVodaCARlqYnTB5zpEFl2w0GT2XG-2OqgA2pr5fBqpWkO9TbQZLzbFjplsDp3HYxp0gUr8VtFRtvLBS37j4etYcwCiOMe705NwCPtcUpGpR5KZStxJt_PcFHKAxUD9cTxAR8YJRcbdD2-iKuaehWkNz6TSeedNuoVi4OZw7SefqXerXHVWSdgHbK9OXpzdNUJttWlgP6Uq8GkddWUxNeHEiY4kRYmWl5pOrucFFJiz8sLDmi5_mO-ka_A')"></div>
+</div>
+</section>
+<!-- FAQ -->
+<section class="py-24 bg-background-dark/30" id="faq">
+<div class="max-w-3xl mx-auto px-6">
+<h2 class="text-4xl font-black mb-12 text-center">Часто задаваемые вопросы</h2>
+<div class="space-y-4">
+<details class="group glass-card rounded-xl border-white/5" open="">
+<summary class="list-none p-6 flex items-center justify-between cursor-pointer font-bold text-lg">
+                            На каких поверхностях можно печатать?
+                            <span class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="px-6 pb-6 text-slate-400">
+                            Мы печатаем практически на любых вертикальных поверхностях: штукатурка, кирпич, дерево, металл, стекло, плитка и даже пластик. Главное условие — поверхность должна быть чистой.
+                        </div>
+</details>
+<details class="group glass-card rounded-xl border-white/5">
+<summary class="list-none p-6 flex items-center justify-between cursor-pointer font-bold text-lg">
+                            Безопасны ли чернила?
+                            <span class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="px-6 pb-6 text-slate-400">
+                            Да, мы используем экологичные UV-чернила. Они мгновенно застывают под лампой, не имеют запаха и гипоаллергенны, что позволяет использовать их в детских комнатах и клиниках.
+                        </div>
+</details>
+<details class="group glass-card rounded-xl border-white/5">
+<summary class="list-none p-6 flex items-center justify-between cursor-pointer font-bold text-lg">
+                            Как подготовить стену к печати?
+                            <span class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="px-6 pb-6 text-slate-400">
+                            Особая подготовка не требуется. Достаточно, чтобы стена была ровной и загрунтованной. Робот сам справится с небольшими неровностями до 2 см.
+                        </div>
+</details>
+</div>
+</div>
+</section>
+<!-- Final CTA Form -->
+<section class="py-24 relative overflow-hidden">
+<div class="max-w-7xl mx-auto px-6 relative z-10">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<div>
+<h2 class="text-4xl lg:text-6xl font-black mb-6 leading-tight">Готовы преобразить <br/><span class="text-primary">ваше пространство?</span></h2>
+<p class="text-xl text-slate-400 mb-8">Заполните форму и получите расчет стоимости вашего проекта в течение 15 минут, а также бесплатную 3D-визуализацию.</p>
+</div>
+<div class="glass-card p-10 rounded-3xl border-primary/20">
+<form class="space-y-6">
+<div>
+<label class="block text-sm font-bold mb-2 text-slate-300">Ваше имя</label>
+<input class="w-full bg-background-dark/50 border border-white/10 rounded-xl px-5 py-4 focus:border-primary outline-none transition-colors" placeholder="Александр" type="text"/>
+</div>
+<div>
+<label class="block text-sm font-bold mb-2 text-slate-300">Номер телефона</label>
+<input class="w-full bg-background-dark/50 border border-white/10 rounded-xl px-5 py-4 focus:border-primary outline-none transition-colors" placeholder="+7 (___) ___-__-__" type="tel"/>
+</div>
+<div>
+<label class="block text-sm font-bold mb-2 text-slate-300">Файл с макетом или фото стены</label>
+<div class="border-2 border-dashed border-white/10 rounded-xl p-8 text-center hover:border-primary/50 cursor-pointer transition-colors group">
+<span class="material-symbols-outlined text-4xl text-slate-500 group-hover:text-primary mb-2">cloud_upload</span>
+<p class="text-sm text-slate-400">Перетащите файл или кликните для загрузки</p>
+</div>
+</div>
+<button class="w-full bg-primary text-background-dark font-black py-5 rounded-xl text-lg hover:scale-[1.02] transition-transform neon-glow">
+                                Получить расчет и визуализацию
+                            </button>
+<p class="text-[10px] text-center text-slate-500 uppercase tracking-widest">Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности</p>
+</form>
+</div>
+</div>
+</div>
+<div class="absolute -bottom-24 -left-24 size-[500px] bg-primary/10 blur-[150px] rounded-full pointer-events-none"></div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface py-20 border-t border-white/5">
+<div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12">
+<div class="col-span-1 md:col-span-1">
+<div class="flex items-center gap-3 mb-6">
+<div class="size-8 bg-primary rounded flex items-center justify-center text-background-dark">
+<span class="material-symbols-outlined font-bold">robot_2</span>
+</div>
+<h1 class="text-xl font-bold tracking-tighter">SOLUTION <span class="text-primary font-black">CLUB</span></h1>
+</div>
+<p class="text-sm text-slate-400 leading-relaxed mb-6">Будущее интерьерного дизайна уже здесь. Мы делаем искусство доступным и технологичным.</p>
+<div class="flex gap-4">
+<a class="size-10 rounded-full glass-card flex items-center justify-center text-primary hover:bg-primary hover:text-background-dark transition-all" href="#">
+<span class="material-symbols-outlined">public</span>
+</a>
+<a class="size-10 rounded-full glass-card flex items-center justify-center text-primary hover:bg-primary hover:text-background-dark transition-all" href="#">
+<span class="material-symbols-outlined">send</span>
+</a>
+<a class="size-10 rounded-full glass-card flex items-center justify-center text-primary hover:bg-primary hover:text-background-dark transition-all" href="#">
+<span class="material-symbols-outlined">camera</span>
+</a>
+</div>
+</div>
+<div>
+<h4 class="font-bold mb-6">Навигация</h4>
+<ul class="space-y-4 text-sm text-slate-400">
+<li><a class="hover:text-primary transition-colors" href="#">Главная</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Наши работы</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Технология</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Стоимость</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold mb-6">Для партнеров</h4>
+<ul class="space-y-4 text-sm text-slate-400">
+<li><a class="hover:text-primary transition-colors" href="#">Дизайнерам</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Застройщикам</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Франшиза</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Карьера</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold mb-6">Контакты</h4>
+<ul class="space-y-4 text-sm text-slate-400">
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">call</span>
+                        +7 (495) 000-00-00
+                    </li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">mail</span>
+                        hello@solution.club
+                    </li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">location_on</span>
+                        Москва, ул. Цифровая, 42
+                    </li>
+</ul>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-6 mt-16 pt-8 border-t border-white/5 flex flex-col md:row justify-between items-center gap-4 text-[10px] text-slate-500 uppercase tracking-widest">
+<p>© 2024 Solution Club. Все права защищены.</p>
+<div class="flex gap-8">
+<a href="#">Политика конфиденциальности</a>
+<a href="#">Публичная оферта</a>
+</div>
+</div>
+</footer>
+</body></html>

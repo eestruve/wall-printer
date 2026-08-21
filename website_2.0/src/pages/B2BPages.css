@@ -1,0 +1,166 @@
+.b2b-page {
+  padding-top: calc(var(--header-height) + var(--spacing-xl));
+  padding-bottom: var(--spacing-3xl);
+  background-color: var(--color-bg-primary);
+  min-height: 100vh;
+}
+
+.b2b-header {
+  text-align: center;
+  max-width: 840px;
+  margin: var(--spacing-lg) auto var(--spacing-2xl);
+}
+
+.b2b-title {
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-extrabold);
+  color: var(--color-primary);
+  line-height: var(--line-height-tight);
+  margin-top: var(--spacing-xs);
+  margin-bottom: var(--spacing-sm);
+}
+
+.b2b-subtitle {
+  font-size: 1.15rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+.b2b-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-2xl);
+}
+
+.b2b-card {
+  padding: var(--spacing-xl);
+  background: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.b2b-icon {
+  font-size: 2.2rem;
+  margin-bottom: 0.25rem;
+}
+
+.b2b-card-title {
+  font-size: 1.25rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+}
+
+.b2b-card-desc {
+  font-size: var(--font-size-body);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+.b2b-notice {
+  background: var(--color-accent-dim);
+  border: 1px solid var(--color-accent);
+  padding: var(--spacing-lg) var(--spacing-xl);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--spacing-2xl);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.b2b-notice-badge {
+  font-size: var(--font-size-caption);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.b2b-notice p {
+  font-size: var(--font-size-body);
+  color: var(--color-text-primary);
+  line-height: 1.6;
+}
+
+/* Form Section */
+.b2b-form-section {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  background: #FFFFFF;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-card-hover);
+}
+
+.b2b-form-info {
+  background: var(--color-primary);
+  color: var(--color-text-light);
+  padding: var(--spacing-2xl);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--spacing-lg);
+}
+
+.b2b-form-title {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-extrabold);
+  color: #FFFFFF;
+  line-height: 1.2;
+}
+
+.b2b-form-desc {
+  font-size: var(--font-size-body);
+  color: var(--color-text-light-muted);
+  line-height: 1.6;
+}
+
+.b2b-direct-contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding-top: var(--spacing-md);
+  font-size: var(--font-size-small);
+  color: var(--color-text-light-muted);
+}
+
+.b2b-direct-contacts a {
+  color: var(--color-accent);
+  text-decoration: underline;
+}
+
+.b2b-form-wrap {
+  padding: var(--spacing-2xl);
+}
+
+.b2b-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.b2b-form-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-xl);
+}
+
+@media (max-width: 900px) {
+  .b2b-grid {
+    grid-template-columns: 1fr;
+  }
+  .b2b-form-section {
+    grid-template-columns: 1fr;
+  }
+  .b2b-form-info {
+    padding: var(--spacing-lg);
+  }
+  .b2b-form-wrap {
+    padding: var(--spacing-lg);
+  }
+}

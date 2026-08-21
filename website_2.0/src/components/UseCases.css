@@ -1,0 +1,71 @@
+.use-cases-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-lg);
+}
+
+.use-case-card {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: #FFFFFF;
+}
+
+.use-case-img-wrap {
+  position: relative;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  background: var(--color-bg-primary);
+}
+
+.use-case-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.use-case-card:hover .use-case-img {
+  transform: scale(1.04);
+}
+
+.use-case-badge {
+  position: absolute;
+  top: var(--spacing-sm);
+  left: var(--spacing-sm);
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: var(--color-accent);
+  font-size: var(--font-size-caption);
+  font-weight: var(--font-weight-bold);
+  padding: 0.3rem 0.8rem;
+  border-radius: var(--radius-full);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.use-case-content {
+  padding: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.use-case-title {
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+}
+
+.use-case-desc {
+  font-size: var(--font-size-body);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .use-cases-grid {
+    grid-template-columns: 1fr;
+  }
+}

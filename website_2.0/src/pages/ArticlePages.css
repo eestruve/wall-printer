@@ -1,0 +1,119 @@
+.article-page {
+  padding-top: calc(var(--header-height) + var(--spacing-xl));
+  padding-bottom: var(--spacing-3xl);
+  background-color: var(--color-bg-primary);
+  min-height: 100vh;
+}
+
+.article-header {
+  text-align: center;
+  max-width: 860px;
+  margin: var(--spacing-lg) auto var(--spacing-2xl);
+}
+
+.article-title {
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-extrabold);
+  color: var(--color-primary);
+  line-height: var(--line-height-tight);
+  margin-top: var(--spacing-xs);
+  margin-bottom: var(--spacing-sm);
+}
+
+.article-subtitle {
+  font-size: 1.15rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+.article-content {
+  max-width: 860px;
+  margin: 0 auto var(--spacing-3xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.article-section {
+  padding: var(--spacing-xl);
+  background: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.article-section h2 {
+  font-size: 1.35rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  border-bottom: 2px solid var(--color-accent);
+  padding-bottom: 0.5rem;
+  display: inline-block;
+}
+
+.article-section p {
+  font-size: var(--font-size-body);
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+}
+
+.article-section ul {
+  padding-left: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.article-section li {
+  font-size: var(--font-size-body);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+.article-section li strong {
+  color: var(--color-primary);
+}
+
+/* Surface Grid in Wall Prep */
+.article-surface-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-md);
+  margin-top: 0.5rem;
+}
+
+.surface-item {
+  display: flex;
+  gap: var(--spacing-sm);
+  background: var(--color-bg-primary);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+}
+
+.surface-item__icon {
+  font-size: 1.75rem;
+  flex-shrink: 0;
+}
+
+.surface-item__info h4 {
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  margin-bottom: 0.25rem;
+}
+
+.surface-item__info p {
+  font-size: var(--font-size-small);
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .article-surface-grid {
+    grid-template-columns: 1fr;
+  }
+  .article-section {
+    padding: var(--spacing-lg);
+  }
+}
