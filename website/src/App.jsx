@@ -14,13 +14,21 @@ import TechPrinterSpecsPage from './pages/TechPrinterSpecsPage';
 import './styles/design-tokens.css';
 
 function App() {
+  const path = typeof window !== 'undefined' ? window.location.pathname : '';
+  const basename = path.startsWith('/wall-printer/v1')
+    ? '/wall-printer/v1'
+    : path.startsWith('/wall-printer')
+    ? '/wall-printer'
+    : undefined;
+
   return (
-    <Router basename={import.meta.env.BASE_URL}>
+    <Router basename={basename}>
       <ScrollToTop />
       <Header />
       <main>
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/v1" element={<HomePage />} />
           <Route path="/designers" element={<DesignersPage />} />
           <Route path="/architects" element={<ArchitectsPage />} />
           <Route path="/partners" element={<PartnersPage />} />
@@ -28,6 +36,7 @@ function App() {
           <Route path="/technology/uv-printing" element={<TechUVPrintingPage />} />
           <Route path="/technology/wall-preparation" element={<TechWallPrepPage />} />
           <Route path="/technology/printer-specs" element={<TechPrinterSpecsPage />} />
+          <Route path="*" element={<HomePage />} />
         </Routes>
       </main>
       <FloatingCTA />

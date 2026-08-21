@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Deploy Both Versions to GitHub Pages
 
 on:
   push:
@@ -30,17 +30,33 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install dependencies
-        working-directory: ./website_2.0
-        run: npm install
+      - name: Build Website v1.0
+        working-directory: ./website
+        run: |
+          npm install
+          npm run build
 
-      - name: Build
+      - name: Build Website v2.0
         working-directory: ./website_2.0
-        run: npm run build
+        run: |
+          npm install
+          npm run build
 
-      - name: Setup 404 for SPA routing
-        working-directory: ./website_2.0
-        run: cp dist/index.html dist/404.html
+      - name: Assemble Combined Site
+        run: |
+          mkdir -p combined_pages
+          # Version 1.0 at root
+          cp -r website/dist/* combined_pages/
+          # Version 1.0 also at /v1/
+          mkdir -p combined_pages/v1
+          cp -r website/dist/* combined_pages/v1/
+          # Version 2.0 at /v2/
+          mkdir -p combined_pages/v2
+          cp -r website_2.0/dist/* combined_pages/v2/
+          # SPA 404 fallbacks
+          cp website/dist/index.html combined_pages/404.html
+          cp website_2.0/dist/index.html combined_pages/v2/404.html
+          touch combined_pages/.nojekyll
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -48,7 +64,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./website_2.0/dist
+          path: ./combined_pages
 
       - name: Deploy to GitHub Pages
         id: deployment
