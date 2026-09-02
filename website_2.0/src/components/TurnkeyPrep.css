@@ -155,3 +155,44 @@
     gap: var(--spacing-md);
   }
 }
+
+@media (max-width: 640px) {
+  .turnkey-card {
+    padding: var(--spacing-md);
+  }
+  .turnkey-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding-top: var(--spacing-sm);
+  }
+  .turnkey-stat {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .turnkey-stat:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  .turnkey-stat-value {
+    font-size: 1.4rem;
+    min-width: 95px;
+    flex-shrink: 0;
+  }
+  .turnkey-stat-label {
+    font-size: 0.78rem;
+    margin-top: 0;
+    line-height: 1.35;
+    white-space: normal;
+  }
+  .turnkey-features {
+    padding: var(--spacing-md);
+  }
+  .turnkey-item {
+    font-size: 0.92rem;
+  }
+}
