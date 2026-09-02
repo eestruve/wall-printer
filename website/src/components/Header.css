@@ -36,11 +36,7 @@
 .header__logo-img {
   height: 44px;
   width: auto;
-  transition: transform var(--transition-fast);
-}
-
-.header__logo-img:hover {
-  transform: scale(1.02);
+  display: block;
 }
 
 .header__nav {
