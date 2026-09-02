@@ -52,7 +52,6 @@ export default function FloatingCTA() {
   return (
     <div className="floating-cta">
       <a href="#calculator" onClick={handleClick} className="btn btn-accent floating-cta__btn">
-        <span className="floating-cta__icon">⚡</span>
         <span>Рассчитать смету проекта</span>
       </a>
     </div>

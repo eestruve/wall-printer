@@ -197,11 +197,20 @@
 }
 
 @media (max-width: 640px) {
-  .header__phone-pill {
-    display: none;
+  .header__cta {
+    display: none !important;
   }
 
-  .header__cta {
-    display: none;
+  .header__phone-pill {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0 0.65rem;
+    height: 38px;
+    font-size: 0.82rem;
+  }
+
+  .header__logo-img {
+    height: 36px;
   }
 }

@@ -173,6 +173,20 @@
   .hero {
     padding-top: calc(var(--header-height) + var(--spacing-lg));
   }
+  .hero__media-badge {
+    bottom: 12px;
+    left: 12px;
+    right: auto;
+    max-width: calc(100% - 24px);
+    padding: 0.4rem 0.75rem;
+    font-size: 0.78rem;
+    border-radius: 8px;
+    gap: 0.45rem;
+  }
+  .hero__pulse {
+    width: 7px;
+    height: 7px;
+  }
   .hero__badges-bar {
     grid-template-columns: 1fr;
     padding: 1.25rem;
@@ -186,5 +200,14 @@
     border-right: none;
     border-bottom: 1px solid var(--color-border);
     padding-bottom: var(--spacing-xs);
+  }
+}
+
+@media (max-width: 480px) {
+  .hero__media-badge {
+    bottom: 8px;
+    left: 8px;
+    padding: 0.3rem 0.55rem;
+    font-size: 0.72rem;
   }
 }
