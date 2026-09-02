@@ -35,8 +35,20 @@ export default function DesignersPage() {
         </div>
 
         <div className="b2b-grid">
-          <div className="b2b-card card">
-            <div className="b2b-icon">🎨</div>
+          <div className="b2b-card">
+            <div className="b2b-card-top">
+              <div className="b2b-icon-badge">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="10" />
+                  <line x1="22" y1="12" x2="18" y2="12" />
+                  <line x1="6" y1="12" x2="2" y2="12" />
+                  <line x1="12" y1="6" x2="12" y2="2" />
+                  <line x1="12" y1="22" x2="12" y2="18" />
+                  <circle cx="12" cy="12" r="3" />
+                </svg>
+              </div>
+              <span className="b2b-card-num">01</span>
+            </div>
             <h3 className="b2b-card-title">100% совпадение с рендером</h3>
             <p className="b2b-card-desc">
               Заказчик получает именно то изображение, которое утвердил на визуализации. 
@@ -44,8 +56,17 @@ export default function DesignersPage() {
             </p>
           </div>
 
-          <div className="b2b-card card">
-            <div className="b2b-icon">📦</div>
+          <div className="b2b-card">
+            <div className="b2b-card-top">
+              <div className="b2b-icon-badge">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                  <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+                  <line x1="12" y1="22.08" x2="12" y2="12" />
+                </svg>
+              </div>
+              <span className="b2b-card-num">02</span>
+            </div>
             <h3 className="b2b-card-title">Презентационный Box образцов</h3>
             <p className="b2b-card-desc">
               Доставим в вашу студию фирменный бокс с реальными образцами печати на бетоне, кирпиче, 
@@ -53,8 +74,18 @@ export default function DesignersPage() {
             </p>
           </div>
 
-          <div className="b2b-card card">
-            <div className="b2b-icon">🤝</div>
+          <div className="b2b-card">
+            <div className="b2b-card-top">
+              <div className="b2b-icon-badge">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                </svg>
+              </div>
+              <span className="b2b-card-num">03</span>
+            </div>
             <h3 className="b2b-card-title">Партнерская программа</h3>
             <p className="b2b-card-desc">
               Официальный договор, защита авторского проекта, прозрачные агентские условия и 
@@ -62,8 +93,17 @@ export default function DesignersPage() {
             </p>
           </div>
 
-          <div className="b2b-card card">
-            <div className="b2b-icon">🏗️</div>
+          <div className="b2b-card">
+            <div className="b2b-card-top">
+              <div className="b2b-icon-badge">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <polygon points="12 2 2 7 12 12 22 7 12 2" />
+                  <polyline points="2 17 12 22 22 17" />
+                  <polyline points="2 12 12 17 22 12" />
+                </svg>
+              </div>
+              <span className="b2b-card-num">04</span>
+            </div>
             <h3 className="b2b-card-title">Стены под ключ</h3>
             <p className="b2b-card-desc">
               Если стена на объекте требует выравнивания или подготовки — бригада «Солюшин Билдинг» 
