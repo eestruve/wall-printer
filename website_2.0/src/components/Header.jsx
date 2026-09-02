@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { siteInfo, navigation } from '../data/siteData';
 import logoUrl from '../assets/images/logo_solution_print.svg';
 import './Header.css';
@@ -8,10 +8,12 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const headerRef = useRef(null);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 30);
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -26,13 +28,50 @@ export default function Header() {
     return () => document.removeEventListener('click', handleClickOutside);
   }, [menuOpen]);
 
+  const scrollToTarget = (targetId) => {
+    const element = document.getElementById(targetId);
+    if (element) {
+      const headerOffset = 80;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.scrollY - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth',
+      });
+      window.history.pushState(null, '', `#${targetId}`);
+    }
+  };
+
+  const handleNavClick = (e, itemHref) => {
+    e.preventDefault();
+    setMenuOpen(false);
+
+    const targetId = itemHref.replace(/^\/?#/, '');
+
+    if (location.pathname === '/' || location.pathname === '') {
+      scrollToTarget(targetId);
+    } else {
+      navigate(`/#${targetId}`);
+    }
+  };
+
+  const handleLogoClick = (e) => {
+    setMenuOpen(false);
+    if (location.pathname === '/' || location.pathname === '') {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.history.pushState(null, '', window.location.pathname);
+    }
+  };
+
   return (
     <header
       className={`header ${scrolled ? 'header--scrolled' : ''}`}
       ref={headerRef}
     >
       <div className="container header__inner">
-        <Link to="/" className="header__brand" onClick={() => window.scrollTo(0, 0)} aria-label="Солюшин Принт">
+        <Link to="/" className="header__brand" onClick={handleLogoClick} aria-label="Солюшин Принт">
           <img src={logoUrl} alt="Солюшин Принт" className="header__logo-img" />
         </Link>
 
@@ -42,7 +81,7 @@ export default function Header() {
               key={item.href}
               href={item.href}
               className="header__link"
-              onClick={() => setMenuOpen(false)}
+              onClick={(e) => handleNavClick(e, item.href)}
             >
               {item.label}
             </a>
@@ -72,7 +111,11 @@ export default function Header() {
             <span className="header__phone-val">{siteInfo.phone}</span>
           </a>
 
-          <a href="#calculator" className="btn btn-primary header__cta" onClick={() => setMenuOpen(false)}>
+          <a
+            href="#calculator"
+            className="btn btn-primary header__cta"
+            onClick={(e) => handleNavClick(e, '#calculator')}
+          >
             Рассчитать смету
           </a>
 

@@ -1,14 +1,47 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { siteInfo, navigation } from '../data/siteData';
 import logoUrl from '../assets/images/logo_solution_print_white.svg';
 import './Footer.css';
 
 export default function Footer() {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleNavClick = (e, itemHref) => {
+    e.preventDefault();
+    const targetId = itemHref.replace(/^\/?#/, '');
+
+    if (location.pathname === '/' || location.pathname === '') {
+      const element = document.getElementById(targetId);
+      if (element) {
+        const headerOffset = 80;
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.scrollY - headerOffset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth',
+        });
+        window.history.pushState(null, '', `#${targetId}`);
+      }
+    } else {
+      navigate(`/#${targetId}`);
+    }
+  };
+
+  const handleLogoClick = (e) => {
+    if (location.pathname === '/' || location.pathname === '') {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.history.pushState(null, '', window.location.pathname);
+    }
+  };
+
   return (
     <footer className="footer">
       <div className="container footer__inner">
         <div className="footer__brand">
-          <Link to="/" className="footer__logo" onClick={() => window.scrollTo(0, 0)}>
+          <Link to="/" className="footer__logo" onClick={handleLogoClick}>
             <img src={logoUrl} alt="Солюшин Принт" className="footer__logo-img" />
           </Link>
           <p className="footer__slogan">
@@ -20,7 +53,14 @@ export default function Footer() {
         <div className="footer__col">
           <h4 className="footer__col-title">Навигация</h4>
           {navigation.map((item) => (
-            <a key={item.href} href={item.href} className="footer__link">{item.label}</a>
+            <a
+              key={item.href}
+              href={item.href}
+              className="footer__link"
+              onClick={(e) => handleNavClick(e, item.href)}
+            >
+              {item.label}
+            </a>
           ))}
         </div>
 
