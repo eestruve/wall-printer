@@ -7,7 +7,7 @@ import heroImg from '../assets/images/hero.png';
 import restaurantImg from '../assets/images/usecase_restaurant.png';
 import officeImg from '../assets/images/usecase_office.png';
 import interiorImg from '../assets/images/usecase_interior.png';
-import schoolImg from '../assets/images/school_preview.png';
+import schoolImg from '../assets/images/usecase_school.png';
 import compManualImg from '../assets/images/comparison_manual.png';
 import compPanelsImg from '../assets/images/comparison_panels.png';
 import compPrinterImg from '../assets/images/comparison_printer.jpg';
