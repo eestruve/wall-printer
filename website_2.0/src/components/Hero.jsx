@@ -36,7 +36,7 @@ export default function Hero() {
               />
               <div className="hero__media-badge">
                 <span className="hero__pulse"></span>
-                Реальный процесс печати в школе
+                Реальный процесс печати в школе в Москве
               </div>
             </div>
           </div>
