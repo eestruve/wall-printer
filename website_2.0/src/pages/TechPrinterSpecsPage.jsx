@@ -5,7 +5,7 @@ import './ArticlePages.css';
 
 export default function TechPrinterSpecsPage() {
   useEffect(() => {
-    document.title = "Характеристики робота-принтера | Солюшн Принт";
+    document.title = "Характеристики робота-принтера | Солюшин Принт";
   }, []);
 
   return (
@@ -17,7 +17,7 @@ export default function TechPrinterSpecsPage() {
             <span className="section-tag">База знаний</span>
             <h1 className="article-title">Характеристики промышленного робота-принтера</h1>
             <p className="article-subtitle">
-              Инженерные параметры оборудования «Солюшн Принт»: высота до 5м+, скорость, 3D-датчики и цветовая схема CMYK+W.
+              Инженерные параметры оборудования «Солюшин Принт»: высота до 5м+, скорость, 3D-датчики и цветовая схема CMYK+W.
             </p>
           </header>
 

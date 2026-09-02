@@ -107,7 +107,7 @@ export default function Calculator() {
                   />
                   <div className="calc-checkbox-content">
                     <div className="calc-checkbox-title">
-                      Требуется подготовка стены от «Солюшн Билдинг»
+                      Требуется подготовка стены от «Солюшин Билдинг»
                       <span className="calc-checkbox-tag">+1 200 ₽/м²</span>
                     </div>
                     <div className="calc-checkbox-desc">
@@ -145,7 +145,7 @@ export default function Calculator() {
                   <div className="summary-item">
                     <span className="summary-item__label">
                       Подготовка стен ({area} м²)
-                      <small>Малярные работы Солюшн Билдинг</small>
+                      <small>Малярные работы Солюшин Билдинг</small>
                     </span>
                     <span className="summary-item__value">+{calculation.prepCost.toLocaleString('ru-RU')} ₽</span>
                   </div>

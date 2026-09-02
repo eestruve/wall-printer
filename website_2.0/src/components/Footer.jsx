@@ -9,7 +9,7 @@ export default function Footer() {
       <div className="container footer__inner">
         <div className="footer__brand">
           <Link to="/" className="footer__logo" onClick={() => window.scrollTo(0, 0)}>
-            <img src={logoUrl} alt="Солюшн Принт" className="footer__logo-img" />
+            <img src={logoUrl} alt="Солюшин Принт" className="footer__logo-img" />
           </Link>
           <p className="footer__slogan">
             Инженерная вертикальная УФ-печать на стенах от подразделения <strong>{siteInfo.brand}</strong>. 

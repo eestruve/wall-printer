@@ -32,8 +32,8 @@ export default function Header() {
       ref={headerRef}
     >
       <div className="container header__inner">
-        <Link to="/" className="header__brand" onClick={() => window.scrollTo(0, 0)} aria-label="Солюшн Принт">
-          <img src={logoUrl} alt="Солюшн Принт" className="header__logo-img" />
+        <Link to="/" className="header__brand" onClick={() => window.scrollTo(0, 0)} aria-label="Солюшин Принт">
+          <img src={logoUrl} alt="Солюшин Принт" className="header__logo-img" />
         </Link>
 
         <nav className={`header__nav ${menuOpen ? 'header__nav--open' : ''}`}>

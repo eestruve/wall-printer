@@ -64,7 +64,7 @@ export default function DesignersPage() {
             <div className="b2b-icon">🏗️</div>
             <h3 className="b2b-card-title">Стены под ключ</h3>
             <p className="b2b-card-desc">
-              Если стена на объекте требует выравнивания или подготовки — бригада «Солюшн Билдинг» 
+              Если стена на объекте требует выравнивания или подготовки — бригада «Солюшин Билдинг» 
               возьмет на себя всю черновую и финишную малярку.
             </p>
           </div>
@@ -97,7 +97,7 @@ export default function DesignersPage() {
               <div className="b2b-form-success">
                 <div className="cta-success-icon">✓</div>
                 <h3>Заявка принята!</h3>
-                <p>Менеджер по работе с дизайнерами «Солюшн Принт» свяжется с вами в ближайшее время.</p>
+                <p>Менеджер по работе с дизайнерами «Солюшин Принт» свяжется с вами в ближайшее время.</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="b2b-form">

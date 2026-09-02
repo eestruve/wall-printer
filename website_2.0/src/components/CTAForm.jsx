@@ -74,7 +74,7 @@ export default function CTAForm() {
                 <div className="cta-success-icon">✓</div>
                 <h3 className="cta-success-title">Спасибо за заявку!</h3>
                 <p className="cta-success-desc">
-                  Инженер «Солюшн Принт» свяжется с вами в течение рабочего времени для согласования деталей и расчета сметы.
+                  Инженер «Солюшин Принт» свяжется с вами в течение рабочего времени для согласования деталей и расчета сметы.
                 </p>
                 <button
                   type="button"

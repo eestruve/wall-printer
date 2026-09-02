@@ -10,7 +10,7 @@ export default function PartnersPage() {
 
         <div className="b2b-header">
           <span className="section-tag">Партнерская программа</span>
-          <h1 className="b2b-title">Партнерская программа «Солюшн Принт»</h1>
+          <h1 className="b2b-title">Партнерская программа «Солюшин Принт»</h1>
           <p className="b2b-subtitle">
             Для генеральных подрядчиков, девелоперов, отделочных компаний и управляющих организаций Москвы и Московской области.
           </p>
@@ -37,7 +37,7 @@ export default function PartnersPage() {
             <div className="b2b-icon">🛡️</div>
             <h3 className="b2b-card-title">Гарантия и надежность</h3>
             <p className="b2b-card-desc">
-              Собственный парк промышленных роботов, резервные мощности и строительная поддержка «Солюшн Билдинг».
+              Собственный парк промышленных роботов, резервные мощности и строительная поддержка «Солюшин Билдинг».
             </p>
           </div>
 
