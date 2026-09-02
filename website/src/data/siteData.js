@@ -24,6 +24,28 @@ export const siteInfo = {
   telegram: 'https://t.me/solutionclub',
   email: 'info@solution-club.ru',
   address: 'Московская область, городской округ Химки, с.п. Кутузовское, д. Голиково, мкр. "Золотые купола", ул. Центральная, д. 74',
+  legal: {
+    fullName: 'Общество с ограниченной ответственностью "Солюшин"',
+    shortName: 'ООО "Солюшин"',
+    fullNameEn: 'Limited Liability Company "Solution"',
+    shortNameEn: 'LLC "Solution"',
+    inn: '9714012424',
+    kpp: '771401001',
+    ogrn: '1237700404292',
+    registrationDate: '13.06.2023',
+    address: '125284, г. Москва, Ленинградский пр-кт, д. 35, стр. 2, пом. 189',
+    ceo: 'Евсеенков Владимир Владимирович',
+    officialPhone: '+7 (495) 532-60-09',
+    officialEmail: 'ewsei@bk.ru',
+    workEmail: 'info@solution-club.ru',
+    bank: {
+      account: '40702810338000117196',
+      bankName: 'ПАО Сбербанк',
+      bik: '044525225',
+      corrAccount: '30101810400000000225',
+    },
+    website: 'https://solution-club.ru',
+  },
 };
 
 export const navigation = [

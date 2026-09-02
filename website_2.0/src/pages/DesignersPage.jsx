@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { IMaskInput } from 'react-imask';
 import { siteInfo } from '../data/siteData';
 import BackButton from '../components/BackButton';
@@ -10,11 +11,12 @@ export default function DesignersPage() {
   const [studio, setStudio] = useState('');
   const [requestType, setRequestType] = useState('box');
   const [comment, setComment] = useState('');
+  const [agreed, setAgreed] = useState(true);
   const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!name || !phone) return;
+    if (!name || !phone || !agreed) return;
     setSubmitted(true);
   };
 
@@ -159,6 +161,20 @@ export default function DesignersPage() {
                     className="form-input form-textarea"
                   />
                 </div>
+
+                <label className="form-agreement">
+                  <input
+                    type="checkbox"
+                    checked={agreed}
+                    onChange={(e) => setAgreed(e.target.checked)}
+                    required
+                    className="form-checkbox"
+                  />
+                  <span>
+                    Я подтверждаю согласие на обработку персональных данных и получение информационных сообщений в соответствии с{' '}
+                    <Link to="/privacy" target="_blank">Политикой конфиденциальности (152-ФЗ)</Link>
+                  </span>
+                </label>
 
                 <button type="submit" className="btn btn-primary btn-submit">
                   Отправить заявку

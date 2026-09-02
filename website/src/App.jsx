@@ -3,6 +3,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import FloatingCTA from './components/FloatingCTA';
+import CookieBanner from './components/CookieBanner';
 import HomePage from './pages/HomePage';
 import DesignersPage from './pages/DesignersPage';
 import ArchitectsPage from './pages/ArchitectsPage';
@@ -40,6 +41,7 @@ function App() {
         </Routes>
       </main>
       <FloatingCTA />
+      <CookieBanner />
       <Footer />
     </Router>
   );

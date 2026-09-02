@@ -150,6 +150,30 @@
   padding: var(--spacing-xl);
 }
 
+.b2b-form .form-agreement {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: var(--font-size-caption);
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+  cursor: pointer;
+}
+
+.b2b-form .form-checkbox {
+  margin-top: 0.15rem;
+  accent-color: var(--color-primary);
+}
+
+.b2b-form .form-agreement a {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+.b2b-form .form-agreement a:hover {
+  color: var(--color-accent-hover);
+}
+
 @media (max-width: 900px) {
   .b2b-grid {
     grid-template-columns: 1fr;

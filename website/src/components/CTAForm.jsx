@@ -208,7 +208,7 @@ export default function CTAForm() {
             </button>
             
             <p className="cta-form__privacy">
-              Нажимая кнопку, вы соглашаетесь с <Link to="/privacy">Политикой конфиденциальности</Link>.
+              Нажимая кнопку, вы подтверждаете согласие на обработку персональных данных и получение информационных сообщений в соответствии с <Link to="/privacy" target="_blank">Политикой конфиденциальности (152-ФЗ)</Link>.
             </p>
 
             <p className="cta-form__price">{ctaForm.priceAnchor}</p>
