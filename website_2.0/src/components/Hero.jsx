@@ -36,7 +36,7 @@ export default function Hero() {
               />
               <div className="hero__media-badge">
                 <span className="hero__pulse"></span>
-                Прямая печать на вертикальной стене
+                Реальный процесс печати в школе
               </div>
             </div>
           </div>

@@ -49,7 +49,7 @@ export default function Footer() {
 
       <div className="container footer__bottom">
         <p>
-          © {new Date().getFullYear()} {siteInfo.brand} (входит в группу {siteInfo.parentBrand}). Все права защищены.{' '}
+          © {new Date().getFullYear()} {siteInfo.brand}.{' '}
           <Link to="/privacy" className="footer__privacy-link">
             Политика конфиденциальности (152-ФЗ)
           </Link>
