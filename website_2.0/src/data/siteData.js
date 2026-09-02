@@ -25,7 +25,7 @@ export const siteInfo = {
   whatsapp: 'https://wa.me/79262266515',
   telegram: 'https://t.me/solutionclub',
   email: 'print@solution-club.ru',
-  address: 'Московская область, г.о. Химки, мкр. "Золотые купола", ул. Центральная, д. 74',
+  address: '125284, г. Москва, Ленинградский пр-кт, д. 35, стр. 2',
   legal: {
     fullName: 'Общество с ограниченной ответственностью "Солюшин"',
     shortName: 'ООО "Солюшин"',
