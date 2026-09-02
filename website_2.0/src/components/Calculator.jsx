@@ -2,6 +2,13 @@ import { useState, useMemo } from 'react';
 import { calculatorData } from '../data/siteData';
 import './Calculator.css';
 
+const SLIDER_MARKS = [
+  { value: 1, label: '1 м²' },
+  { value: 10, label: '10 м²' },
+  { value: 25, label: '25 м²' },
+  { value: 50, label: '50+ м²' },
+];
+
 export default function Calculator() {
   const [selectedType, setSelectedType] = useState(calculatorData.objectTypes[0].id);
   const [area, setArea] = useState(10);
@@ -78,21 +85,47 @@ export default function Calculator() {
                   <label htmlFor="area-slider" className="calc-label">2. Ориентировочная площадь нанесения</label>
                   <span className="calc-value-badge">{area} м²</span>
                 </div>
-                <input
-                  id="area-slider"
-                  type="range"
-                  min="1"
-                  max="50"
-                  step="1"
-                  value={area}
-                  onChange={(e) => setArea(Number(e.target.value))}
-                  className="calc-range"
-                />
-                <div className="calc-range-marks">
-                  <span>1 м²</span>
-                  <span>10 м²</span>
-                  <span>25 м²</span>
-                  <span>50+ м²</span>
+                <div className="calc-range-container">
+                  <input
+                    id="area-slider"
+                    type="range"
+                    min="1"
+                    max="50"
+                    step="1"
+                    value={area}
+                    onChange={(e) => setArea(Number(e.target.value))}
+                    className="calc-range"
+                    style={{
+                      background: `linear-gradient(to right, var(--color-accent) 0%, var(--color-accent) calc(12px + (100% - 24px) * ${(area - 1) / 49}), var(--color-bg-tertiary) calc(12px + (100% - 24px) * ${(area - 1) / 49}), var(--color-bg-tertiary) 100%)`,
+                    }}
+                  />
+                  <div className="calc-range-marks">
+                    {SLIDER_MARKS.map((mark) => {
+                      const isMin = mark.value === 1;
+                      const isMax = mark.value === 50;
+                      const style = isMin
+                        ? { left: '0' }
+                        : isMax
+                        ? { right: '0', left: 'auto' }
+                        : {
+                            left: `calc(12px + (100% - 24px) * ${(mark.value - 1) / 49})`,
+                            transform: 'translateX(-50%)',
+                          };
+                      const isActive = area === mark.value;
+
+                      return (
+                        <button
+                          key={mark.value}
+                          type="button"
+                          className={`calc-range-mark ${isActive ? 'calc-range-mark--active' : ''}`}
+                          style={style}
+                          onClick={() => setArea(mark.value)}
+                        >
+                          {mark.label}
+                        </button>
+                      );
+                    })}
+                  </div>
                 </div>
               </div>
 
