@@ -12,7 +12,7 @@
   background: #FFFFFF;
   border: 1px solid var(--color-border);
   box-shadow: var(--shadow-sm);
-  margin-bottom: var(--spacing-md);
+  margin-bottom: 0.75rem;
 }
 
 .back-button:hover {
