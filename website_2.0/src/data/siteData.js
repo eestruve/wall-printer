@@ -43,7 +43,7 @@ export const navigation = [
   { label: 'Применение', href: '/#use-cases' },
   { label: 'Калькулятор', href: '/#calculator' },
   { label: 'Технологии', href: '/#features' },
-  { label: 'Под ключ', href: '/#turnkey' },
+  { label: 'Сервис', href: '/#turnkey' },
   { label: 'Видео', href: '/#social-proof' },
   { label: 'FAQ', href: '/#faq' },
 ];
