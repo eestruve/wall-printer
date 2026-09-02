@@ -2,20 +2,20 @@
 <svg version="1.1" id="Solution_Print_Logo_White" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 280">
   <style>
     .logo-white { fill: #FFFFFF; }
-    .logo-accent { fill: #E9C46A; }
-    .logo-teal { fill: #2A9D8F; }
+    .logo-accent { fill: #FCEA0E; }
+    .logo-teal { fill: #FCEA0E; }
     .text-title-white {
       fill: #FFFFFF;
-      font-family: 'Plus Jakarta Sans', 'Inter', 'Montserrat', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 64px;
-      font-weight: 800;
+      font-weight: 900;
       letter-spacing: 0.16em;
     }
     .text-sub-gold {
-      fill: #E9C46A;
-      font-family: 'Plus Jakarta Sans', 'Inter', 'Montserrat', sans-serif;
+      fill: #FCEA0E;
+      font-family: 'Inter', sans-serif;
       font-size: 34px;
-      font-weight: 700;
+      font-weight: 800;
       letter-spacing: 0.38em;
     }
   </style>
