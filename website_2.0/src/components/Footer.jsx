@@ -45,8 +45,7 @@ export default function Footer() {
             <img src={logoUrl} alt="Солюшин Принт" className="footer__logo-img" />
           </Link>
           <p className="footer__slogan">
-            Инженерная вертикальная УФ-печать на стенах от подразделения <strong>{siteInfo.brand}</strong>. 
-            Профессиональная подготовка поверхностей от <strong>{siteInfo.buildingBrand}</strong>.
+            Роботизированная интерьерная печать нового поколения. Мы объединяем искусство и точные технологии.
           </p>
         </div>
 
