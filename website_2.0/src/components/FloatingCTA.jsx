@@ -1,58 +1,84 @@
 import { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import './FloatingCTA.css';
 
 export default function FloatingCTA() {
   const [visible, setVisible] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const isPrivacyPage = location.pathname === '/privacy';
 
   useEffect(() => {
+    if (isPrivacyPage) {
+      setVisible(false);
+      return;
+    }
+
     const handleScroll = () => {
       const scrollY = window.scrollY;
+
+      // Find active form/calculator on the current page
       const calcElem = document.getElementById('calculator');
-      const formElem = document.getElementById('cta-form');
+      const ctaFormElem = document.getElementById('cta-form');
+      const designerFormElem = document.getElementById('designer-form');
+      const targetForm = designerFormElem || ctaFormElem || calcElem;
 
-      let inFormOrCalc = false;
-      if (calcElem) {
-        const rect = calcElem.getBoundingClientRect();
-        if (rect.top <= window.innerHeight * 0.7 && rect.bottom >= window.innerHeight * 0.2) {
-          inFormOrCalc = true;
-        }
-      }
-      if (formElem) {
-        const rect = formElem.getBoundingClientRect();
-        if (rect.top <= window.innerHeight * 0.8 && rect.bottom >= 0) {
-          inFormOrCalc = true;
+      let inForm = false;
+      if (targetForm) {
+        const rect = targetForm.getBoundingClientRect();
+        if (rect.top <= window.innerHeight * 0.75 && rect.bottom >= 0) {
+          inForm = true;
         }
       }
 
-      // Show floating CTA after scrolling past Hero (350px) and hide when inside calculator or CTA form
-      setVisible(scrollY > 350 && !inFormOrCalc);
+      // Show floating CTA after scrolling past 300px and hide when inside form
+      setVisible(scrollY > 300 && !inForm);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [location.pathname, isPrivacyPage]);
+
+  if (isPrivacyPage || !visible) return null;
+
+  const getButtonConfig = () => {
+    const path = location.pathname;
+    if (path === '/designers') {
+      return { text: 'Обсудить сотрудничество', targetId: 'designer-form' };
+    }
+    if (path === '/architects' || path === '/partners') {
+      return { text: 'Оставить заявку на сотрудничество', targetId: 'cta-form' };
+    }
+    // Default for home and technology knowledge base
+    return { text: 'Рассчитать смету проекта', targetId: 'calculator' };
+  };
+
+  const { text, targetId } = getButtonConfig();
 
   const handleClick = (e) => {
     e.preventDefault();
-    const calcElem = document.getElementById('calculator');
-    if (calcElem) {
+    const elem = document.getElementById(targetId);
+
+    if (elem) {
       const headerOffset = 80;
-      const elementPosition = calcElem.getBoundingClientRect().top;
+      const elementPosition = elem.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.scrollY - headerOffset;
       window.scrollTo({
         top: offsetPosition,
         behavior: 'smooth',
       });
-      window.history.pushState(null, '', '#calculator');
+      window.history.pushState(null, '', `#${targetId}`);
+    } else {
+      // Navigate to homepage with target hash
+      navigate(`/#${targetId}`);
     }
   };
 
-  if (!visible) return null;
-
   return (
     <div className="floating-cta">
-      <a href="#calculator" onClick={handleClick} className="btn btn-accent floating-cta__btn">
-        <span>Рассчитать смету проекта</span>
+      <a href={`#${targetId}`} onClick={handleClick} className="btn btn-accent floating-cta__btn">
+        <span>{text}</span>
       </a>
     </div>
   );

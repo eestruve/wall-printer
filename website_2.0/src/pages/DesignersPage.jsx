@@ -82,7 +82,7 @@ export default function DesignersPage() {
         </div>
 
         {/* Cooperation Form */}
-        <div className="b2b-form-section card">
+        <div className="b2b-form-section card" id="designer-form">
           <div className="b2b-form-info">
             <h2 className="b2b-form-title">Форма для предложений и запроса образцов</h2>
             <p className="b2b-form-desc">

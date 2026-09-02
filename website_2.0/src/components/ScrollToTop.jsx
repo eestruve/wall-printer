@@ -11,16 +11,24 @@ export default function ScrollToTop() {
   useEffect(() => {
     if (hash) {
       const id = hash.replace('#', '');
-      const element = document.getElementById(id);
-      if (element) {
-        const headerOffset = 80;
-        const elementPosition = element.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.scrollY - headerOffset;
+      const scrollToElem = () => {
+        const element = document.getElementById(id);
+        if (element) {
+          const headerOffset = 80;
+          const elementPosition = element.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.scrollY - headerOffset;
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth',
+          });
+        }
+      };
 
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth',
-        });
+      const el = document.getElementById(id);
+      if (el) {
+        scrollToElem();
+      } else {
+        setTimeout(scrollToElem, 60);
       }
     } else {
       window.scrollTo({ top: 0, behavior: 'instant' });
