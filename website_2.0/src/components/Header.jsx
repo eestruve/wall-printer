@@ -116,7 +116,7 @@ export default function Header() {
             className="btn btn-primary header__cta"
             onClick={(e) => handleNavClick(e, '#calculator')}
           >
-            Рассчитать смету
+            Рассчитать
           </a>
 
           <button
