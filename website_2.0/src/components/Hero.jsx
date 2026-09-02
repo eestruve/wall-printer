@@ -51,7 +51,7 @@ export default function Hero() {
               />
               <div className="hero__media-badge">
                 <span className="hero__pulse"></span>
-                Печать в Центре восстановления AFG
+                Печать в Центре восстановления AFG, Москва
               </div>
             </div>
           </div>
