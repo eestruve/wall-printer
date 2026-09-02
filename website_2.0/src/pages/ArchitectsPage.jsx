@@ -27,7 +27,7 @@ export default function ArchitectsPage() {
 
           <div className="b2b-card card">
             <div className="b2b-icon">🏢</div>
-            <h3 className="b2b-card-title">Высота до 5м+ и масштабные площади</h3>
+            <h3 className="b2b-card-title">Высота более 5 метров и масштабные площади</h3>
             <p className="b2b-card-desc">
               Модульные направляющие и возможность интеграции со строительными лесами позволяют оформлять атриумы, холлы и фасадные зоны любой высоты.
             </p>

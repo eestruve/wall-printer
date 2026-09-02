@@ -17,7 +17,7 @@ export default function TechPrinterSpecsPage() {
             <span className="section-tag">База знаний</span>
             <h1 className="article-title">Характеристики промышленного робота-принтера</h1>
             <p className="article-subtitle">
-              Инженерные параметры оборудования «Солюшин Принт»: высота до 5м+, скорость, 3D-датчики и цветовая схема CMYK+W.
+              Инженерные параметры оборудования «Солюшин Принт»: высота более 5 метров, скорость, 3D-датчики и цветовая схема CMYK+W.
             </p>
           </header>
 
