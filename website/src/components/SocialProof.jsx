@@ -6,33 +6,42 @@ export default function SocialProof() {
   const [playingIdx, setPlayingIdx] = useState(null);
 
   return (
-    <section className="social-proof section" id="social-proof">
+    <section className="social-proof-section section section--alt" id="social-proof">
       <div className="container">
-        <h2 className="section-title fade-in">{socialProof.title}</h2>
-        <div className="social-proof__grid">
+        <div className="section-header fade-in">
+          <span className="section-tag">Портфолио и процессы</span>
+          <h2 className="section-title">{socialProof.title}</h2>
+          <p className="section-subtitle">{socialProof.subtitle}</p>
+        </div>
+
+        <div className="social-proof-grid">
           {socialProof.items.map((item, idx) => (
-            <div key={idx} className="social-proof__card glass-card fade-in">
-              <div 
-                className="social-proof__video-container"
+            <div key={idx} className="social-proof-card card fade-in">
+              <div
+                className="social-proof-video-wrap"
                 onClick={() => setPlayingIdx(idx)}
               >
                 {playingIdx === idx && item.url ? (
-                  <video 
-                    src={item.url} 
-                    className="social-proof__video" 
-                    controls 
-                    autoPlay 
+                  <video
+                    src={item.url}
+                    className="social-proof-video"
+                    controls
+                    autoPlay
                   />
                 ) : (
-                  <div className="social-proof__video-placeholder" onClick={() => setPlayingIdx(idx)}>
+                  <div className="social-proof-placeholder">
                     {item.poster && (
-                      <img src={item.poster} alt={item.title} className="social-proof__poster" />
+                      <img src={item.poster} alt={item.title} className="social-proof-poster" />
                     )}
-                    <div className="social-proof__play-btn">▶</div>
+                    <div className="social-proof-play-btn" aria-label="Смотреть видео">
+                      <span>▶</span>
+                    </div>
                   </div>
                 )}
               </div>
-              <p className="social-proof__card-title">{item.title}</p>
+              <div className="social-proof-info">
+                <h3 className="social-proof-card-title">{item.title}</h3>
+              </div>
             </div>
           ))}
         </div>

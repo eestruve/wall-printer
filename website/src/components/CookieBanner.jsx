@@ -9,12 +9,14 @@ export default function CookieBanner() {
     try {
       const consent = localStorage.getItem('solution_cookie_consent');
       if (!consent) {
+        // Small timeout so it smoothly slides in after initial page render
         const timer = setTimeout(() => {
           setIsVisible(true);
         }, 1200);
         return () => clearTimeout(timer);
       }
     } catch {
+      // localStorage may be disabled in private mode
       setIsVisible(true);
     }
   }, []);

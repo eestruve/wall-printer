@@ -1,0 +1,198 @@
+.turnkey-card {
+  background: linear-gradient(135deg, #141414 0%, #222222 60%, #181818 100%) !important;
+  color: #FFFFFF;
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-2xl);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.turnkey-card::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(252, 234, 14, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.turnkey-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: var(--spacing-2xl);
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.turnkey-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.turnkey-card .section-tag {
+  background: rgba(252, 234, 14, 0.2);
+  border: 1px solid #FCEA0E;
+  color: #FCEA0E;
+  font-weight: 700;
+  width: fit-content;
+}
+
+.turnkey-title {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-extrabold);
+  color: #FFFFFF;
+  line-height: var(--line-height-tight);
+}
+
+.turnkey-accent {
+  color: #FCEA0E;
+}
+
+.turnkey-desc {
+  font-size: 1.05rem;
+  color: #E2E8F0;
+  line-height: 1.65;
+}
+
+.turnkey-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-sm);
+  padding-top: var(--spacing-md);
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.turnkey-stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.turnkey-stat-value {
+  font-family: var(--font-family-heading);
+  font-size: clamp(1.35rem, 2vw, 1.75rem);
+  font-weight: var(--font-weight-extrabold);
+  color: #FCEA0E;
+  white-space: nowrap;
+  line-height: 1.2;
+}
+
+.turnkey-stat-label {
+  font-size: 0.72rem;
+  color: #CBD5E1;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 600;
+  line-height: 1.35;
+  margin-top: 0.35rem;
+}
+
+/* Features Right Column */
+.turnkey-features {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  backdrop-filter: blur(8px);
+}
+
+.turnkey-features-title {
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-bold);
+  color: #FFFFFF;
+}
+
+.turnkey-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.turnkey-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  font-size: 1.02rem;
+  color: #F8FAFC;
+  font-weight: 500;
+  line-height: 1.55;
+}
+
+.turnkey-check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #FCEA0E;
+  color: #181818;
+  font-size: 0.85rem;
+  font-weight: var(--font-weight-extrabold);
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+@media (max-width: 900px) {
+  .turnkey-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+  }
+  .turnkey-card {
+    padding: var(--spacing-lg);
+  }
+  .turnkey-stats {
+    gap: var(--spacing-md);
+  }
+}
+
+@media (max-width: 640px) {
+  .turnkey-card {
+    padding: var(--spacing-md);
+  }
+  .turnkey-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding-top: var(--spacing-sm);
+  }
+  .turnkey-stat {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .turnkey-stat:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  .turnkey-stat-value {
+    font-size: 1.4rem;
+    min-width: 95px;
+    flex-shrink: 0;
+  }
+  .turnkey-stat-label {
+    font-size: 0.78rem;
+    margin-top: 0;
+    line-height: 1.35;
+    white-space: normal;
+  }
+  .turnkey-features {
+    padding: var(--spacing-md);
+  }
+  .turnkey-item {
+    font-size: 0.92rem;
+  }
+}

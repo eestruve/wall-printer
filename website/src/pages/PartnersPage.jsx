@@ -1,34 +1,57 @@
-import { useEffect } from 'react';
 import CTAForm from '../components/CTAForm';
 import BackButton from '../components/BackButton';
 import './B2BPages.css';
 
-function PartnersPage() {
+export default function PartnersPage() {
   return (
     <div className="b2b-page">
-      <BackButton />
       <div className="container">
-        <div className="b2b-hero fade-in">
-          <h1 className="b2b-title">Зарабатывайте на инновациях в декоре вместе с Солюшн Клаб</h1>
-          <p className="b2b-subtitle">Рекомендуйте нас своим клиентам и получайте до 15% агентского вознаграждения с каждого заказа в Москве.</p>
-          <a href="#cta-form" className="b2b-hero-cta">Обсудить сотрудничество</a>
+        <BackButton />
+
+        <div className="b2b-header">
+          <span className="section-tag">Партнерская программа</span>
+          <h1 className="b2b-title">Партнерская программа «Солюшин Принт»</h1>
+          <p className="b2b-subtitle">
+            Для генеральных подрядчиков, девелоперов, отделочных компаний и управляющих организаций Москвы и Московской области.
+          </p>
         </div>
-        
-        <div className="b2b-content fade-in">
-          <div className="b2b-solution">
-            <h3>Прозрачная система сотрудничества</h3>
-            <p>Мы предлагаем полную поддержку на всех этапах работы с клиентом.</p>
-            <ul>
-              <li><strong>Персональный менеджер:</strong> оперативный просчет смет и выезд на объект.</li>
-              <li><strong>Премиальный маркетинг:</strong> материалы и образцы печати (выкрасы) для презентации вашим клиентам.</li>
-              <li><strong>Гарантия выплат:</strong> регулярные агентские переводы строго по договору и без задержек.</li>
-            </ul>
+
+        <div className="b2b-grid">
+          <div className="b2b-card card">
+            <div className="b2b-icon">💼</div>
+            <h3 className="b2b-card-title">Прозрачные агентские условия</h3>
+            <p className="b2b-card-desc">
+              Официальное агентское вознаграждение за привлеченные проекты. Выплаты строго по договору без задержек.
+            </p>
+          </div>
+
+          <div className="b2b-card card">
+            <div className="b2b-icon">⚡</div>
+            <h3 className="b2b-card-title">Быстрый выезд и расчет</h3>
+            <p className="b2b-card-desc">
+              Оперативный аудит объекта, расчет сметы до рубля и доставка презентационных образцов выкрасов.
+            </p>
+          </div>
+
+          <div className="b2b-card card">
+            <div className="b2b-icon">🛡️</div>
+            <h3 className="b2b-card-title">Гарантия и надежность</h3>
+            <p className="b2b-card-desc">
+              Собственный парк промышленных роботов, резервные мощности и строительная поддержка «Солюшин Билдинг».
+            </p>
+          </div>
+
+          <div className="b2b-card card">
+            <div className="b2b-icon">🤝</div>
+            <h3 className="b2b-card-title">Защита сделки</h3>
+            <p className="b2b-card-desc">
+              Фиксация клиента за партнером в CRM, ведение проекта под ключ и персональный инженерный куратор.
+            </p>
           </div>
         </div>
       </div>
+
       <CTAForm />
     </div>
   );
 }
-
-export default PartnersPage;

@@ -1,219 +1,170 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useRef } from 'react';
 import { IMaskInput } from 'react-imask';
-import { ctaForm } from '../data/siteData';
+import { Link } from 'react-router-dom';
+import { ctaForm, siteInfo } from '../data/siteData';
 import './CTAForm.css';
 
 export default function CTAForm() {
-  const [formData, setFormData] = useState({ name: '', phone: '' });
-  const [files, setFiles] = useState({ wall: null, sketch: null });
+  const [phone, setPhone] = useState('');
+  const [comment, setComment] = useState('');
+  const [fileWall, setFileWall] = useState(null);
+  const [fileSketch, setFileSketch] = useState(null);
+  const [agreed, setAgreed] = useState(true);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const [isUploading, setIsUploading] = useState(false);
 
-  const handleSubmit = async (e) => {
+  const fileWallRef = useRef(null);
+  const fileSketchRef = useRef(null);
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setIsUploading(true);
-    
-    const BOT_TOKEN = import.meta.env.VITE_TG_BOT_TOKEN;
-    const CHAT_ID = import.meta.env.VITE_TG_CHAT_ID;
-    
-    if (!BOT_TOKEN || !CHAT_ID) {
-      console.warn('Telegram API credentials missing. Form submission simulated.');
+    if (!phone || phone.replace(/[^\d]/g, '').length < 11 || !agreed) return;
+
+    setIsSubmitting(true);
+
+    // Simulate async submission
+    setTimeout(() => {
+      setIsSubmitting(false);
       setSubmitted(true);
-      setTimeout(() => {
-        setSubmitted(false);
-        setFormData({ name: '', phone: '' });
-        setFiles({ wall: null, sketch: null });
-      }, 3000);
-      return;
-    }
-
-    try {
-      const text = `🔔 *Новая заявка (Солюшн Клаб)*\n\n👤 *Имя:* ${formData.name}\n📞 *Телефон:* ${formData.phone}`;
-      
-      const hasWall = !!files.wall;
-      const hasSketch = !!files.sketch;
-
-      if (hasWall || hasSketch) {
-        // Отправляем как документы
-        const sendFile = async (file, typeLabel) => {
-          const payload = new FormData();
-          payload.append('chat_id', CHAT_ID);
-          payload.append('caption', `${text}\n\nТип: ${typeLabel}`);
-          payload.append('document', file);
-          const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendDocument`, {
-            method: 'POST',
-            body: payload,
-          });
-          if (!response.ok) throw new Error(`Ошибка Telegram API (Document): HTTP ${response.status}`);
-          return response.json();
-        };
-
-        if (hasWall) await sendFile(files.wall, "Фотография стены");
-        if (hasSketch) await sendFile(files.sketch, "Эскиз/Рисунок");
-      } else {
-        // Прямой POST запрос (как в Yasno), без прокси
-        const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            chat_id: CHAT_ID,
-            text: text,
-            parse_mode: 'Markdown'
-          })
-        });
-        if (!response.ok) throw new Error(`Ошибка Telegram API (Message): HTTP ${response.status}`);
-      }
-
-      setSubmitted(true);
-      setFiles({ wall: null, sketch: null });
-    } catch (err) {
-      console.error('Ошибка отправки формы в Telegram:', err);
-      setTimeout(() => {
-        alert('Ошибка при отправке заявки. Пожалуйста, попробуйте позже.');
-      }, 100);
-    } finally {
-      setIsUploading(false);
-    }
-  };
-
-  const handleFileChange = (e, field) => {
-    const file = e.target.files[0];
-    if (!file) {
-      setFiles(prev => ({ ...prev, [field]: null }));
-      return;
-    }
-
-    const allowedTypes = ['image/jpeg', 'image/png', 'image/webp', 'image/heic', 'image/heif'];
-    if (!allowedTypes.includes(file.type) && !file.name.toLowerCase().endsWith('.heic')) {
-      alert('Пожалуйста, выберите изображение (JPG, PNG, WEBP или HEIC)');
-      e.target.value = '';
-      return;
-    }
-
-    if (file.size > 10 * 1024 * 1024) {
-      alert('Файл слишком большой. Максимальный размер — 10 МБ');
-      e.target.value = '';
-      return;
-    }
-
-    setFiles(prev => ({ ...prev, [field]: file }));
+      setPhone('');
+      setComment('');
+      setFileWall(null);
+      setFileSketch(null);
+      if (fileWallRef.current) fileWallRef.current.value = '';
+      if (fileSketchRef.current) fileSketchRef.current.value = '';
+    }, 800);
   };
 
   return (
-    <section className="cta-form section" id="cta-form">
-      <div className="container cta-form__layout">
-        <div className="cta-form__text fade-in">
-          <h2 className="cta-form__title">
-            {ctaForm.title.split('\n').map((line, i) => (
-              <span key={i}>{line}<br /></span>
-            ))}
-          </h2>
-          <p className="cta-form__desc">{ctaForm.description}</p>
-        </div>
+    <section className="cta-section section section--alt" id="cta-form">
+      <div className="container">
+        <div className="cta-wrapper card fade-in">
+          <div className="cta-info">
+            <span className="section-tag">Заявка на расчет</span>
+            <h2 className="cta-title">{ctaForm.title}</h2>
+            <p className="cta-desc">{ctaForm.description}</p>
 
-        {submitted ? (
-          <div className="cta-form__card glass-card fade-in visible cta-form__success">
-            <div className="cta-form__success-icon">✓</div>
-            <h3>Спасибо, {formData.name}!</h3>
-            <p>Мы свяжемся с вами в ближайшее время.</p>
+            <div className="cta-price-anchor">
+              <span className="cta-price-icon">🏷️</span>
+              <span className="cta-price-text">{ctaForm.priceAnchor}</span>
+            </div>
+
+            <div className="cta-contacts-box">
+              <div className="cta-contacts-label">Или свяжитесь напрямую:</div>
+              <a href={`tel:${siteInfo.phone.replace(/[^\d+]/g, '')}`} className="cta-direct-phone">
+                {siteInfo.phone}
+              </a>
+              <div className="cta-direct-links">
+                <a href={siteInfo.whatsapp} target="_blank" rel="noopener noreferrer" className="cta-social-badge">
+                  WhatsApp
+                </a>
+                <a href={siteInfo.telegram} target="_blank" rel="noopener noreferrer" className="cta-social-badge">
+                  Telegram
+                </a>
+              </div>
+            </div>
           </div>
-        ) : (
-          <form className="cta-form__card glass-card fade-in" onSubmit={handleSubmit}>
-            <div className="cta-form__field">
-              <label htmlFor="cta-name" className="cta-form__label">{ctaForm.fields.name}</label>
-              <input
-                id="cta-name"
-                type="text"
-                className="cta-form__input"
-                placeholder={ctaForm.fields.namePlaceholder}
-                value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                required
-              />
-            </div>
 
-            <div className="cta-form__field">
-              <label htmlFor="cta-phone" className="cta-form__label">{ctaForm.fields.phone}</label>
-              <IMaskInput
-                id="cta-phone"
-                type="tel"
-                className="cta-form__input"
-                placeholder={ctaForm.fields.phonePlaceholder}
-                mask="+{7} (000) 000-00-00"
-                value={formData.phone}
-                unmask={false}
-                onAccept={(value) => setFormData({ ...formData, phone: value })}
-                required
-              />
-            </div>
-
-            <div className="cta-form__files-grid">
-              <div className="cta-form__field">
-                <label htmlFor="cta-file-wall" className="cta-form__label">{ctaForm.fields.fileWall}</label>
-                <div className="cta-form__upload">
-                  <input
-                    id="cta-file-wall"
-                    type="file"
-                    accept=".jpg,.jpeg,.png,.webp,.heic"
-                    className="cta-form__file-input"
-                    onChange={(e) => handleFileChange(e, 'wall')}
+          <div className="cta-form-container">
+            {submitted ? (
+              <div className="cta-success">
+                <div className="cta-success-icon">✓</div>
+                <h3 className="cta-success-title">Спасибо за заявку!</h3>
+                <p className="cta-success-desc">
+                  Инженер «Солюшин Принт» свяжется с вами в течение рабочего времени для согласования деталей и расчета сметы.
+                </p>
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  onClick={() => setSubmitted(false)}
+                >
+                  Отправить еще одну заявку
+                </button>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="cta-form">
+                <div className="form-group">
+                  <label htmlFor="form-phone" className="form-label">{ctaForm.fields.phone} *</label>
+                  <IMaskInput
+                    id="form-phone"
+                    mask="+{7} (000) 000-00-00"
+                    radix="."
+                    value={phone}
+                    unmask={false}
+                    onAccept={(val) => setPhone(val)}
+                    placeholder={ctaForm.fields.phonePlaceholder}
+                    className="form-input"
+                    required
                   />
-                  <div className="cta-form__upload-area">
-                    <span className="cta-form__upload-icon">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14.5 4h-5L7 7H4.5A2.5 2.5 0 0 0 2 9.5v9A2.5 2.5 0 0 0 4.5 21h15a2.5 2.5 0 0 0 2.5-2.5v-9A2.5 2.5 0 0 0 19.5 7H17l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
-                    </span>
-                    <span className="cta-form__upload-text">
-                      {files.wall?.name || ctaForm.fields.fileWallHint}
-                    </span>
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="form-comment" className="form-label">{ctaForm.fields.comment}</label>
+                  <textarea
+                    id="form-comment"
+                    rows="3"
+                    value={comment}
+                    onChange={(e) => setComment(e.target.value)}
+                    placeholder={ctaForm.fields.commentPlaceholder}
+                    className="form-input form-textarea"
+                  />
+                </div>
+
+                <div className="form-files-row">
+                  <div className="form-file-box">
+                    <label className="form-file-label">
+                      <span className="form-file-title">📷 {ctaForm.fields.fileWall}</span>
+                      <span className="form-file-hint">{fileWall ? fileWall.name : ctaForm.fields.fileWallHint}</span>
+                      <input
+                        type="file"
+                        accept="image/*"
+                        ref={fileWallRef}
+                        onChange={(e) => setFileWall(e.target.files[0] || null)}
+                        className="form-file-input"
+                      />
+                    </label>
+                  </div>
+
+                  <div className="form-file-box">
+                    <label className="form-file-label">
+                      <span className="form-file-title">🎨 {ctaForm.fields.fileSketch}</span>
+                      <span className="form-file-hint">{fileSketch ? fileSketch.name : ctaForm.fields.fileSketchHint}</span>
+                      <input
+                        type="file"
+                        accept="image/*,.pdf"
+                        ref={fileSketchRef}
+                        onChange={(e) => setFileSketch(e.target.files[0] || null)}
+                        className="form-file-input"
+                      />
+                    </label>
                   </div>
                 </div>
-              </div>
 
-              <div className="cta-form__field">
-                <label htmlFor="cta-file-sketch" className="cta-form__label">{ctaForm.fields.fileSketch}</label>
-                <div className="cta-form__upload">
+                <label className="form-agreement">
                   <input
-                    id="cta-file-sketch"
-                    type="file"
-                    accept=".jpg,.jpeg,.png,.webp,.heic"
-                    className="cta-form__file-input"
-                    onChange={(e) => handleFileChange(e, 'sketch')}
+                    type="checkbox"
+                    checked={agreed}
+                    onChange={(e) => setAgreed(e.target.checked)}
+                    required
+                    className="form-checkbox"
                   />
-                  <div className="cta-form__upload-area">
-                    <span className="cta-form__upload-icon">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.607-.482 1.926-1.074.317-.59.472-1.323.472-2.077 0-1.611 1.389-2.849 3-2.849h1.602c2.76 0 4.998-2.24 4.998-5 0-5.5-4.5-10-10-10Z"/></svg>
-                    </span>
-                    <span className="cta-form__upload-text">
-                      {files.sketch?.name || ctaForm.fields.fileSketchHint}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
+                  <span>
+                    Я подтверждаю согласие на обработку персональных данных и получение информационных сообщений в соответствии с{' '}
+                    <Link to="/privacy" target="_blank">Политикой конфиденциальности (152-ФЗ)</Link>
+                  </span>
+                </label>
 
-            <p className="cta-form__optional-note">{ctaForm.fields.optionalNote}</p>
-
-            <button 
-              type="submit" 
-              className={`btn btn-primary cta-form__submit ${isUploading ? 'loading' : ''}`}
-              disabled={isUploading}
-            >
-              {isUploading ? (
-                <span className="spinner-container">
-                  <span className="spinner"></span>
-                  Отправка...
-                </span>
-              ) : ctaForm.submitText}
-            </button>
-            
-            <p className="cta-form__privacy">
-              Нажимая кнопку, вы подтверждаете согласие на обработку персональных данных и получение информационных сообщений в соответствии с <Link to="/privacy" target="_blank">Политикой конфиденциальности (152-ФЗ)</Link>.
-            </p>
-
-            <p className="cta-form__price">{ctaForm.priceAnchor}</p>
-          </form>
-        )}
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="btn btn-primary btn-submit"
+                >
+                  {isSubmitting ? 'Отправка...' : ctaForm.submitText}
+                </button>
+              </form>
+            )}
+          </div>
+        </div>
       </div>
     </section>
   );

@@ -1,70 +1,62 @@
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import CTAForm from '../components/CTAForm';
 import BackButton from '../components/BackButton';
 import './ArticlePages.css';
 
-function TechPrinterSpecsPage() {
+export default function TechPrinterSpecsPage() {
   useEffect(() => {
-    document.title = "Характеристики вертикального принтера | Солюшн Клаб";
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.fade-in').forEach((el) => {
-      observer.observe(el);
-    });
-
-    return () => observer.disconnect();
+    document.title = "Характеристики робота-принтера | Солюшин Принт";
   }, []);
 
   return (
     <>
       <main className="article-page">
-        <BackButton />
-        <header className="article-header fade-in">
-          <h1 className="article-title">Характеристики принтера Солюшн Клаб</h1>
-          <p className="article-subtitle">
-            Цифровая точность 1440 DPI и цветовая схема CMYK+White для проектов премиум-класса.
-          </p>
-          <Link to="/#cta-form" className="article-hero-cta">Услуги печати на стенах в Москве</Link>
-        </header>
-
-        <article className="article-content">
-          <section className="article-section fade-in">
-            <h2>Разрешение и качество печати</h2>
-            <p>
-              Оборудование оснащено пьезоэлектрическими печатающими головками промышленного класса, обеспечивающими оптическое разрешение до 1440 DPI. Это позволяет четко пропечатывать микротекст высотой 2 мм и фотографические градиенты без эффекта «зерна».
+        <div className="container">
+          <BackButton />
+          <header className="article-header fade-in">
+            <span className="section-tag">База знаний</span>
+            <h1 className="article-title">Характеристики промышленного робота-принтера</h1>
+            <p className="article-subtitle">
+              Инженерные параметры оборудования «Солюшин Принт»: высота более 5 метров, скорость, 3D-датчики и цветовая схема CMYK+W.
             </p>
-          </section>
+          </header>
 
-          <section className="article-section fade-in">
-            <h2>Максимальные размеры изображения</h2>
-            <ul>
-              <li><strong>Высота:</strong> до 3 метров без стыков. Для помещений выше 3 метров используется технология бесшовного наращивания направляющих вдоль лесов.</li>
-              <li><strong>Ширина:</strong> не ограничена (аппарат передвигается по рельсам).</li>
-            </ul>
-          </section>
+          <article className="article-content fade-in">
+            <section className="article-section card">
+              <h2>1. Разрешение и точность нанесения</h2>
+              <p>
+                Оборудование использует японские пьезоэлектрические печатающие головки промышленного класса, обеспечивающие разрешение <strong>720×1440 DPI</strong>. Это дает плавные фотореалистичные градиенты и четкость шрифтов высотой от 1.5 мм.
+              </p>
+            </section>
 
-          <section className="article-section fade-in">
-            <h2>Преодоление препятствий</h2>
-            <p>
-              Оптические лазерные датчики сканируют поверхность стены со скоростью 50 раз в секунду. Если на стене есть выступающий элемент (например, шляпка самореза или розетка до 10 мм толщиной), каретка автоматически отдалится от стены, чтобы избежать повреждения головок, сохранив при этом фокус печати.
-            </p>
-            <p>
-              <strong>Наши гарантии:</strong> Мы уверены в своей технологии. Если вас не устроит качество цветопробы на объекте, мы вернем предоплату в полном объеме.
-            </p>
-          </section>
-        </article>
+            <section className="article-section card">
+              <h2>2. Габариты и высота печати</h2>
+              <ul>
+                <li><strong>Высота печати:</strong> до <strong>5 метров</strong> со стандартным комплектом жестких направляющих.</li>
+                <li><strong>Высота от 5 метров и выше:</strong> возможность печати на любой высоте при использовании строительных лесов и модульного бесшовного наращивания направляющих.</li>
+                <li><strong>Длина нанесения:</strong> не ограничена (рельсы наращиваются на любую длину стены).</li>
+              </ul>
+            </section>
+
+            <section className="article-section card">
+              <h2>3. Скорость нанесения</h2>
+              <p>
+                Скорость печати составляет от <strong>1 до 3 м²/час</strong> в зависимости от разрешения и сложности рельефа. 
+                Такая скорость обеспечивает идеальное послойное нанесение и полную мгновенную UV-полимеризацию каждого микрослоя.
+              </p>
+            </section>
+
+            <section className="article-section card">
+              <h2>4. Лазерные 3D-датчики слежения за рельефом</h2>
+              <p>
+                Два ультразвуковых и лазерных сенсора непрерывно сканируют рельеф стены с частотой 50 раз в секунду. 
+                Печатающая каретка в реальном времени корректирует расстояние до стены (от 2 до 15 мм), сохраняя четкий фокус на кирпичной кладке, фактурной штукатурке или бетоне.
+              </p>
+            </section>
+          </article>
+        </div>
       </main>
       <CTAForm />
     </>
   );
 }
-
-export default TechPrinterSpecsPage;

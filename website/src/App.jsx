@@ -16,7 +16,9 @@ import './styles/design-tokens.css';
 
 function App() {
   const path = typeof window !== 'undefined' ? window.location.pathname : '';
-  const basename = path.startsWith('/wall-printer/v1')
+  const basename = path.startsWith('/wall-printer/v2')
+    ? '/wall-printer/v2'
+    : path.startsWith('/wall-printer/v1')
     ? '/wall-printer/v1'
     : path.startsWith('/wall-printer')
     ? '/wall-printer'
@@ -29,7 +31,7 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/v1" element={<HomePage />} />
+          <Route path="/v2" element={<HomePage />} />
           <Route path="/designers" element={<DesignersPage />} />
           <Route path="/architects" element={<ArchitectsPage />} />
           <Route path="/partners" element={<PartnersPage />} />

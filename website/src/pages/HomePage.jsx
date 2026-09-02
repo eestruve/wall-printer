@@ -2,13 +2,14 @@ import { useEffect } from 'react';
 import Hero from '../components/Hero';
 import Comparison from '../components/Comparison';
 import UseCases from '../components/UseCases';
+import Calculator from '../components/Calculator';
 import Features from '../components/Features';
-import Guarantee from '../components/Guarantee';
+import TurnkeyPrep from '../components/TurnkeyPrep';
 import SocialProof from '../components/SocialProof';
 import FAQ from '../components/FAQ';
 import CTAForm from '../components/CTAForm';
 
-function HomePage() {
+export default function HomePage() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries, obs) => {
@@ -19,7 +20,7 @@ function HomePage() {
           }
         });
       },
-      { rootMargin: '0px 0px -50px 0px' }
+      { rootMargin: '0px 0px -40px 0px' }
     );
 
     const observeElements = () => {
@@ -33,7 +34,7 @@ function HomePage() {
     const mutationObserver = new MutationObserver(() => {
       observeElements();
     });
-    
+
     mutationObserver.observe(document.body, { childList: true, subtree: true });
 
     return () => {
@@ -47,13 +48,12 @@ function HomePage() {
       <Hero />
       <Comparison />
       <UseCases />
+      <Calculator />
       <Features />
-      <Guarantee />
+      <TurnkeyPrep />
       <SocialProof />
       <FAQ />
       <CTAForm />
     </>
   );
 }
-
-export default HomePage;

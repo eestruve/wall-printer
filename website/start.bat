@@ -1,6 +1,6 @@
 @echo off
 cd /d "%~dp0"
-echo Starting Wall Printer local server...
+echo Starting Solution Print 2.0 local server...
 echo.
 echo The website should open automatically in your browser.
 echo If it does not, go to http://localhost:5173/wall-printer/

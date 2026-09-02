@@ -3,22 +3,24 @@ import './UseCases.css';
 
 export default function UseCases() {
   return (
-    <section className="use-cases section" id="use-cases">
+    <section className="use-cases-section section" id="use-cases">
       <div className="container">
-        <h2 className="section-title fade-in">{useCases.title}</h2>
-        <p className="use-cases__subtitle fade-in">{useCases.subtitle}</p>
+        <div className="section-header fade-in">
+          <span className="section-tag">Сферы применения</span>
+          <h2 className="section-title">{useCases.title}</h2>
+          <p className="section-subtitle">{useCases.subtitle}</p>
+        </div>
 
-        <div className="use-cases__grid">
+        <div className="use-cases-grid">
           {useCases.items.map((item, idx) => (
-            <div key={idx} className="use-cases__card fade-in">
-              <div className="use-cases__img-wrap">
-                <img src={item.image} alt={item.title} className="use-cases__img" loading="lazy" />
-                <div className="use-cases__card-overlay" />
-                <div className="use-cases__card-content">
-                  <span className="use-cases__card-subtitle">{item.subtitle}</span>
-                  <h3 className="use-cases__card-title">{item.title}</h3>
-                  <p className="use-cases__card-desc">{item.description}</p>
-                </div>
+            <div key={idx} className="use-case-card card fade-in">
+              <div className="use-case-img-wrap">
+                <img src={item.image} alt={item.title} className="use-case-img" loading="lazy" />
+                <span className="use-case-badge">{item.subtitle}</span>
+              </div>
+              <div className="use-case-content">
+                <h3 className="use-case-title">{item.title}</h3>
+                <p className="use-case-desc">{item.description}</p>
               </div>
             </div>
           ))}

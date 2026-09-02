@@ -1,72 +1,65 @@
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import CTAForm from '../components/CTAForm';
 import BackButton from '../components/BackButton';
 import './ArticlePages.css';
 
-function TechUVPrintingPage() {
+export default function TechUVPrintingPage() {
   useEffect(() => {
-    document.title = "Вертикальная UV-печать на стенах в Москве | Солюшн Клаб";
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.fade-in').forEach((el) => {
-      observer.observe(el);
-    });
-
-    return () => observer.disconnect();
+    document.title = "Технология УФ-печати и безопасность эко-чернил | Солюшин Принт";
   }, []);
 
   return (
     <>
       <main className="article-page">
-        <BackButton />
-        <header className="article-header fade-in">
-          <h1 className="article-title">Вертикальная UV-печать на стенах в Москве</h1>
-          <p className="article-subtitle">
-            100% совпадение с вашим 3D-рендером за 1 день. Без грязи, запаха краски и срыва сроков художником.
-          </p>
-          <Link to="/#cta-form" className="article-hero-cta">Заказать вертикальную печать в Москве</Link>
-        </header>
-
-        <article className="article-content">
-          <section className="article-section fade-in">
-            <h2>В чем отличие UV-печати от классической аэрографии?</h2>
-            <p>
-              Вертикальная печать исключает человеческий фактор. Наш принтер наносит изображение по координатам с точностью до миллиметра, гарантируя, что утвержденный на экране компьютера дизайн будет выглядеть абсолютно так же на вашей стене. Скорость работы оборудования достигает 3 кв.м в час.
+        <div className="container">
+          <BackButton />
+          <header className="article-header fade-in">
+            <span className="section-tag">База знаний</span>
+            <h1 className="article-title">Технология вертикальной УФ-печати: физика процесса и безопасность</h1>
+            <p className="article-subtitle">
+              Почему УФ-полимеризация превосходит классическую аэрографию и ручную роспись по стойкости, детализации и экологичности.
             </p>
-          </section>
+          </header>
 
-          <section className="article-section fade-in">
-            <h2>На каких поверхностях работает технология?</h2>
-            <p>
-              UV-краски полимеризуются (застывают) за доли секунды под воздействием мощной ультрафиолетовой лампы прямо в процессе печати. Благодаря этому чернила не впитываются в материал, а остаются на поверхности. Мы печатаем на:
-            </p>
-            <ul>
-              <li>Бетоне и кирпиче</li>
-              <li>Дереве и фанере</li>
-              <li>Стекле и металле</li>
-              <li>Декоративной штукатурке</li>
-            </ul>
-          </section>
+          <article className="article-content fade-in">
+            <section className="article-section card">
+              <h2>1. В чем главное отличие от аэрографии и художников?</h2>
+              <p>
+                Классическая ручная роспись и аэрография занимают недели, зависят от субъективного настроения мастера и неизбежно сопровождаются едким запахом растворителей.
+              </p>
+              <p>
+                <strong>«Солюшин Принт»</strong> переносит цифровой макет со средней скоростью <strong>1–3 м²/час</strong>. 
+                Разрешение 720×1440 DPI гарантирует фотографическую четкость, точные полутона и плавные градиенты. Результат на 100% совпадает с утвержденным файлом.
+              </p>
+            </section>
 
-          <section className="article-section fade-in">
-            <h2>Безопасно ли это для жилых помещений?</h2>
-            <p>
-              UV-печать на 100% экологична. Отвержденные чернила не выделяют летучих органических веществ (VOC-free) и абсолютно не имеют запаха. Комнату можно эксплуатировать (спать, работать) сразу после завершения печати. Это идеальное решение для детских комнат, ресторанов сегмента HoReCa и медицинских учреждений.
-            </p>
-          </section>
-        </article>
+            <section className="article-section card">
+              <h2>2. Мгновенная УФ-полимеризация: как это работает?</h2>
+              <p>
+                В процессе печати капли чернил наносятся пьезоэлектрическими головками и в ту же долю секунды облучаются встроенным УФ-излучателем. Происходит моментальный переход жидких мономеров в твердый прочный полимер.
+              </p>
+              <ul>
+                <li>Чернила не растекаются и не смазываются на рельефе;</li>
+                <li>Не требуется сушка — принт готов к прикосновениям сразу после завершения печати;</li>
+                <li>Стойкость к прямому солнечному свету: цвета не выгорают до 10+ лет.</li>
+              </ul>
+            </section>
+
+            <section className="article-section card">
+              <h2>3. 100% безопасность для детей и домашних животных</h2>
+              <p>
+                Поскольку краска полимеризуется мгновенно, в воздух не выделяются летучие органические соединения (VOC). Чернила <strong>абсолютно не имеют запаха</strong> и соответствуют строгим экологическим стандартам:
+              </p>
+              <ul>
+                <li><strong>Детские сады и школы:</strong> полное соответствие санитарным нормам СанПиН;</li>
+                <li><strong>HoReCa (рестораны, кафе, отели):</strong> заведение может принимать гостей уже на следующее утро без риска запаха краски;</li>
+                <li><strong>Жилые комнаты и спальни:</strong> можно спать в помещении в тот же день.</li>
+              </ul>
+            </section>
+          </article>
+        </div>
       </main>
       <CTAForm />
     </>
   );
 }
-
-export default TechUVPrintingPage;

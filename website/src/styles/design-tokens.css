@@ -1,54 +1,66 @@
-/* ============================================
-   Design System: Волл Принтер от Солюшн Клаб
-   Theme: Dark Futuristic + Neon Accents
-   ============================================ */
+/* ==========================================================================
+   Design System: Солюшин Принт (Solution Print) 2.0
+   Brand Palette: Solution Club (Charcoal #181818, Warm Amber #FCEA0E)
+   ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
 
 :root {
-  /* === Colors === */
-  --color-bg-primary: #0A0A0A;
-  --color-bg-secondary: #111111;
-  --color-bg-card: rgba(26, 26, 46, 0.6);
-  --color-bg-card-solid: #1A1A2E;
-  --color-surface: #161625;
+  /* === Brand Colors (Solution Club Signature Yellow & Charcoal) === */
+  --color-accent: #FCEA0E;              /* Solution Solar Yellow */
+  --color-accent-hover: #EADB0A;
+  --color-accent-dim: rgba(252, 234, 14, 0.16);
+  --color-accent-glow: rgba(252, 234, 14, 0.4);
+  --color-accent-text: #181818;
 
-  /* === Colors === */
-  --header-height: 80px;
+  --color-primary: #181818;             /* Deep Charcoal / Graphite Black */
+  --color-primary-light: #2A2A2A;
+  --color-primary-dark: #111111;
+  
+  --color-teal: #10B981;                /* Fresh Eco Green */
+  --color-teal-dim: rgba(16, 185, 129, 0.12);
+  --color-teal-glow: rgba(16, 185, 129, 0.35);
 
-  --color-neon-cyan: #00F0FF;
-  --color-neon-cyan-dim: rgba(0, 240, 255, 0.15);
-  --color-neon-cyan-glow: rgba(0, 240, 255, 0.4);
-  --color-primary: var(--color-neon-cyan);
+  /* === Surfaces & Backgrounds === */
+  --color-bg-primary: #F8F9FA;          /* Soft Cloud background */
+  --color-bg-secondary: #FFFFFF;        /* Pure White cards */
+  --color-bg-tertiary: #F1F3F5;         /* Light gray accent */
+  --color-bg-dark: #181818;             /* Deep Charcoal for Footer & Special cards */
+  --color-bg-dark-surface: #242424;
 
-  --color-amber: #FFB800;
-  --color-amber-dim: rgba(255, 184, 0, 0.15);
-  --color-amber-glow: rgba(255, 184, 0, 0.4);
+  /* === Text Colors === */
+  --color-text-primary: #181818;        /* Dark Charcoal text */
+  --color-text-secondary: #555555;      /* Slate secondary */
+  --color-text-muted: #888888;          /* Muted text */
+  --color-text-light: #FFFFFF;          /* Text on dark bg */
+  --color-text-light-muted: #D1D5DB;
 
-  --color-text-primary: #FFFFFF;
-  --color-text-secondary: #A0A0B0;
-  --color-text-muted: #6B6B80;
+  /* === Status Colors === */
+  --color-success: #10B981;
+  --color-error: #EF4444;
 
-  --color-success: #27AE60;
-  --color-error: #E74C3C;
-
-  --color-border: rgba(255, 255, 255, 0.08);
-  --color-border-hover: rgba(0, 240, 255, 0.3);
+  /* === Borders & Dividers === */
+  --color-border: rgba(0, 0, 0, 0.08);
+  --color-border-hover: #FCEA0E;
+  --color-border-dark: rgba(255, 255, 255, 0.12);
 
   /* === Typography === */
-  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-family-heading: 'Inter', sans-serif;
+  
   --font-weight-regular: 400;
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
   --font-weight-extrabold: 800;
+
   --letter-spacing-tight: -0.02em;
   --letter-spacing-normal: 0;
-  --line-height-tight: 1.1;
+  --line-height-tight: 1.15;
   --line-height-normal: 1.6;
 
-  /* === Sizes === */
-  --font-size-h1: clamp(2.5rem, 5vw, 4rem);
+  /* === Font Sizes === */
+  --font-size-h1: clamp(2.25rem, 4.5vw, 3.5rem);
   --font-size-h2: clamp(1.75rem, 3vw, 2.5rem);
   --font-size-h3: clamp(1.25rem, 2vw, 1.5rem);
   --font-size-body: 1rem;
@@ -63,34 +75,31 @@
   --spacing-xl: 3rem;
   --spacing-2xl: 4rem;
   --spacing-3xl: 6rem;
-  --spacing-section: clamp(4rem, 8vw, 8rem);
+  --spacing-section: clamp(4rem, 7vw, 7rem);
 
   /* === Layout === */
-  --max-width: 1200px;
-  --max-width-narrow: 800px;
+  --max-width: 1240px;
+  --max-width-narrow: 840px;
+  --header-height: 80px;
 
-  /* === Borders === */
+  /* === Radii === */
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 16px;
   --radius-xl: 24px;
   --radius-full: 9999px;
 
-  /* === Shadows === */
-  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.3);
-  --shadow-neon: 0 0 20px var(--color-neon-cyan-glow);
-  --shadow-neon-strong: 0 0 30px var(--color-neon-cyan-glow), 0 0 60px rgba(0, 240, 255, 0.15);
-  --shadow-amber: 0 0 20px var(--color-amber-glow);
-
-  /* === Glassmorphism === */
-  --glass-bg: rgba(26, 26, 46, 0.5);
-  --glass-border: 1px solid rgba(255, 255, 255, 0.08);
-  --glass-blur: blur(20px);
+  /* === Soft Diffused Shadows === */
+  --shadow-sm: 0 2px 8px rgba(27, 42, 74, 0.04);
+  --shadow-card: 0 4px 20px rgba(27, 42, 74, 0.06);
+  --shadow-card-hover: 0 12px 32px rgba(27, 42, 74, 0.12);
+  --shadow-accent: 0 4px 20px var(--color-accent-glow);
+  --shadow-dark: 0 10px 30px rgba(0, 0, 0, 0.35);
 
   /* === Transitions === */
-  --transition-fast: 0.2s ease;
-  --transition-normal: 0.3s ease;
-  --transition-slow: 0.5s ease;
+  --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* === Global Reset & Base === */
@@ -104,6 +113,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 85px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -118,6 +128,11 @@ body {
   overflow-x: hidden;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-heading);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
 img {
   max-width: 100%;
   height: auto;
@@ -125,13 +140,13 @@ img {
 }
 
 a {
-  color: var(--color-neon-cyan);
+  color: var(--color-primary);
   text-decoration: none;
-  transition: color var(--transition-fast);
+  transition: all var(--transition-fast);
 }
 
 a:hover {
-  color: var(--color-text-primary);
+  color: var(--color-accent-hover);
 }
 
 /* === Utility Classes === */
@@ -146,28 +161,70 @@ a:hover {
   padding: var(--spacing-section) 0;
 }
 
-.section-title {
-  font-size: var(--font-size-h2);
-  font-weight: var(--font-weight-bold);
-  letter-spacing: var(--letter-spacing-tight);
-  line-height: var(--line-height-tight);
-  margin-bottom: var(--spacing-xl);
-  text-align: center;
+.section--alt {
+  background-color: var(--color-bg-secondary);
 }
 
-.glass-card {
-  background: var(--glass-bg);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
-  border: var(--glass-border);
+.section--dark {
+  background-color: var(--color-primary-dark);
+  color: var(--color-text-light);
+}
+
+.section-header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto var(--spacing-2xl);
+}
+
+.section-tag {
+  display: inline-block;
+  font-size: var(--font-size-caption);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-primary);
+  background: var(--color-accent-dim);
+  border: 1px solid var(--color-accent);
+  padding: 0.35rem 0.9rem;
+  border-radius: var(--radius-full);
+  margin-bottom: var(--spacing-sm);
+}
+
+.section-title {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-extrabold);
+  line-height: var(--line-height-tight);
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.section--dark .section-title {
+  color: var(--color-text-light);
+}
+
+.section-subtitle {
+  font-size: var(--font-size-body);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+.section--dark .section-subtitle {
+  color: var(--color-text-light-muted);
+}
+
+/* === Cards === */
+.card {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
   transition: all var(--transition-normal);
 }
 
-.glass-card:hover {
-  border-color: var(--color-border-hover);
-  box-shadow: var(--shadow-neon);
+.card:hover {
   transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover);
+  border-color: var(--color-border-hover);
 }
 
 /* === Buttons === */
@@ -176,46 +233,97 @@ a:hover {
   align-items: center;
   justify-content: center;
   gap: var(--spacing-xs);
-  padding: 0.875rem 2rem;
+  padding: 0.875rem 1.75rem;
   min-height: 48px;
   font-family: var(--font-family);
   font-size: var(--font-size-body);
   font-weight: var(--font-weight-semibold);
-  border: none;
   border-radius: var(--radius-md);
+  border: 1px solid transparent;
   cursor: pointer;
   transition: all var(--transition-normal);
   text-decoration: none;
 }
 
 .btn-primary {
-  background: var(--color-neon-cyan);
-  color: var(--color-bg-primary);
-  box-shadow: var(--shadow-neon);
+  background: var(--color-accent);
+  color: #181818 !important;
+  font-weight: var(--font-weight-bold);
+  border: 1px solid var(--color-accent);
+  box-shadow: 0 4px 14px rgba(252, 234, 14, 0.35);
 }
 
 .btn-primary:hover {
-  box-shadow: var(--shadow-neon-strong);
+  background: var(--color-accent-hover);
   transform: translateY(-2px);
-  color: var(--color-bg-primary);
+  box-shadow: 0 6px 20px rgba(252, 234, 14, 0.5);
+}
+
+.btn-dark {
+  background: var(--color-primary);
+  color: #FFFFFF !important;
+  font-weight: var(--font-weight-semibold);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+}
+
+.btn-dark:hover {
+  background: var(--color-primary-light);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.btn-accent {
+  background: var(--color-accent);
+  color: #181818 !important;
+  font-weight: var(--font-weight-bold);
+  box-shadow: 0 4px 14px rgba(252, 234, 14, 0.35);
+}
+
+.btn-accent:hover {
+  background: var(--color-accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(252, 234, 14, 0.5);
 }
 
 .btn-outline {
-  background: transparent;
-  color: var(--color-text-primary);
-  border: 1px solid var(--color-border);
+  background: #FFFFFF;
+  color: var(--color-primary);
+  border: 1.5px solid rgba(0, 0, 0, 0.12);
 }
 
 .btn-outline:hover {
-  border-color: var(--color-neon-cyan);
-  color: var(--color-neon-cyan);
+  border-color: var(--color-accent);
+  background: var(--color-accent-dim);
+  color: var(--color-primary);
 }
 
-/* === Scroll Animation Helpers === */
+.btn-outline-light {
+  background: transparent;
+  color: var(--color-text-light);
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+}
+
+.btn-outline-light:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--color-accent);
+  color: var(--color-accent) !important;
+}
+
+/* === Animations === */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .fade-in {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  opacity: 1;
+  animation: fadeInUp 0.4s ease-out forwards;
 }
 
 .fade-in.visible {
@@ -223,12 +331,10 @@ a:hover {
   transform: translateY(0);
 }
 
-/* === Responsive breakpoints === */
 @media (max-width: 768px) {
   .section {
     padding: var(--spacing-2xl) 0;
   }
-
   .container {
     padding: 0 var(--spacing-sm);
   }

@@ -7,7 +7,7 @@
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(252, 234, 14, 0.35);
-  border-radius: var(--radius-lg, 16px);
+  border-radius: var(--radius-lg);
   box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45);
   padding: 1.25rem 1.5rem;
   z-index: 9990;
@@ -53,9 +53,9 @@
 }
 
 .cookie-banner__link {
-  color: var(--color-accent, #FCEA0E);
+  color: var(--color-accent);
   text-decoration: underline;
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
 }
 
 .cookie-banner__link:hover {

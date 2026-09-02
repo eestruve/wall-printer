@@ -3,27 +3,33 @@ import './Comparison.css';
 
 export default function Comparison() {
   return (
-    <section className="comparison section" id="comparison">
+    <section className="comparison-section section section--alt" id="comparison">
       <div className="container">
-        <h2 className="section-title fade-in">{comparison.title}</h2>
-        <p className="comparison__subtitle fade-in">{comparison.subtitle}</p>
+        <div className="section-header fade-in">
+          <span className="section-tag">Сравнение решений</span>
+          <h2 className="section-title">{comparison.title}</h2>
+          <p className="section-subtitle">{comparison.subtitle}</p>
+        </div>
 
-        <div className="comparison__grid">
+        <div className="comparison-grid">
           {comparison.items.map((item, idx) => (
             <div
               key={idx}
-              className={`comparison__card glass-card fade-in ${item.highlighted ? 'comparison__card--highlighted' : ''}`}
+              className={`comparison-card card fade-in ${item.highlighted ? 'comparison-card--highlighted' : ''}`}
             >
-              {item.badge && <span className="comparison__badge">{item.badge}</span>}
-              <div className="comparison__img-wrap">
-                <img src={item.image} alt={item.title} className="comparison__img" loading="lazy" />
+              {item.badge && <span className="comparison-badge">{item.badge}</span>}
+              <div className="comparison-img-wrap">
+                <img src={item.image} alt={item.title} className="comparison-img" loading="lazy" />
               </div>
-              <h3 className="comparison__card-title">{item.title}</h3>
-              <ul className="comparison__list">
+              <h3 className="comparison-card-title">{item.title}</h3>
+              <ul className="comparison-list">
                 {(item.pros || item.cons).map((text, i) => (
-                  <li key={i} className={`comparison__item ${item.highlighted ? 'comparison__item--pro' : 'comparison__item--con'}`}>
-                    <span className="comparison__icon">{item.highlighted ? '✓' : '✗'}</span>
-                    {text}
+                  <li
+                    key={i}
+                    className={`comparison-item ${item.highlighted ? 'comparison-item--pro' : 'comparison-item--con'}`}
+                  >
+                    <span className="comparison-icon">{item.highlighted ? '✓' : '✗'}</span>
+                    <span>{text}</span>
                   </li>
                 ))}
               </ul>

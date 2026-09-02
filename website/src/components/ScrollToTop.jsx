@@ -10,25 +10,28 @@ export default function ScrollToTop() {
 
   useEffect(() => {
     if (hash) {
-      setTimeout(() => {
-        const id = hash.replace('#', '');
+      const id = hash.replace('#', '');
+      const scrollToElem = () => {
         const element = document.getElementById(id);
         if (element) {
           const headerOffset = 80;
-          const style = window.getComputedStyle(element);
-          const paddingTop = parseInt(style.paddingTop, 10) || 0;
-          
           const elementPosition = element.getBoundingClientRect().top;
-          const offsetPosition = elementPosition + window.scrollY + paddingTop - headerOffset - 20; 
-          
+          const offsetPosition = elementPosition + window.scrollY - headerOffset;
           window.scrollTo({
             top: offsetPosition,
-            behavior: 'smooth'
+            behavior: 'smooth',
           });
         }
-      }, 100);
+      };
+
+      const el = document.getElementById(id);
+      if (el) {
+        scrollToElem();
+      } else {
+        setTimeout(scrollToElem, 60);
+      }
     } else {
-      window.scrollTo(0, 0);
+      window.scrollTo({ top: 0, behavior: 'instant' });
     }
   }, [pathname, hash]);
 
