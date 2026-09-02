@@ -8,14 +8,10 @@ export default function Hero() {
       <div className="container">
         <div className="hero__inner">
           <div className="hero__content fade-in">
-            <div className="hero__tagline">
-              <span className="hero__tagline-dot"></span>
-              {hero.tagline}
+            <div className="hero__header-text">
+              <h1 className="hero__title">{hero.title}</h1>
+              <p className="hero__subtitle">{hero.subtitle}</p>
             </div>
-
-            <h1 className="hero__title">{hero.title}</h1>
-
-            <p className="hero__subtitle">{hero.subtitle}</p>
 
             <div className="hero__cta-group">
               <a href="#calculator" className="btn btn-primary hero__btn-main">
