@@ -1,13 +1,11 @@
 import { useState, useRef } from 'react';
 import { IMaskInput } from 'react-imask';
 import { Link } from 'react-router-dom';
-import { ctaForm, siteInfo, calculatorData } from '../data/siteData';
+import { ctaForm, siteInfo } from '../data/siteData';
 import './CTAForm.css';
 
 export default function CTAForm() {
-  const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
-  const [objectType, setObjectType] = useState(calculatorData.objectTypes[0].label);
   const [comment, setComment] = useState('');
   const [fileWall, setFileWall] = useState(null);
   const [fileSketch, setFileSketch] = useState(null);
@@ -20,7 +18,7 @@ export default function CTAForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!name || !phone || phone.replace(/[^\d]/g, '').length < 11 || !agreed) return;
+    if (!phone || phone.replace(/[^\d]/g, '').length < 11 || !agreed) return;
 
     setIsSubmitting(true);
 
@@ -28,7 +26,6 @@ export default function CTAForm() {
     setTimeout(() => {
       setIsSubmitting(false);
       setSubmitted(true);
-      setName('');
       setPhone('');
       setComment('');
       setFileWall(null);
@@ -87,19 +84,6 @@ export default function CTAForm() {
             ) : (
               <form onSubmit={handleSubmit} className="cta-form">
                 <div className="form-group">
-                  <label htmlFor="form-name" className="form-label">{ctaForm.fields.name} *</label>
-                  <input
-                    id="form-name"
-                    type="text"
-                    required
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    placeholder={ctaForm.fields.namePlaceholder}
-                    className="form-input"
-                  />
-                </div>
-
-                <div className="form-group">
                   <label htmlFor="form-phone" className="form-label">{ctaForm.fields.phone} *</label>
                   <IMaskInput
                     id="form-phone"
@@ -112,22 +96,6 @@ export default function CTAForm() {
                     className="form-input"
                     required
                   />
-                </div>
-
-                <div className="form-group">
-                  <label htmlFor="form-type" className="form-label">{ctaForm.fields.objectType}</label>
-                  <select
-                    id="form-type"
-                    value={objectType}
-                    onChange={(e) => setObjectType(e.target.value)}
-                    className="form-input form-select"
-                  >
-                    {calculatorData.objectTypes.map((type) => (
-                      <option key={type.id} value={type.label}>
-                        {type.label}
-                      </option>
-                    ))}
-                  </select>
                 </div>
 
                 <div className="form-group">
