@@ -1,8 +1,20 @@
+import { useEffect, useRef } from 'react';
 import { hero } from '../data/siteData';
 import videoUrl from '../assets/videos/0324.mp4';
+import afgPosterUrl from '../assets/images/afg_preview.jpg';
 import './Hero.css';
 
 export default function Hero() {
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.play().catch(() => {
+        // Fallback if browser policy blocks autoplay
+      });
+    }
+  }, []);
+
   return (
     <section className="hero" id="hero">
       <div className="container">
@@ -26,13 +38,16 @@ export default function Hero() {
           <div className="hero__media fade-in">
             <div className="hero__video-wrapper">
               <video
+                ref={videoRef}
                 className="hero__video"
                 autoPlay
                 loop
                 muted
                 playsInline
+                webkit-playsinline="true"
+                preload="auto"
                 src={videoUrl}
-                poster={hero.image}
+                poster={afgPosterUrl}
               />
               <div className="hero__media-badge">
                 <span className="hero__pulse"></span>
