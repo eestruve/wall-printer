@@ -13,8 +13,39 @@ export default function CTAForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
+  const [fileError, setFileError] = useState('');
   const fileWallRef = useRef(null);
   const fileSketchRef = useRef(null);
+
+  const validateAndSetFile = (file, setter, ref) => {
+    setFileError('');
+    if (!file) {
+      setter(null);
+      return;
+    }
+
+    const MAX_SIZE = 10 * 1024 * 1024; // 10 MB
+    const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/webp', 'application/pdf'];
+    const ALLOWED_EXTS = ['.jpg', '.jpeg', '.png', '.webp', '.pdf'];
+
+    const ext = '.' + file.name.split('.').pop().toLowerCase();
+
+    if (!ALLOWED_TYPES.includes(file.type) && !ALLOWED_EXTS.includes(ext)) {
+      setFileError('Недопустимый формат файла. Разрешены только JPG, PNG, WEBP и PDF.');
+      setter(null);
+      if (ref && ref.current) ref.current.value = '';
+      return;
+    }
+
+    if (file.size > MAX_SIZE) {
+      setFileError('Размер файла превышает 10 МБ. Пожалуйста, прикрепите файл меньшего размера.');
+      setter(null);
+      if (ref && ref.current) ref.current.value = '';
+      return;
+    }
+
+    setter(file);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -30,6 +61,7 @@ export default function CTAForm() {
       setComment('');
       setFileWall(null);
       setFileSketch(null);
+      setFileError('');
       if (fileWallRef.current) fileWallRef.current.value = '';
       if (fileSketchRef.current) fileSketchRef.current.value = '';
     }, 800);
@@ -117,9 +149,9 @@ export default function CTAForm() {
                       <span className="form-file-hint">{fileWall ? fileWall.name : ctaForm.fields.fileWallHint}</span>
                       <input
                         type="file"
-                        accept="image/*"
+                        accept=".jpg,.jpeg,.png,.webp,.pdf,image/jpeg,image/png,image/webp,application/pdf"
                         ref={fileWallRef}
-                        onChange={(e) => setFileWall(e.target.files[0] || null)}
+                        onChange={(e) => validateAndSetFile(e.target.files[0] || null, setFileWall, fileWallRef)}
                         className="form-file-input"
                       />
                     </label>
@@ -131,14 +163,20 @@ export default function CTAForm() {
                       <span className="form-file-hint">{fileSketch ? fileSketch.name : ctaForm.fields.fileSketchHint}</span>
                       <input
                         type="file"
-                        accept="image/*,.pdf"
+                        accept=".jpg,.jpeg,.png,.webp,.pdf,image/jpeg,image/png,image/webp,application/pdf"
                         ref={fileSketchRef}
-                        onChange={(e) => setFileSketch(e.target.files[0] || null)}
+                        onChange={(e) => validateAndSetFile(e.target.files[0] || null, setFileSketch, fileSketchRef)}
                         className="form-file-input"
                       />
                     </label>
                   </div>
                 </div>
+
+                {fileError && (
+                  <div className="form-error-banner" style={{ color: 'var(--color-error)', fontSize: '0.85rem', marginBottom: '0.75rem', fontWeight: 500 }}>
+                    ⚠️ {fileError}
+                  </div>
+                )}
 
                 <label className="form-agreement">
                   <input

@@ -47,7 +47,7 @@ export default function FloatingCTA() {
     if (path === '/designers') {
       return { text: 'Обсудить сотрудничество', targetId: 'designer-form' };
     }
-    if (path === '/architects' || path === '/partners') {
+    if (path === '/partners') {
       return { text: 'Оставить заявку на сотрудничество', targetId: 'cta-form' };
     }
     // Default for home and technology knowledge base

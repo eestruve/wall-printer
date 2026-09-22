@@ -66,7 +66,6 @@ export default function Footer() {
         <div className="footer__col">
           <h4 className="footer__col-title">Сотрудничество</h4>
           <Link to="/designers" className="footer__link">Дизайнерам интерьера</Link>
-          <Link to="/architects" className="footer__link">Архитекторам</Link>
           <Link to="/partners" className="footer__link">Партнерская программа</Link>
         </div>
 
@@ -74,7 +73,7 @@ export default function Footer() {
           <h4 className="footer__col-title">База знаний</h4>
           <Link to="/technology/uv-printing" className="footer__link">Технология УФ-печати</Link>
           <Link to="/technology/wall-preparation" className="footer__link">Подготовка стен</Link>
-          <Link to="/technology/printer-specs" className="footer__link">Спецификации робота</Link>
+          <Link to="/technology/printer-specs" className="footer__link">Оборудование и характеристики</Link>
         </div>
 
         <div className="footer__col">

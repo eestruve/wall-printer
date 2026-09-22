@@ -74,6 +74,7 @@ export default function Calculator() {
                     >
                       <span className="calc-chip__icon">{type.icon}</span>
                       <span className="calc-chip__label">{type.label}</span>
+                      {type.badge && <span className="calc-chip__badge">{type.badge}</span>}
                     </button>
                   ))}
                 </div>
@@ -146,6 +147,9 @@ export default function Calculator() {
                     <div className="calc-checkbox-desc">
                       Выравнивание геометрии, шпаклевание трещин и обеспыливание для идеальной адгезии чернил
                     </div>
+                    <div className="calc-checkbox-note">
+                      * Если стена ровная, без дефектов — дополнительная подготовка не требуется
+                    </div>
                   </div>
                 </label>
               </div>
@@ -159,7 +163,7 @@ export default function Calculator() {
                 <div className="summary-item">
                   <span className="summary-item__label">
                     Базовый пакет "Старт под ключ"
-                    <small>Выезд бригады, доставка, калибровка датчиков и печать до 3 м²</small>
+                    <small>Выезд бригады, доставка, калибровка датчиков и печать до 10 м²</small>
                   </span>
                   <span className="summary-item__value">45 000 ₽</span>
                 </div>
@@ -168,7 +172,7 @@ export default function Calculator() {
                   <div className="summary-item">
                     <span className="summary-item__label">
                       Дополнительная площадь (+{calculation.extraArea} м²)
-                      <small>Печать по 1 500 ₽/м²</small>
+                      <small>Печать по 4 500 ₽/м² {currentType.multiplier !== 1 ? `(${currentType.multiplier > 1 ? '+' : ''}${Math.round((currentType.multiplier - 1) * 100)}%)` : ''}</small>
                     </span>
                     <span className="summary-item__value">+{calculation.extraPrintCost.toLocaleString('ru-RU')} ₽</span>
                   </div>
@@ -178,7 +182,7 @@ export default function Calculator() {
                   <div className="summary-item">
                     <span className="summary-item__label">
                       Подготовка стен ({area} м²)
-                      <small>Малярные работы Солюшин Билдинг</small>
+                      <small>Малярные работы Солюшин Билдинг (1 200 ₽/м²)</small>
                     </span>
                     <span className="summary-item__value">+{calculation.prepCost.toLocaleString('ru-RU')} ₽</span>
                   </div>

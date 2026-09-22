@@ -9,7 +9,7 @@ export default function DesignersPage() {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [studio, setStudio] = useState('');
-  const [requestType, setRequestType] = useState('box');
+  const [requestType, setRequestType] = useState('samples');
   const [comment, setComment] = useState('');
   const [agreed, setAgreed] = useState(true);
   const [submitted, setSubmitted] = useState(false);
@@ -29,8 +29,8 @@ export default function DesignersPage() {
           <span className="section-tag">Партнерство B2B</span>
           <h1 className="b2b-title">Дизайнерам интерьера и студиям</h1>
           <p className="b2b-subtitle">
-            Реализуем ваши смелые концепции и 3D-рендеры на стенах с точностью до пикселя. 
-            Предоставляем физические образцы выкрасов и гарантируем премиальное качество нанесения.
+            Реализуем ваши идеи и смелые решения с точностью до пикселя. 
+            Подготавливаем образцы выкрасов и гарантируем премиальное качество нанесения.
           </p>
         </div>
 
@@ -49,7 +49,7 @@ export default function DesignersPage() {
               </div>
               <span className="b2b-card-num">01</span>
             </div>
-            <h3 className="b2b-card-title">100% совпадение с рендером</h3>
+            <h3 className="b2b-card-title">Максимальное совпадение с дизайн-проектом</h3>
             <p className="b2b-card-desc">
               Заказчик получает именно то изображение, которое утвердил на визуализации. 
               Никакого человеческого фактора и субъективного видения художника.
@@ -67,10 +67,9 @@ export default function DesignersPage() {
               </div>
               <span className="b2b-card-num">02</span>
             </div>
-            <h3 className="b2b-card-title">Презентационный Box образцов</h3>
+            <h3 className="b2b-card-title">Образцы выкрасов на материалах</h3>
             <p className="b2b-card-desc">
-              Доставим в вашу студию фирменный бокс с реальными образцами печати на бетоне, кирпиче, 
-              дереве, металле и стекле для демонстрации клиентам.
+              Подготовим для Вас образцы выкрасов на различных поверхностях (бетоне, кирпиче, дереве, металле, стекле) для демонстрации потенциальным клиентам.
             </p>
           </div>
 
@@ -117,16 +116,16 @@ export default function DesignersPage() {
           <div className="b2b-notice-badge">Информация об образцах</div>
           <p>
             В связи со сложностью транспортировки и калибровки промышленного робота-принтера, мы не осуществляем выездную бесплатную печать тестовых фрагментов на объекте. 
-            Вместо этого мы бесплатно предоставляем <strong>физический Box-набор реальных выкрасов</strong> на различных материалах в вашу студию, а также приглашаем на наши действующие объекты.
+            Вместо этого мы бесплатно подготовим пробные печати у нас в офисе на различных материалах и привезем их в вашу студию, а также приглашаем на наши завершенные объекты.
           </p>
         </div>
 
         {/* Cooperation Form */}
         <div className="b2b-form-section card" id="designer-form">
           <div className="b2b-form-info">
-            <h2 className="b2b-form-title">Форма для предложений и запроса образцов</h2>
+            <h2 className="b2b-form-title">Форма для предложений</h2>
             <p className="b2b-form-desc">
-              Оставьте контакты вашей студии — мы привезем образцы выкрасов или оперативно рассчитаем проект по вашему дизайн-макету.
+              Оставьте контакты вашей студии — мы оперативно свяжемся с Вами.
             </p>
             <div className="b2b-direct-contacts">
               <div><strong>Телефон для партнеров:</strong> <a href={`tel:${siteInfo.phone.replace(/[^\d+]/g, '')}`}>{siteInfo.phone}</a></div>
@@ -185,7 +184,7 @@ export default function DesignersPage() {
                     onChange={(e) => setRequestType(e.target.value)}
                     className="form-input form-select"
                   >
-                    <option value="box">Заказать Box-набор образцов выкрасов</option>
+                    <option value="samples">Запросить образцы выкрасов на материалах</option>
                     <option value="project">Рассчитать стоимость проекта для клиента</option>
                     <option value="partner">Обсудить партнерскую программу</option>
                   </select>

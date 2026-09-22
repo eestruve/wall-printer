@@ -95,6 +95,20 @@
   box-shadow: 0 4px 12px rgba(252, 234, 14, 0.35);
 }
 
+.calc-chip__badge {
+  font-size: 0.7rem;
+  font-weight: var(--font-weight-bold);
+  background: rgba(0, 0, 0, 0.08);
+  padding: 0.15rem 0.45rem;
+  border-radius: var(--radius-full);
+  margin-left: 0.25rem;
+}
+
+.calc-chip--active .calc-chip__badge {
+  background: rgba(0, 0, 0, 0.15);
+  color: #181818;
+}
+
 .calc-range-container {
   position: relative;
   width: 100%;
@@ -218,6 +232,13 @@
   font-size: var(--font-size-caption);
   color: var(--color-text-secondary);
   line-height: 1.4;
+}
+
+.calc-checkbox-note {
+  font-size: 0.8rem;
+  color: var(--color-accent-dark, #2A9D8F);
+  font-style: italic;
+  margin-top: 0.15rem;
 }
 
 /* Right Column: Summary */

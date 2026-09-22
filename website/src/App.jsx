@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
@@ -6,7 +6,6 @@ import FloatingCTA from './components/FloatingCTA';
 import CookieBanner from './components/CookieBanner';
 import HomePage from './pages/HomePage';
 import DesignersPage from './pages/DesignersPage';
-import ArchitectsPage from './pages/ArchitectsPage';
 import PartnersPage from './pages/PartnersPage';
 import PrivacyPage from './pages/PrivacyPage';
 import TechUVPrintingPage from './pages/TechUVPrintingPage';
@@ -32,8 +31,9 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/v2" element={<HomePage />} />
+          <Route path="/v1" element={<Navigate to="/" replace />} />
           <Route path="/designers" element={<DesignersPage />} />
-          <Route path="/architects" element={<ArchitectsPage />} />
+          <Route path="/architects" element={<Navigate to="/designers" replace />} />
           <Route path="/partners" element={<PartnersPage />} />
           <Route path="/privacy" element={<PrivacyPage />} />
           <Route path="/technology/uv-printing" element={<TechUVPrintingPage />} />
