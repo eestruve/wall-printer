@@ -24,7 +24,7 @@
 ### Технологический стек (Фронтенд)
 * **Фреймворк**: React 19 + Vite 8
 * **Роутинг**: `react-router-dom` v7
-* **Стилизация**: CSS-модули / БЭМ, единые дизайн-токены (`src/styles/design-tokens.css`), Glassmorphism, Dark UI.
+* **Стилизация**: CSS-модули / БЭМ, единые дизайн-токены (`src/styles/design-tokens.css`), Glassmorphism, Light UI (палитра Solution Club: Midnight Navy, Rich Amber, Warm Teal, Soft Cloud).
 * **Маски ввода**: `react-imask` (для валидации телефонов).
 
 ---
