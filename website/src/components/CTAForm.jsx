@@ -114,7 +114,12 @@ export default function CTAForm() {
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="cta-form">
+              <>
+                <div className="cta-form-header">
+                  <h3 className="cta-form-heading">Параметры для расчета</h3>
+                  <p className="cta-form-subheading">Заполните поля ниже — инженер подготовит точную смету проекта</p>
+                </div>
+                <form onSubmit={handleSubmit} className="cta-form">
                 <div className="form-group">
                   <label htmlFor="form-phone" className="form-label">{ctaForm.fields.phone} *</label>
                   <IMaskInput
@@ -200,6 +205,7 @@ export default function CTAForm() {
                   {isSubmitting ? 'Отправка...' : ctaForm.submitText}
                 </button>
               </form>
+              </>
             )}
           </div>
         </div>
