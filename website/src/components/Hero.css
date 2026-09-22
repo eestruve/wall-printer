@@ -124,9 +124,9 @@
   background: #FFFFFF;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
-  padding: 1.2rem 1.5rem;
+  padding: 1rem 1.25rem;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--spacing-sm);
   box-shadow: var(--shadow-card);
   align-items: center;
@@ -135,9 +135,10 @@
 .hero__badge-item {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 0.75rem;
   padding: 0.25rem 0.75rem;
+  min-width: 0;
 }
 
 .hero__badge-item:not(:last-child) {
@@ -159,11 +160,13 @@
 }
 
 .hero__badge-text {
-  font-size: 0.9rem;
+  font-size: 0.86rem;
   color: var(--color-primary);
   font-weight: var(--font-weight-semibold);
   letter-spacing: -0.01em;
-  white-space: nowrap;
+  line-height: 1.35;
+  white-space: normal;
+  word-break: normal;
 }
 
 @media (max-width: 960px) {
