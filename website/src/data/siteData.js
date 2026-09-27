@@ -11,10 +11,10 @@ import schoolImg from '../assets/images/usecase_school.png';
 import compManualImg from '../assets/images/comparison_manual.png';
 import compFilmImg from '../assets/images/comparison_film.jpg';
 import compPrinterImg from '../assets/images/comparison_printer.jpg';
-import video0324 from '../assets/videos/0324.mp4';
+import videoMural from '../assets/videos/mural_patriot.mp4';
 import video1 from '../assets/videos/1.mp4';
 import schoolPreview from '../assets/images/school_preview.png';
-import afgPreview from '../assets/images/afg_preview.jpg';
+import muralPreview from '../assets/images/mural_preview.jpg';
 
 export const siteInfo = {
   brand: 'Солюшин Принт',
@@ -222,10 +222,10 @@ export const socialProof = {
   subtitle: 'Посмотрите, как робот-принтер наносит изображение на вертикальные поверхности',
   items: [
     {
-      title: 'Печать на фактурной стене в Центре восстановления AFG, Москва',
+      title: 'Печать масштабного панно «Родина. Долг. Честь»',
       type: 'video',
-      url: video0324,
-      poster: afgPreview,
+      url: videoMural,
+      poster: muralPreview,
     },
     {
       title: 'Оформление рекреации в государственной школе',
