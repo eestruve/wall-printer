@@ -116,13 +116,45 @@ export default function CTAForm() {
                 {siteInfo.phone}
               </a>
               <div className="cta-direct-links">
-                <a href={siteInfo.whatsapp} target="_blank" rel="noopener noreferrer" className="cta-social-badge cta-social-badge--wa">
+                <a
+                  href={siteInfo.whatsapp}
+                  onClick={(e) => {
+                    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+                    if (!isMobile) {
+                      e.preventDefault();
+                      window.open(siteInfo.whatsappWeb, '_blank');
+                    }
+                  }}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="cta-social-badge cta-social-badge--wa"
+                  title="Написать в WhatsApp на +7 (926) 226-65-15"
+                >
                   WhatsApp
                 </a>
-                <a href={siteInfo.telegram} target="_blank" rel="noopener noreferrer" className="cta-social-badge cta-social-badge--tg">
+                <a
+                  href={siteInfo.telegram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="cta-social-badge cta-social-badge--tg"
+                  title="Написать в Telegram"
+                >
                   Telegram
                 </a>
-                <a href={siteInfo.max} target="_blank" rel="noopener noreferrer" className="cta-social-badge cta-social-badge--max">
+                <a
+                  href={siteInfo.max}
+                  onClick={(e) => {
+                    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+                    if (!isMobile) {
+                      e.preventDefault();
+                      window.open(siteInfo.maxWeb || 'https://web.max.ru', '_blank');
+                    }
+                  }}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="cta-social-badge cta-social-badge--max"
+                  title="Написать в MAX на +7 (926) 226-65-15"
+                >
                   MAX
                 </a>
               </div>
