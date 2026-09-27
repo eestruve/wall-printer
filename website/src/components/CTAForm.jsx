@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { IMaskInput } from 'react-imask';
 import { Link } from 'react-router-dom';
 import { ctaForm, siteInfo } from '../data/siteData';
@@ -12,6 +12,16 @@ export default function CTAForm() {
   const [agreed, setAgreed] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+
+  useEffect(() => {
+    const handleFillCalc = (e) => {
+      if (e.detail) {
+        setComment(e.detail);
+      }
+    };
+    window.addEventListener('fill-calculator-data', handleFillCalc);
+    return () => window.removeEventListener('fill-calculator-data', handleFillCalc);
+  }, []);
 
   const [fileError, setFileError] = useState('');
   const fileWallRef = useRef(null);

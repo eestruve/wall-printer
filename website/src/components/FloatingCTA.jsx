@@ -18,19 +18,17 @@ export default function FloatingCTA() {
     const handleScroll = () => {
       const scrollY = window.scrollY;
 
-      // Find active form/calculator on the current page
-      const calcElem = document.getElementById('calculator');
-      const ctaFormElem = document.getElementById('cta-form');
-      const designerFormElem = document.getElementById('designer-form');
-      const targetForm = designerFormElem || ctaFormElem || calcElem;
+      // Check if user is inside calculator or any conversion form
+      const formsToCheck = [
+        document.getElementById('calculator'),
+        document.getElementById('cta-form'),
+        document.getElementById('designer-form')
+      ].filter(Boolean);
 
-      let inForm = false;
-      if (targetForm) {
-        const rect = targetForm.getBoundingClientRect();
-        if (rect.top <= window.innerHeight * 0.75 && rect.bottom >= 0) {
-          inForm = true;
-        }
-      }
+      const inForm = formsToCheck.some((elem) => {
+        const rect = elem.getBoundingClientRect();
+        return rect.top <= window.innerHeight * 0.85 && rect.bottom >= 0.15 * window.innerHeight;
+      });
 
       // Show floating CTA after scrolling past 300px and hide when inside form
       setVisible(scrollY > 300 && !inForm);
