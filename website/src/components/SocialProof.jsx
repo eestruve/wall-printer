@@ -27,6 +27,8 @@ export default function SocialProof() {
                     className="social-proof-video"
                     controls
                     autoPlay
+                    muted
+                    playsInline
                   />
                 ) : (
                   <div className="social-proof-placeholder">
