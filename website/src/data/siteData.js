@@ -222,7 +222,7 @@ export const socialProof = {
   subtitle: 'Посмотрите, как робот-принтер наносит изображение на вертикальные поверхности',
   items: [
     {
-      title: 'Печать масштабного панно «Родина. Долг. Честь»',
+      title: 'Печать в Колледже полиции',
       type: 'video',
       url: videoMural,
       poster: muralPreview,
