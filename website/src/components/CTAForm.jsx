@@ -101,7 +101,12 @@ export default function CTAForm() {
             <p className="cta-desc">{ctaForm.description}</p>
 
             <div className="cta-price-anchor">
-              <span className="cta-price-icon">🏷️</span>
+              <span className="cta-price-icon-badge">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z" />
+                  <line x1="7" y1="7" x2="7.01" y2="7" />
+                </svg>
+              </span>
               <span className="cta-price-text">{ctaForm.priceAnchor}</span>
             </div>
 
@@ -174,7 +179,15 @@ export default function CTAForm() {
                 <div className="form-files-row">
                   <div className="form-file-box">
                     <label className="form-file-label">
-                      <span className="form-file-title">📷 {ctaForm.fields.fileWall}</span>
+                      <div className="form-file-title">
+                        <span className="form-file-icon-badge">
+                          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
+                            <circle cx="12" cy="13" r="4" />
+                          </svg>
+                        </span>
+                        <span>{ctaForm.fields.fileWall}</span>
+                      </div>
                       <span className="form-file-hint">{fileWall ? fileWall.name : ctaForm.fields.fileWallHint}</span>
                       <input
                         type="file"
@@ -188,7 +201,17 @@ export default function CTAForm() {
 
                   <div className="form-file-box">
                     <label className="form-file-label">
-                      <span className="form-file-title">🎨 {ctaForm.fields.fileSketch}</span>
+                      <div className="form-file-title">
+                        <span className="form-file-icon-badge">
+                          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M12 2C6.5 2 2 6.5 2 12a10 10 0 0 0 10 10c.9 0 1.6-.7 1.6-1.6 0-.4-.2-.8-.4-1.1-.3-.3-.4-.7-.4-1.1 0-.9.7-1.6 1.6-1.6H16c3.3 0 6-2.7 6-6 0-5.5-4.5-9.6-10-9.6z" />
+                            <circle cx="7.5" cy="10.5" r="1" fill="currentColor" />
+                            <circle cx="12" cy="7.5" r="1" fill="currentColor" />
+                            <circle cx="16.5" cy="10.5" r="1" fill="currentColor" />
+                          </svg>
+                        </span>
+                        <span>{ctaForm.fields.fileSketch}</span>
+                      </div>
                       <span className="form-file-hint">{fileSketch ? fileSketch.name : ctaForm.fields.fileSketchHint}</span>
                       <input
                         type="file"
