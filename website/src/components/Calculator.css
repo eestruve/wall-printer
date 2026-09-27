@@ -206,9 +206,32 @@
   line-height: 1.3;
 }
 
-.calc-condition-icon {
-  font-size: 0.95rem;
+.calc-condition-icon-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-sm);
+  background: rgba(27, 42, 74, 0.05);
+  color: var(--color-primary);
   flex-shrink: 0;
+  transition: all var(--transition-fast);
+}
+
+.calc-condition-icon-badge svg {
+  width: 17px;
+  height: 17px;
+}
+
+.calc-condition-card:hover .calc-condition-icon-badge {
+  background: rgba(42, 157, 143, 0.12);
+  color: var(--color-secondary);
+}
+
+.calc-condition-card--active .calc-condition-icon-badge {
+  background: var(--color-primary);
+  color: var(--color-accent);
 }
 
 .calc-condition-note {
@@ -335,6 +358,20 @@
 .summary-condition-dot {
   color: var(--color-accent);
   margin-right: 0.25rem;
+}
+
+.summary-condition-icon-mini {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-accent);
+  flex-shrink: 0;
+  margin-right: 0.4rem;
+}
+
+.summary-condition-icon-mini svg {
+  width: 14px;
+  height: 14px;
 }
 
 .summary-condition-name {

@@ -153,10 +153,10 @@ export const calculatorData = {
   basePackagePrice: 37000,          // Минимальный пакет (до 5 м²)
   minPackageArea: 5,                // Площадь минимального пакета (до 5 м²)
   pricingTiers: [
-    { maxArea: 7, label: 'до 5 м²', ratePerSqm: null, isBase: true },
-    { maxArea: 29, label: '8–29 м²', ratePerSqm: 5000, isBase: false },
-    { maxArea: 49, label: '30–49 м²', ratePerSqm: 4300, isBase: false },
-    { maxArea: 99, label: '50–99 м²', ratePerSqm: 3700, isBase: false },
+    { maxArea: 5, label: 'до 5 м²', ratePerSqm: null, isBase: true },
+    { maxArea: 25, label: 'от 5 до 25 м²', ratePerSqm: 5000, isBase: false },
+    { maxArea: 45, label: 'от 25 до 45 м²', ratePerSqm: 4300, isBase: false },
+    { maxArea: 99, label: 'от 45 до 99 м²', ratePerSqm: 3700, isBase: false },
     { maxArea: Infinity, label: 'от 100 м²', ratePerSqm: 2800, isBase: false },
   ],
   additionalConditions: [
@@ -273,7 +273,7 @@ export const faq = {
     },
     {
       question: 'Как формируется стоимость и какая минимальная цена?',
-      answer: 'Минимальная стоимость заказа составляет 37 000 рублей (включает выезд бригады, доставку оборудования, лазерную калибровку и печать до 5 м²). При увеличении площади ставка за квадратный метр снижается: от 8 до 29 м² — 5 000 ₽/м², от 30 до 49 м² — 4 300 ₽/м², от 50 до 99 м² — 3 700 ₽/м², от 100 м² — 2 800 ₽/м².',
+      answer: 'Минимальная стоимость заказа составляет 37 000 рублей (включает выезд бригады, доставку оборудования, лазерную калибровку и печать до 5 м²). При увеличении площади ставка за квадратный метр снижается: от 5 до 25 м² — 5 000 ₽/м², от 25 до 45 м² — 4 300 ₽/м², от 45 до 99 м² — 3 700 ₽/м², от 100 м² — 2 800 ₽/м².',
     },
     {
       question: 'Нужна ли предварительная подготовка стены?',

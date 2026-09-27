@@ -5,10 +5,58 @@ import './Calculator.css';
 const SLIDER_MARKS = [
   { value: 1, label: '1 м²' },
   { value: 25, label: '25 м²' },
-  { value: 50, label: '50 м²' },
+  { value: 45, label: '45 м²' },
   { value: 100, label: '100 м²' },
   { value: 150, label: '150 м²' },
 ];
+
+// Clean architectural SVG icons matching Solution Print design language
+const CONDITION_ICONS = {
+  wallPrep: (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="2" y="3" width="16" height="5" rx="1.5" />
+      <path d="M18 5.5h2a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1h-8v6a2 2 0 0 1-4 0v-4" />
+    </svg>
+  ),
+  highCeiling: (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <line x1="6" y1="2" x2="6" y2="22" />
+      <line x1="18" y1="2" x2="18" y2="22" />
+      <line x1="6" y1="6" x2="18" y2="6" />
+      <line x1="6" y1="11" x2="18" y2="11" />
+      <line x1="6" y1="16" x2="18" y2="16" />
+      <line x1="6" y1="21" x2="18" y2="21" />
+    </svg>
+  ),
+  multiSpot: (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="2" y="3" width="8" height="8" rx="1.5" />
+      <rect x="14" y="13" width="8" height="8" rx="1.5" />
+      <path d="M18 6l-3-3m0 0l-3 3m3-3v8" />
+      <path d="M6 18l3 3m0 0l3-3m-3 3v-8" />
+    </svg>
+  ),
+  outsideRegion: (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z" />
+      <circle cx="12" cy="10" r="3" />
+    </svg>
+  ),
+  noElevator: (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M3 20h4v-4h4v-4h4V8h4V4" />
+      <path d="M15 4h5v5" />
+      <path d="M13 11l7-7" />
+    </svg>
+  ),
+  darkWall: (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <polygon points="12 2 2 7 12 12 22 7 12 2" />
+      <polyline points="2 17 12 22 22 17" />
+      <polyline points="2 12 12 17 22 12" />
+    </svg>
+  ),
+};
 
 export default function Calculator() {
   const [area, setArea] = useState(10);
@@ -30,7 +78,8 @@ export default function Calculator() {
     if (isBasePackage) {
       total = basePackagePrice;
     } else {
-      total = Math.round(area * activeTier.ratePerSqm);
+      // Guarantee order does not fall below base package minimum (37 000 ₽)
+      total = Math.max(basePackagePrice, Math.round(area * activeTier.ratePerSqm));
     }
 
     return {
@@ -103,7 +152,7 @@ ${conditionsText}`;
                     <span className="calc-tier-tag">
                       {activeTier.isBase
                         ? 'Минимальный пакет (до 5 м²)'
-                        : `Тариф: ${activeTier.ratePerSqm.toLocaleString('ru-RU')} ₽/м²`}
+                        : `Тариф ${activeTier.label}: ${activeTier.ratePerSqm.toLocaleString('ru-RU')} ₽/м²`}
                     </span>
                     <span className="calc-value-badge">{area} м²</span>
                   </div>
@@ -174,7 +223,9 @@ ${conditionsText}`;
                         />
                         <div className="calc-condition-content">
                           <div className="calc-condition-title">
-                            <span className="calc-condition-icon">{cond.icon}</span>
+                            <span className="calc-condition-icon-badge">
+                              {CONDITION_ICONS[cond.id] || cond.icon}
+                            </span>
                             <span>{cond.label}</span>
                           </div>
                           <div className="calc-condition-note">{cond.note}</div>
@@ -213,6 +264,9 @@ ${conditionsText}`;
                         Печать изображения ({area} м²)
                         <small>
                           Тариф {activeTier.label}: {activeTier.ratePerSqm.toLocaleString('ru-RU')} ₽/м²
+                          {calculation.total === calculatorData.basePackagePrice && area <= 7 && (
+                            <> (минимальный чек заказа 37 000 ₽)</>
+                          )}
                         </small>
                       </span>
                       <span className="summary-item__value">
@@ -234,7 +288,9 @@ ${conditionsText}`;
                       <ul className="summary-conditions-list">
                         {selectedList.map((item) => (
                           <li key={item.id} className="summary-condition-item">
-                            <span className="summary-condition-dot">•</span>
+                            <span className="summary-condition-icon-mini">
+                              {CONDITION_ICONS[item.id] || '•'}
+                            </span>
                             <span className="summary-condition-name">{item.label}</span>
                             <span className="summary-condition-status">Уточняйте у менеджера</span>
                           </li>
