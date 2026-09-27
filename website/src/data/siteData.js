@@ -150,13 +150,6 @@ export const useCases = {
 export const calculatorData = {
   title: 'Калькулятор стоимости проекта',
   subtitle: 'Прозрачный расчет сметы с учетом площади и параметров объекта',
-  objectTypes: [
-    { id: 'residential', label: 'Квартира / Дом', icon: '🏠', multiplier: 1.0 },
-    { id: 'horeca', label: 'Ресторан / Кафе (HoReCa)', icon: '☕', multiplier: 1.0 },
-    { id: 'office', label: 'Офис / Коворкинг', icon: '🏢', multiplier: 1.0 },
-    { id: 'school', label: 'Школа / Детсад', icon: '🎓', multiplier: 0.9, badge: '-10% спецтариф' },
-    { id: 'facade', label: 'Фасад / Рельеф', icon: '🧱', multiplier: 1.15, badge: '+15% рельеф' },
-  ],
   basePackagePrice: 37000,          // Минимальный пакет (до 5 м²)
   minPackageArea: 5,                // Площадь минимального пакета (до 5 м²)
   pricingTiers: [

@@ -83,56 +83,6 @@
   flex-shrink: 0;
 }
 
-.calc-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--spacing-xs);
-  margin-top: 0.25rem;
-}
-
-.calc-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.6rem 0.9rem;
-  background: var(--color-bg-primary);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  font-family: var(--font-family);
-  font-size: var(--font-size-small);
-  font-weight: var(--font-weight-medium);
-  color: var(--color-text-primary);
-  cursor: pointer;
-  transition: all var(--transition-fast);
-  white-space: nowrap;
-}
-
-.calc-chip:hover {
-  border-color: var(--color-accent);
-  background: #FFFFFF;
-}
-
-.calc-chip--active {
-  background: var(--color-accent);
-  border-color: var(--color-accent);
-  color: #181818;
-  font-weight: var(--font-weight-bold);
-  box-shadow: 0 4px 12px rgba(233, 196, 106, 0.35);
-}
-
-.calc-chip__badge {
-  font-size: 0.7rem;
-  font-weight: var(--font-weight-bold);
-  background: rgba(0, 0, 0, 0.08);
-  padding: 0.15rem 0.45rem;
-  border-radius: var(--radius-full);
-  margin-left: 0.25rem;
-}
-
-.calc-chip--active .calc-chip__badge {
-  background: rgba(0, 0, 0, 0.15);
-  color: #181818;
-}
 
 .calc-range-container {
   position: relative;
@@ -482,10 +432,6 @@
   .calc-value-badge {
     font-size: 1.05rem;
     padding: 0.2rem 0.55rem;
-  }
-  .calc-chip {
-    padding: 0.45rem 0.75rem;
-    font-size: 0.8rem;
   }
   .summary-total__price {
     font-size: 1.85rem;

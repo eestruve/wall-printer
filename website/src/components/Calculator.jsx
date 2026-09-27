@@ -11,14 +11,8 @@ const SLIDER_MARKS = [
 ];
 
 export default function Calculator() {
-  const [selectedType, setSelectedType] = useState(calculatorData.objectTypes[0].id);
   const [area, setArea] = useState(10);
   const [selectedConditions, setSelectedConditions] = useState([]);
-
-  const currentType = useMemo(
-    () => calculatorData.objectTypes.find((t) => t.id === selectedType) || calculatorData.objectTypes[0],
-    [selectedType]
-  );
 
   const activeTier = useMemo(() => {
     return (
@@ -29,15 +23,14 @@ export default function Calculator() {
 
   const calculation = useMemo(() => {
     const { basePackagePrice } = calculatorData;
-    const multiplier = currentType.multiplier;
 
     let total = 0;
     const isBasePackage = activeTier.isBase;
 
     if (isBasePackage) {
-      total = Math.round(basePackagePrice * multiplier);
+      total = basePackagePrice;
     } else {
-      total = Math.round(area * activeTier.ratePerSqm * multiplier);
+      total = Math.round(area * activeTier.ratePerSqm);
     }
 
     return {
@@ -46,7 +39,7 @@ export default function Calculator() {
       tierLabel: activeTier.label,
       total,
     };
-  }, [area, currentType, activeTier]);
+  }, [area, activeTier]);
 
   const toggleCondition = (id) => {
     setSelectedConditions((prev) =>
@@ -66,7 +59,6 @@ export default function Calculator() {
 
     const commentText = `Параметры из калькулятора:
 • Площадь нанесения: ${area} м² (${activeTier.isBase ? 'Базовый пакет до 5 м²' : `Тариф ${activeTier.label}: ${activeTier.ratePerSqm.toLocaleString('ru-RU')} ₽/м²`})
-• Тип объекта: ${currentType.label}
 • Ориентировочная стоимость печати: ${calculation.total.toLocaleString('ru-RU')} ₽
 ${conditionsText}`;
 
@@ -103,29 +95,10 @@ ${conditionsText}`;
           <div className="calculator-grid">
             {/* Left Column: Controls */}
             <div className="calculator-controls">
-              {/* 1. Object Type */}
-              <div className="calc-group">
-                <label className="calc-label">1. Выберите тип объекта</label>
-                <div className="calc-chips">
-                  {calculatorData.objectTypes.map((type) => (
-                    <button
-                      key={type.id}
-                      type="button"
-                      className={`calc-chip ${selectedType === type.id ? 'calc-chip--active' : ''}`}
-                      onClick={() => setSelectedType(type.id)}
-                    >
-                      <span className="calc-chip__icon">{type.icon}</span>
-                      <span className="calc-chip__label">{type.label}</span>
-                      {type.badge && <span className="calc-chip__badge">{type.badge}</span>}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* 2. Area Slider */}
+              {/* 1. Area Slider */}
               <div className="calc-group">
                 <div className="calc-label-row">
-                  <label htmlFor="area-slider" className="calc-label">2. Ориентировочная площадь нанесения</label>
+                  <label htmlFor="area-slider" className="calc-label">1. Ориентировочная площадь нанесения</label>
                   <div className="calc-badge-group">
                     <span className="calc-tier-tag">
                       {activeTier.isBase
@@ -179,10 +152,10 @@ ${conditionsText}`;
                 </div>
               </div>
 
-              {/* 3. Additional Conditions */}
+              {/* 2. Additional Conditions */}
               <div className="calc-group">
                 <div className="calc-label-row">
-                  <label className="calc-label">3. Дополнительные параметры объекта</label>
+                  <label className="calc-label">2. Дополнительные параметры объекта</label>
                   <span className="calc-sublabel-hint">Отметьте особенности помещения</span>
                 </div>
                 <div className="calc-conditions-grid">
@@ -240,9 +213,6 @@ ${conditionsText}`;
                         Печать изображения ({area} м²)
                         <small>
                           Тариф {activeTier.label}: {activeTier.ratePerSqm.toLocaleString('ru-RU')} ₽/м²
-                          {currentType.multiplier !== 1 && (
-                            <> ({currentType.multiplier > 1 ? '+' : ''}{Math.round((currentType.multiplier - 1) * 100)}% к ставке)</>
-                          )}
                         </small>
                       </span>
                       <span className="summary-item__value">
