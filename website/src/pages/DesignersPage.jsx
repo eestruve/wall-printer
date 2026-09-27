@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { IMaskInput } from 'react-imask';
 import { siteInfo } from '../data/siteData';
+import { submitDesignerLead } from '../utils/telegram';
 import BackButton from '../components/BackButton';
 import './B2BPages.css';
 
@@ -12,12 +13,37 @@ export default function DesignersPage() {
   const [requestType, setRequestType] = useState('samples');
   const [comment, setComment] = useState('');
   const [agreed, setAgreed] = useState(true);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!name || !phone || !agreed) return;
-    setSubmitted(true);
+
+    setIsSubmitting(true);
+    setSubmitError('');
+
+    try {
+      await submitDesignerLead({
+        name,
+        phone,
+        studio,
+        requestType,
+        comment,
+      });
+
+      setSubmitted(true);
+      setName('');
+      setPhone('');
+      setStudio('');
+      setComment('');
+    } catch (err) {
+      console.error('Ошибка отправки заявки дизайнера в Telegram:', err);
+      setSubmitError('Не удалось отправить заявку. Пожалуйста, проверьте интернет-соединение или свяжитесь с нами напрямую по телефону.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -215,8 +241,18 @@ export default function DesignersPage() {
                   </span>
                 </label>
 
-                <button type="submit" className="btn btn-primary btn-submit">
-                  Отправить заявку
+                {submitError && (
+                  <div className="form-error-banner" style={{ color: 'var(--color-error)', fontSize: '0.85rem', marginBottom: '0.75rem', fontWeight: 500 }}>
+                    ⚠️ {submitError}
+                  </div>
+                )}
+
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="btn btn-primary btn-submit"
+                >
+                  {isSubmitting ? 'Отправка...' : 'Отправить заявку'}
                 </button>
               </form>
             )}

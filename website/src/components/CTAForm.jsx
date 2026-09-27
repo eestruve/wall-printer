@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { IMaskInput } from 'react-imask';
 import { Link } from 'react-router-dom';
 import { ctaForm, siteInfo } from '../data/siteData';
+import { submitLead } from '../utils/telegram';
 import './CTAForm.css';
 
 export default function CTAForm() {
@@ -12,6 +13,7 @@ export default function CTAForm() {
   const [agreed, setAgreed] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
   useEffect(() => {
     const handleFillCalc = (e) => {
@@ -57,15 +59,22 @@ export default function CTAForm() {
     setter(file);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!phone || phone.replace(/[^\d]/g, '').length < 11 || !agreed) return;
 
     setIsSubmitting(true);
+    setSubmitError('');
 
-    // Simulate async submission
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      await submitLead({
+        phone,
+        comment,
+        fileWall,
+        fileSketch,
+        source: 'Главная форма сайта (Калькулятор / Заявка)',
+      });
+
       setSubmitted(true);
       setPhone('');
       setComment('');
@@ -74,7 +83,12 @@ export default function CTAForm() {
       setFileError('');
       if (fileWallRef.current) fileWallRef.current.value = '';
       if (fileSketchRef.current) fileSketchRef.current.value = '';
-    }, 800);
+    } catch (err) {
+      console.error('Ошибка отправки заявки в Telegram:', err);
+      setSubmitError('Не удалось отправить заявку. Пожалуйста, проверьте интернет-соединение или свяжитесь с нами напрямую по телефону.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -206,6 +220,12 @@ export default function CTAForm() {
                     <Link to="/privacy" target="_blank">Политикой конфиденциальности (152-ФЗ)</Link>
                   </span>
                 </label>
+
+                {submitError && (
+                  <div className="form-error-banner" style={{ color: 'var(--color-error)', fontSize: '0.85rem', marginBottom: '0.75rem', fontWeight: 500 }}>
+                    ⚠️ {submitError}
+                  </div>
+                )}
 
                 <button
                   type="submit"
