@@ -24,6 +24,7 @@ export const siteInfo = {
   phoneSecondary: '+7 (495) 532-60-09',
   whatsapp: 'https://wa.me/79262266515',
   telegram: 'https://t.me/solutionclub',
+  max: 'https://max.ru',
   email: 'print@solution-club.ru',
   address: '125284, г. Москва, Ленинградский пр-кт, д. 35, стр. 2',
   legal: {

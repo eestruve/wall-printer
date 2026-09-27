@@ -116,11 +116,14 @@ export default function CTAForm() {
                 {siteInfo.phone}
               </a>
               <div className="cta-direct-links">
-                <a href={siteInfo.whatsapp} target="_blank" rel="noopener noreferrer" className="cta-social-badge">
+                <a href={siteInfo.whatsapp} target="_blank" rel="noopener noreferrer" className="cta-social-badge cta-social-badge--wa">
                   WhatsApp
                 </a>
-                <a href={siteInfo.telegram} target="_blank" rel="noopener noreferrer" className="cta-social-badge">
+                <a href={siteInfo.telegram} target="_blank" rel="noopener noreferrer" className="cta-social-badge cta-social-badge--tg">
                   Telegram
+                </a>
+                <a href={siteInfo.max} target="_blank" rel="noopener noreferrer" className="cta-social-badge cta-social-badge--max">
+                  MAX
                 </a>
               </div>
             </div>
