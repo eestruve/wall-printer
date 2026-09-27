@@ -60,6 +60,7 @@ const CONDITION_ICONS = {
 
 export default function Calculator() {
   const [area, setArea] = useState(10);
+  const [areaInput, setAreaInput] = useState('10');
   const [selectedConditions, setSelectedConditions] = useState([]);
 
   const activeTier = useMemo(() => {
@@ -96,6 +97,37 @@ export default function Calculator() {
     );
   };
 
+  const handleAreaInputChange = (e) => {
+    const val = e.target.value;
+    // Allow typing positive numbers with dot or comma as decimal separator
+    if (val === '' || /^\d*([.,]\d*)?$/.test(val)) {
+      setAreaInput(val);
+      const parsed = parseFloat(val.replace(',', '.'));
+      if (!isNaN(parsed) && parsed > 0) {
+        setArea(Math.min(parsed, 500));
+      }
+    }
+  };
+
+  const handleAreaInputBlur = () => {
+    const parsed = parseFloat(areaInput.replace(',', '.'));
+    if (isNaN(parsed) || parsed < 1) {
+      setArea(1);
+      setAreaInput('1');
+    } else {
+      const clamped = Math.min(parsed, 500);
+      const rounded = Math.round(clamped * 100) / 100;
+      setArea(rounded);
+      setAreaInput(String(rounded));
+    }
+  };
+
+  const handleSliderChange = (e) => {
+    const val = parseFloat(e.target.value);
+    setArea(val);
+    setAreaInput(String(val));
+  };
+
   const handleScrollToForm = () => {
     const selectedList = calculatorData.additionalConditions.filter((c) =>
       selectedConditions.includes(c.id)
@@ -107,7 +139,7 @@ export default function Calculator() {
         : '• Дополнительные условия объекта: не выбраны (стандартный объект)';
 
     const commentText = `Параметры из калькулятора:
-• Площадь нанесения: ${area} м² (${activeTier.isBase ? 'Базовый пакет до 5 м²' : `Тариф ${activeTier.label}: ${activeTier.ratePerSqm.toLocaleString('ru-RU')} ₽/м²`})
+• Площадь нанесения: ${area.toLocaleString('ru-RU')} м² (${activeTier.isBase ? 'Базовый пакет до 5 м²' : `Тариф ${activeTier.label}: ${activeTier.ratePerSqm.toLocaleString('ru-RU')} ₽/м²`})
 • Ориентировочная стоимость печати: ${calculation.total.toLocaleString('ru-RU')} ₽
 ${conditionsText}`;
 
@@ -131,6 +163,8 @@ ${conditionsText}`;
     [selectedConditions]
   );
 
+  const sliderRatio = Math.min(1, Math.max(0, (area - 1) / 149));
+
   return (
     <section className="calculator-section section" id="calculator">
       <div className="container">
@@ -144,17 +178,26 @@ ${conditionsText}`;
           <div className="calculator-grid">
             {/* Left Column: Controls */}
             <div className="calculator-controls">
-              {/* 1. Area Slider */}
+              {/* 1. Area Slider and Manual Input */}
               <div className="calc-group">
                 <div className="calc-label-row">
-                  <label htmlFor="area-slider" className="calc-label">1. Ориентировочная площадь нанесения</label>
+                  <label htmlFor="area-manual-input" className="calc-label">
+                    1. Ориентировочная площадь нанесения
+                  </label>
                   <div className="calc-badge-group">
-                    <span className="calc-tier-tag">
-                      {activeTier.isBase
-                        ? 'Минимальный пакет (до 5 м²)'
-                        : `Тариф ${activeTier.label}: ${activeTier.ratePerSqm.toLocaleString('ru-RU')} ₽/м²`}
-                    </span>
-                    <span className="calc-value-badge">{area} м²</span>
+                    <div className="calc-area-input-box" title="Нажмите, чтобы ввести точную площадь вручную">
+                      <input
+                        id="area-manual-input"
+                        type="text"
+                        inputMode="decimal"
+                        className="calc-area-input"
+                        value={areaInput}
+                        onChange={handleAreaInputChange}
+                        onBlur={handleAreaInputBlur}
+                        aria-label="Площадь в квадратных метрах"
+                      />
+                      <span className="calc-area-unit">м²</span>
+                    </div>
                   </div>
                 </div>
                 <div className="calc-range-container">
@@ -163,12 +206,12 @@ ${conditionsText}`;
                     type="range"
                     min="1"
                     max="150"
-                    step="1"
-                    value={area}
-                    onChange={(e) => setArea(Number(e.target.value))}
+                    step="0.5"
+                    value={Math.min(area, 150)}
+                    onChange={handleSliderChange}
                     className="calc-range"
                     style={{
-                      background: `linear-gradient(to right, var(--color-accent) 0%, var(--color-accent) calc(12px + (100% - 24px) * ${(area - 1) / 149}), var(--color-bg-tertiary) calc(12px + (100% - 24px) * ${(area - 1) / 149}), var(--color-bg-tertiary) 100%)`,
+                      background: `linear-gradient(to right, var(--color-accent) 0%, var(--color-accent) calc(12px + (100% - 24px) * ${sliderRatio}), var(--color-bg-tertiary) calc(12px + (100% - 24px) * ${sliderRatio}), var(--color-bg-tertiary) 100%)`,
                     }}
                   />
                   <div className="calc-range-marks">
@@ -191,7 +234,10 @@ ${conditionsText}`;
                           type="button"
                           className={`calc-range-mark ${isActive ? 'calc-range-mark--active' : ''}`}
                           style={style}
-                          onClick={() => setArea(mark.value)}
+                          onClick={() => {
+                            setArea(mark.value);
+                            setAreaInput(String(mark.value));
+                          }}
                         >
                           {mark.label}
                         </button>
@@ -261,7 +307,7 @@ ${conditionsText}`;
                   ) : (
                     <div className="summary-item">
                       <span className="summary-item__label">
-                        Печать изображения ({area} м²)
+                        Печать изображения ({area.toLocaleString('ru-RU')} м²)
                         <small>
                           Тариф {activeTier.label}: {activeTier.ratePerSqm.toLocaleString('ru-RU')} ₽/м²
                           {calculation.total === calculatorData.basePackagePrice && area <= 7 && (
