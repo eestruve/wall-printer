@@ -9,7 +9,7 @@ import officeImg from '../assets/images/usecase_office.png';
 import interiorImg from '../assets/images/usecase_interior.png';
 import schoolImg from '../assets/images/usecase_school.png';
 import compManualImg from '../assets/images/comparison_manual.png';
-import compPanelsImg from '../assets/images/comparison_panels.png';
+import compFilmImg from '../assets/images/comparison_film.jpg';
 import compPrinterImg from '../assets/images/comparison_printer.jpg';
 import video0324 from '../assets/videos/0324.mp4';
 import video1 from '../assets/videos/1.mp4';
@@ -91,7 +91,7 @@ export const comparison = {
     },
     {
       title: 'Интерьерная пленка и самоклейка',
-      image: compPanelsImg,
+      image: compFilmImg,
       cons: [
         'Легкое отслоение и повреждение пленки при физическом воздействии',
         'Изменение цвета и выгорание оттенка под воздействием УФ-лучей',
