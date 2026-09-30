@@ -17,7 +17,7 @@ export default function TechPrinterSpecsPage() {
             <span className="section-tag">База знаний</span>
             <h1 className="article-title">Оборудование и характеристики</h1>
             <p className="article-subtitle">
-              Технический паспорт и инженерные параметры промышленного робота-принтера «Солюшин Принт».
+              Технический паспорт и инженерные параметры промышленного робота-принтера.
             </p>
           </header>
 

@@ -87,3 +87,138 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* Video Lightbox Modal (Apple & Mobile friendly) */
+.video-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: rgba(10, 15, 29, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  animation: fadeInModal 0.25s ease-out forwards;
+}
+
+@keyframes fadeInModal {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.video-modal-dialog {
+  position: relative;
+  width: 100%;
+  max-width: 960px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  background: #0B1120;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.7);
+}
+
+.video-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1.25rem;
+  background: rgba(15, 23, 42, 0.95);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.video-modal-title {
+  font-size: 1rem;
+  font-weight: var(--font-weight-bold);
+  color: #FFFFFF;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 1rem;
+}
+
+.video-modal-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.08);
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.video-modal-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+  transform: scale(1.08);
+}
+
+.video-modal-body {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000000;
+  width: 100%;
+  max-height: calc(90vh - 60px);
+  overflow: hidden;
+}
+
+.video-modal-video {
+  width: 100%;
+  max-height: calc(85vh - 60px);
+  object-fit: contain;
+  background: #000000;
+  outline: none;
+}
+
+/* WebKit Fullscreen normalization for Apple devices */
+video:-webkit-full-screen {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: contain !important;
+  transform: none !important;
+  -webkit-transform: none !important;
+}
+
+video:fullscreen {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+}
+
+@media (max-width: 640px) {
+  .video-modal-backdrop {
+    padding: 0.5rem;
+  }
+  .video-modal-dialog {
+    max-height: 94vh;
+    border-radius: var(--radius-md);
+  }
+  .video-modal-header {
+    padding: 0.65rem 0.85rem;
+  }
+  .video-modal-title {
+    font-size: 0.9rem;
+  }
+  .video-modal-body {
+    max-height: calc(94vh - 50px);
+  }
+  .video-modal-video {
+    max-height: calc(92vh - 50px);
+  }
+}
+
