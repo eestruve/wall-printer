@@ -26,9 +26,9 @@ export default function TechWallPrepPage() {
               <h2>1. Рейтинг поверхностей: на чем держится лучше всего</h2>
               <div className="article-surface-grid">
                 <div className="surface-item">
-                  <div className="surface-item__icon">🧱</div>
+                  <div className="surface-item__icon">🖌️</div>
                   <div className="surface-item__info">
-                    <h4>Матовые окрашенные стены и гипсокартон</h4>
+                    <h4>Окрашенные стены</h4>
                     <p>Идеальная база. Матовая водоэмульсионная, латексная или акриловая краска обеспечивает 100% адгезию и сочность цвета без бликов.</p>
                   </div>
                 </div>

@@ -9,7 +9,7 @@ export default function SocialProof() {
     <section className="social-proof-section section section--alt" id="social-proof">
       <div className="container">
         <div className="section-header fade-in">
-          <span className="section-tag">Портфолио и процессы</span>
+          <span className="section-tag">Портфолио</span>
           <h2 className="section-title">{socialProof.title}</h2>
           <p className="section-subtitle">{socialProof.subtitle}</p>
         </div>
